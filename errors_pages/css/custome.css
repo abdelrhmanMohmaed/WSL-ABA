@@ -1,0 +1,33 @@
+.modal .icon-camera
+{
+	font-size: 100px;
+	color: #797979
+}
+
+.modal input
+{
+	margin-bottom: 4px
+}
+
+.reset
+{
+	border:none;
+	background: #fff;
+	margin-right: 11px;
+}
+
+.icon-trash
+{
+	margin-left: 8px;
+	color: red;
+}
+
+.dropdown-menu
+{
+	min-width: 88px;
+}
+
+#hidden
+{
+	display: none;
+}

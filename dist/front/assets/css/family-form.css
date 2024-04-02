@@ -1,0 +1,491 @@
+ul.nav.nav-tabs {
+    background: rgba(115, 201, 204, 0.1);
+    border-radius: 8px;
+    border-color: transparent;
+    justify-content: space-between;
+    padding-right: 0px;
+}
+
+li.nav-item {
+    flex-basis: 25%;
+    text-align: center;
+}
+.nav-tabs .nav-link.active {
+    background: #73C9CC;
+    /* border-radius: 0px 8px 8px 0px; */
+    border: none;
+    font-weight: 900;
+}
+.nav-tabs .nav-link {
+    color: #000;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 37px;
+}
+.btn a{
+    color:#fff;
+}
+.btn:hover{
+    background-color:#fff;
+    border:2px solid #834e9a;
+    color:#834e9a;
+}
+.btn:hover a{
+    color:#834e9a;
+}
+.text-data {
+    background: hsla(182, 47%, 63%, 0.053);
+    box-shadow: 0px 36px 32px 16px rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+    padding:36px 24px ;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 12px;
+    margin-bottom: 64px;
+}
+ .form-title{
+    flex-basis: 100%;
+    position: relative;
+}
+ .form-title::before {
+    content: "";
+    position: absolute;
+    right: 65px;
+    bottom: 24px;
+    width: 9%;
+    height: 3px;
+    background: #333;
+}
+.form-title img{
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+.form-title h3{
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 50px;
+    color: #333333;
+    margin-bottom: 24px;
+    display: inline-block;
+    margin-right: 20px;
+}
+.text-data .form-group{
+    flex-basis: 32%;
+}
+.text-data .form-group label{
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 28px;
+    color: #171215;
+    margin-bottom: 5px;
+}
+.text-data .form-group {
+      margin-bottom: 16px;
+}
+
+.text-data .form-group .form-control{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    background: transparent;
+    border-radius: 5px;
+}
+span.error{
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+
+select.form-control ,.family-data input[type="text"] {
+    position: relative;
+    background-image: url("../images/arrow.png") !important;
+    background-repeat: no-repeat !important;
+    background-position-x: 10px !important;
+    background-position-y: 10px !important;
+}
+
+.text-data .form-group input::placeholder{
+    color: hsla(0, 0%, 24%, 0.502);
+}
+.medical-data{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px 14px;
+    margin-bottom: 16px;
+}
+.medical-data-title h4 {
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 34px;
+    color: #171215;
+}
+.medical-data label{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 28px;
+    margin-left: 21px;
+}
+
+div.comment input{
+    background: transparent;
+    margin-left: 21px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    margin-top: 5px;
+    outline: none;
+}
+.medical-data input::placeholder ,.family-data input::placeholder{
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 17px;
+    color: hsla(0, 0%, 0%, 0.501);
+}
+
+.container {
+    max-width: 91%;
+}
+.tab-content{
+    padding: 0;
+}
+.tab-pane.container {
+    max-width: 100%;
+    padding: 0;
+}
+button[type="submit"]{
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 27px;
+}
+input[type="radio"]{
+	position: relative;
+	appearance: none;
+	-webkit-appearance: none;
+	transition: linear 0.8s;
+	height: 0;
+	width: 0;
+	-webkit-tap-highlight-color: transparent;
+
+}
+.family-data option{
+    position: relative;
+    display: inline-block;
+}
+.family-data option .rad{
+    display: inline-block;
+}
+input[type="radio"]:after ,.family-data option .rad:after {
+	content: "";
+	position: absolute;
+    width: 16px;
+    height: 16px;
+	top: -10.5px;
+	left: 0px;
+	border-radius: 20px;
+	border: 3px solid #EFEFEF;
+	background: lch(46 8.87 278.48 / 0.2);
+	transition: linear 0.2s;
+	cursor: pointer;
+}
+
+
+ input[type="radio"]:checked:after ,.family-data option:checked::after {
+	content: "";
+	position: absolute;
+	height: 22px;
+	width: 22px;
+	background: #58B8C2;
+    box-shadow: inset 0px 0px 1px rgba(0, 0, 0, 0.1);
+	transition: linear 0.2s;
+	cursor: pointer;
+}
+.comment-tab:checked + div{
+    display: block !important;
+}
+.medical-data label:first-of-type {
+    margin-left: 59px;
+}
+.text-data .form-group.family-data {
+    flex-basis: 100%;
+    margin: 10px 0px;
+}
+.family-data{
+    position: relative;
+}
+
+.family-data label {
+    display: block;
+}
+
+.family-data select {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    margin-bottom: 16px;
+    border-radius: 5px;
+    background: transparent;
+    outline: none;
+    color: hsla(0, 0%, 24%, 0.502);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+}
+ select.form-control{
+    color: hsla(0, 0%, 24%, 0.502);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+ }
+
+.dropmenu{
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0px 0px 8px 8px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 99999999999;
+    display: none;
+}
+.family-data  .dropmenu-show+.dropmenu {
+	display: block;
+}
+.dropmen-item{
+    display: flex;
+    align-items: center;
+    padding: 10px 28px;
+}
+.dropmen-item label{
+    margin-right: 20px;
+}
+.family-data .form-control{
+    margin-bottom: 0px !important;
+}
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    border: 1px solid #e4e4e4;
+    outline: none;
+}
+.select2-container--default
+ .select2-selection--single
+.select2-selection__rendered{
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 17px;
+    color: hsla(0, 0%, 0%, 0.501);
+    padding: 0;
+}
+.select2-container--default .select2-selection--single{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 20px 15px;
+    background: transparent;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    padding: 8px;
+}
+.select2-container--default
+ .select2-selection--single
+ .select2-selection__arrow{
+    top: 9px;
+    left: 3px;
+}
+.select2-container{
+    display: block;
+    margin-bottom: 15px;
+}
+.form-group > .select2-container {
+  width: 100% !important;
+  position: absolute;
+  top:33px;
+}
+.select2-results__options{
+   padding-left: 0px;
+    text-align: right;
+    list-style: none;
+}
+.select2-dropdown{
+    display:block;
+    padding:12px;
+    background:#fff;
+    height:200px;
+    overflow-y:scroll;
+}
+.select2-container--default .select2-search--dropdown .select2-search__field{
+    width:100%;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b{
+  border: solid #6c6e6e;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  margin-left: 7px;
+
+}
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+  border-color: transparent #888 #888 transparent;
+  border-width: 0 2px 2px 0px;
+}
+@media (min-width:1024px){
+    .questions input{
+        margin-left: 20px;
+    }
+}
+@media (max-width:786px){
+    .form-title h3{
+        font-size: 23px;
+        line-height: 40px;
+    }
+    button[type="submit"]{
+        font-size: 17px;
+        line-height: 20px;
+    }
+    input[type="radio"]:after{
+        left: 15px;
+    }
+    .dropmen-item input[type="radio"]:after{
+        left: 0px;
+    }
+    input[type="radio"]:after{
+        width: 18px;
+        height: 18px;
+    }
+    .medical-data-title h4{
+        line-height: 16px;
+        font-size: 16px;
+    }
+    .medical-data label{
+      font-size: 15px;
+      line-height: 25px;
+    }
+}
+@media (max-width:765px){
+    .text-data .form-group {
+        flex-basis:48%;
+    }
+    .container {
+        max-width: 91%;
+    }
+}
+@media (max-width:500px){
+    .text-data .form-group {
+        flex-basis:100%;
+    }
+    .nav-tabs .nav-link{
+        padding: 6px 0px;
+    }
+    .form-title::before{
+        width: 12%;
+    }
+    .text-data{
+        padding: 18px 14px;
+    }
+    .nav-tabs .nav-link {
+        font-size: 16px;
+    }
+    .questions{
+        flex-direction: column;
+    }
+    input[type="radio"]:after{
+        right: 10px;
+    }
+    .dropmen-item input[type="radio"]:after{
+        right: -14px;
+    }
+    .medical-data label{
+        margin-right: 53px;
+    }
+}
+@media (max-width:425px){
+    .medical-data{
+        padding: 12px 10px;
+    }
+    .medical-data-title h4{
+        font-size: 16px;
+    }
+    .nav-tabs .nav-link {
+        padding: 7px 0px;
+        font-size: 15px;
+    }
+    .form-title h3 {
+        font-size: 20px;
+    }
+    .medical-data input::placeholder{
+        font-size: 8px;
+    }
+    .text-data{
+        margin-bottom: 48px;
+    }
+
+    .medical-data label:first-of-type {
+        margin-left: 0px;
+    }
+
+}
+@media (max-width:375px){
+    .container {
+        max-width: 95%;
+    }
+    .nav-tabs .nav-link{
+        font-size: 14px;
+    }
+    .medical-data label {
+        margin-right: 32px;
+    }
+    .medical-data label {
+        font-size: 12px;
+        line-height: 20px;
+    }
+    .medical-data label{
+        margin-left: -4px;
+    }
+   .form-title::before{
+        right: 46px;
+    }
+    .form-title h3{
+        margin-right: 2px;
+    }
+}
+/**********/
+
+div#ui-datepicker-div {
+background-color: #fff;
+}
+
+.ui-datepicker-header.ui-widget-header.ui-helper-clearfix.ui-corner-all {
+display: flex;
+background-color:#58b8c2;
+justify-content: space-between;
+}
+
+.ui-datepicker-header.ui-widget-header.ui-helper-clearfix.ui-corner-all > * {
+padding: 10px;
+color: #fff;
+}
+.ui-datepicker-header.ui-widget-header.ui-helper-clearfix.ui-corner-all a{
+cursor: pointer;
+}
+table.ui-datepicker-calendar {
+width: 100%;
+margin-top: 10px;
+padding: 10px;
+}
+table.ui-datepicker-calendar th ,table.ui-datepicker-calendar tr{
+padding: 8px;
+text-align: center;
+}
+.form-date{
+  position: relative;
+}
+.datepickerimg{
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    object-fit: contain;
+}

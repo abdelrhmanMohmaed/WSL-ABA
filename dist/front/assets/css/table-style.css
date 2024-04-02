@@ -1,0 +1,188 @@
+/*********/
+table {
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 0em 15px;
+    table-layout: fixed;
+    width: 100%;
+  }
+  .patiant-table{
+    overflow-x: auto;
+  }
+  table tr th {
+    background-color: rgba(115, 201, 204, 0.3) !important;
+    border-right: 1px solid rgba(115, 201, 204, 0.3);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 27px;
+    padding: 10px;
+  }
+  
+  table tr td {
+    background-color: rgba(0, 0, 0, 0.02) !important;
+    border-width: 1px 1px 1px 0px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.06);
+    padding:10px;
+
+  }
+  tr th:first-of-type,
+  tr td:first-of-type {
+    border-radius: 0px 8px 8px 0px;
+  }
+  tr th:last-of-type,
+  tr td:last-of-type {
+    border-radius: 8px 0px 0px 8px;
+  }
+  tr td:last-of-type {
+    border-left: 1px solid rgba(0, 0, 0, 0.06);
+    position: relative;
+    /* display: inline-block; */
+  }
+  .table-menu {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 20%;
+    background: hsla(0, 0%, 0%, 0.06);
+    border-radius: 7px 0px 0px 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .table-menu p {
+    margin-bottom: 0px;
+  }
+  .table-menu-dropdown p:first-of-type{
+    margin-bottom: 10px;
+  }
+  
+  .table-menu-dropdown {
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    padding: 15px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0px 0px 8px 8px;
+    z-index: 99;
+    width: 123px;
+    display: none;
+  }
+  .table-menu-dropdown.current{
+    display: block;
+  }
+  .table-menu-dropdown p a {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 19px;
+    text-align: right;
+    color: #000000;
+  }
+  .table-menu:hover + div.table-menu-dropdown{
+    display: block;
+  }
+  /**********/
+  .edit_family_data .text-data .form-group .form-control{
+      border: none;
+      border-bottom: 1px solid hsla(0, 0%, 0%, 0.084);
+      border-radius: 0;
+      column-gap: 0px;
+  }
+  .edit_family_data .text-data {
+    border-radius: 0 ;
+    background: hsla(182, 47%, 63%, 0.05);
+    margin-bottom: 0px ;
+  }
+  .edit_family_data ul.nav.nav-tabs{
+    background: hsla(182, 47%, 63%, 0.05);
+    border-radius: 0px;
+    padding-top: 40px;
+    border-bottom: 1px solid hsla(0, 0%, 0%, 0.084);
+  }
+  .edit_family_data .nav-tabs .nav-link.active{
+    background-color: transparent;
+    border-bottom: 2px solid;
+  }
+  .edit_family_data .text-data .form-group label ,
+  .edit_family_data .medical-data-title h4{
+    color: hsla(324, 12%, 8%, 0.701);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .edit_family_data .medical-data {
+    border: none;
+    border-bottom: 1px solid hsla(0, 0%, 0%, 0.084);
+    border-radius: 0;
+  }
+  .edit_family_data .questions{
+    flex-direction: column;
+  }
+  .edit_family_data div.custom-control{
+    width: auto;
+  }
+  .edit_family_data .form-title::before{
+    right: 76px;
+  }
+  .edit_family_data .comment-radio-sec{
+    align-items: center;
+  }
+  
+   .edit_family_data .edit-file{
+    display: flex;
+    justify-content: end;
+    margin-right: auto;
+  }
+  .patiant-file  .edit-file a,
+  .edit_family_data .edit-file a{
+    color: #000;
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 23px;
+    display: inline-block;
+    padding: 15px 20px;
+    text-align: center;
+    background: #58B8C2;
+    border-radius: 8px;
+  }
+  .patiant-file  .edit-file a img,
+  .edit_family_data .edit-file a img{
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+    margin-left: 7px;
+  }
+  .edit_family_data .select2-container--default .select2-selection--single{
+    border: none;
+    border-bottom: 1px solid hsla(0, 0%, 0%, 0.084);
+    border-radius: 0;
+  }
+  @media (min-width: 1024px) {
+    .questions input {
+      margin-left: 20px;
+    }
+  }
+  @media (max-width:991px){
+    table{
+      table-layout: unset;
+    }
+  }
+  @media (max-width:786px){
+    table tr td{
+        white-space: nowrap;
+        padding: 10px 35px !important;
+      }
+      .table-menu{
+        width: 30%;
+      }
+      .form-title::before{
+            right: 79px;
+      }
+      .edit_family_data .comment-radio-sec{
+        flex-direction: column;
+        align-items: initial;
+      }
+  }

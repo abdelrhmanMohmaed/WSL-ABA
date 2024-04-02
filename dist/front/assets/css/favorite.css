@@ -1,0 +1,20 @@
+
+
+.favorite-file .SS-btn a{
+    color: #000;
+    background: #F3F7F7;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 25px;
+    display: inline-block;
+    width: 170px;
+    height: 64px;
+    /*padding: 15px 20px;*/
+    text-align: center;
+    text-decoration: none;
+}
+.favorite-file .SS-btn .percent{
+    font-weight: 1000!important;
+    font-size: 20px!important;
+}

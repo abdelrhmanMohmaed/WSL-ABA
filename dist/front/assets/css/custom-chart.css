@@ -1,0 +1,146 @@
+.custom-chart {
+    direction: ltr !important;
+    width: 100%;
+    aspect-ratio: 1.5/1;
+    background-color: #fff;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+}
+
+.custom-chart *{
+
+    direction: ltr !important;
+}
+.y-axis {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 11vw;
+    width: 5vw;
+    margin-top: 3vw;
+}
+
+.y-axis span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    font-size: 0.7vw;
+    font-weight: bold;
+}
+
+.horizontal-lines {
+    position: absolute;
+    top: 0;
+    right: 5vw;
+    bottom: 11vw;
+    left: 0;
+    margin-top: 3vw;
+    margin-left: 2vw;
+}
+
+.horizontal-lines span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #10101010;
+    z-index: 1;
+}
+
+.curve-points-container {
+    position: absolute;
+    top: 0;
+    right: 8vw;
+    bottom: 11vw;
+    left: 0;
+    margin-top: 3vw;
+    margin-left: 4vw;
+}
+
+.curve-points-container .curve-point {
+    position: absolute;
+    height: 0.7vw !important;
+    width: 0.7vw !important;
+    background-color: var(--bg-color);
+    z-index: 3;
+    cursor: pointer;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    transform: translate(50%, 50%);
+    -webkit-transform: translate(50%, 50%);
+    -moz-transform: translate(50%, 50%);
+    -ms-transform: translate(50%, 50%);
+    -o-transform: translate(50%, 50%);
+}
+
+.curve-points-container .curve-point div {
+    position: absolute;
+    top: 100%;
+    width: 6.5vw;
+    font-size: 0.7vw;
+    background-color: var(--bg-color);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5vw;
+    opacity: 0;
+    pointer-events: none;
+    transition-duration: 0.1s;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    border-radius: 0.5vw;
+    -webkit-border-radius: 0.5vw;
+    -moz-border-radius: 0.5vw;
+    -ms-border-radius: 0.5vw;
+    -o-border-radius: 0.5vw;
+}
+
+.curve-points-container .curve-point:hover div {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.curve-points-container .curve-lines {
+    position: absolute;
+    width: 1px;
+    z-index: 2;
+}
+
+.x-axis {
+    position: absolute;
+    right: 8vw;
+    bottom: 0;
+    left: 0;
+    height: 11vw;
+    padding-top: 1vw;
+    margin-left: 4vw;
+}
+
+.x-axis span {
+    position: absolute;
+    direction: rtl;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    font-size: 0.5vw;
+    padding: 0.2vw;
+    font-weight: bold;
+    writing-mode: vertical-rl;
+    -webkit-writing-mode: vertical-rl;
+    -ms-writing-mode: vertical-rl;
+    transform: scale(-1) translateX(-50%);
+    -webkit-transform: scale(-1) translateX(-50%);
+    -moz-transform: scale(-1) translateX(-50%);
+    -ms-transform: scale(-1) translateX(-50%);
+    -o-transform: scale(-1) translateX(-50%);
+}

@@ -1,0 +1,80 @@
+
+.form-title {
+    flex-basis: 100%;
+    position: relative;
+}
+
+.form-title::before {
+    content: "";
+    position: absolute;
+    right: 65px;
+    bottom: 24px;
+    width: 9%;
+    height: 3px;
+    background: #333;
+}
+
+.form-title img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.form-title h3 {
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 50px;
+    color: #333333;
+    margin-bottom: 24px;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.container-plan {
+    width: 90%;
+    background-color: rgba(115, 201, 204, 0.05);
+}
+
+.block-of-container {
+    width: 220px;
+    height: 56px;
+    position: relative;
+    display: inline-block;
+}
+
+.block-of-container button {
+    font-weight: bolder;
+}
+
+.block-of-container button img {
+    width: 22px;
+    height: 22px;
+
+}
+
+.table-menu-button {
+    font-weight: bolder;
+}
+
+.table-menu-dropdown {
+    position: absolute;
+    top: 80%;
+    left: 4%;
+    padding: 15px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 8px 8px;
+    z-index: 99;
+    width: 200px;
+    display: none;
+}
+
+.table-menu-dropdown p a {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 19px;
+    text-align: right;
+    color: #000000;
+}
+
+

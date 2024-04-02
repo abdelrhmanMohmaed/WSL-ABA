@@ -1,0 +1,381 @@
+.breadcrumb-item + .breadcrumb-item::before {
+    float: right;
+}
+
+.login .main-header,
+.register .main-header {
+    background-color: #fff !important;
+    background-image: none;
+    z-index: 99999999;
+}
+
+.login-form {
+    margin-top: 150px;
+    padding-bottom: 112px;
+}
+
+.login .main-menu li a,
+.register .main-menu li a {
+    color: hsla(0, 0%, 0%, 0.589);
+}
+
+form {
+    margin-right: auto;
+    text-align: center;
+}
+
+legend {
+    font-weight: 900;
+    font-size: 58px;
+    line-height: 99px;
+    text-align: center;
+}
+
+form .form-group {
+    margin-top: 12px;
+}
+
+form .form-group input {
+    width: 70%;
+    margin: auto;
+}
+
+.login form .form-group input::placeholder {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 25px;
+    color: hsla(0, 0%, 9%, 0.501);
+}
+
+/***********/
+.main-colored {
+    position: relative;
+    margin-top: 25px;
+    padding-top: 15px;
+}
+
+.colored-bg {
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    background: rgba(87, 183, 194, 0.2);
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.register-form {
+    padding-top: 70px;
+}
+
+.form_item {
+    row-gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.register-form form {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 36px 32px 16px rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+    padding: 64px;
+}
+
+.register-form form p {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 25px;
+    text-align: center;
+    color: #6a6d7c;
+}
+
+.personal-data form.personal-data .form-group {
+    width: 100%;
+}
+
+.form_item .form-group {
+    width: 48%;
+}
+
+@media (min-width: 768px) {
+    .personal-data .register-form form.personal-data .form-group {
+        width: 48%;
+    }
+}
+
+.register-form form .form-group input {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.register-form form .form-group input::placeholder {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    color: hsla(0, 0%, 24%, 0.504);
+    padding-left: 50px;
+}
+
+.register-form form .form-group label {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 28px;
+    color: #171215;
+    margin-bottom: 4px;
+    display: block;
+    text-align: right;
+}
+
+.login .input-icon {
+    position: relative;
+    width: 70%;
+    margin: auto;
+}
+
+.login form .form-group input {
+    width: 100%;
+    margin: auto;
+}
+
+.login form .form-group input::placeholder {
+    padding-right: 15px;
+}
+
+.login form .form-group input:focus ~ .icon {
+    display: none;
+}
+
+.login .icon {
+    position: absolute;
+    right: 10px;
+    top: 30%;
+    color: hsla(0, 0%, 9%, 0.51);
+    font-size: 15px;
+}
+
+.login-btn:hover > a, .btn:hover {
+    border: 2px solid #834e9a;
+    color: #834e9a;
+    background-color: #fff;
+}
+
+/*****personal*****/
+.edit-btn {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    float: left;
+}
+
+.edit-btn a {
+    display: block;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    padding: 10px 34px;
+    color: #323232;
+}
+
+.edit-btn a img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.personal-data .user-img {
+    width: 108px;
+    height: 108px;
+    position: relative;
+}
+
+.personal-data .user-img .edit-img {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    bottom: 5px;
+    left: 10px;
+    z-index: 99;
+    cursor: pointer;
+}
+
+.personal-data .user-img .edit-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.personal-data .user-img .edit-img input {
+    display: none;
+}
+
+.personal-data .user-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.personal-data legend {
+    margin-top: 30px;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 50px;
+    color: #171215;
+}
+
+.register-form form.personal-data .form-group label {
+    width: 50%;
+}
+
+.register-form form.personal-data .form-group {
+    display: flex;
+    align-items: center;
+}
+
+.pdf-link {
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    margin: 0px 10px;
+}
+
+.pdf-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pdf-img {
+    position: relative;
+
+}
+
+.pdf-img p {
+    margin-bottom: 0px;
+}
+
+.pdf-img input {
+    position: absolute;
+    opacity: 0;
+}
+
+@media (min-width: 1024px) {
+    .login footer {
+        position: relative;
+        background-color: transparent;
+        padding-top: 150px;
+    }
+
+    .login footer::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+        right: 0;
+        height: 960px;
+        /*height: 900px;*/
+        background-image: url(../images/Buzzel.jpg);
+        background-position: center top;
+        background-size: cover;
+        z-index: -1;
+    }
+}
+
+@media (max-width: 786px) {
+    legend {
+        font-size: 40px;
+        line-height: 70px;
+    }
+
+    .personal-data legend {
+        margin-top: 30px;
+    }
+
+    form .form-group input {
+        width: 95%;
+    }
+
+    .login form .form-group input::placeholder {
+        font-size: 12px;
+    }
+
+    .register-form form .form-group input {
+        padding: 7px;
+    }
+
+    .register-form form {
+        padding: 58px 25px;
+        width: 95%;
+        margin: auto;
+    }
+
+    .register-form form .form-group label,
+    .register-form form p {
+        font-size: 13px;
+        line-height: 22px;
+    }
+
+    .personal-data legend {
+        font-size: 28px;
+        line-height: 43px;
+    }
+
+    .register-form form .form-group input,
+    .register-form form .form-group select {
+        font-size: 13px;
+        line-height: 22px;
+    }
+
+    .pdf-link {
+        width: 22px;
+        height: 22px;
+    }
+
+    .login .input-icon {
+        width: 95%;
+    }
+}
+
+@media (max-width: 425px) {
+    .login-form {
+        padding-bottom: 50px;
+    }
+
+    legend {
+        font-size: 30px;
+        line-height: 50px;
+    }
+
+    .register-form form .form-group {
+        width: 99%;
+    }
+
+    .register-form form {
+        padding: 58px 10px;
+    }
+
+    .personal-data legend {
+        font-size: 24px;
+    }
+
+    .register-form form .form-group label {
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .personal-data .user-img {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 360px) {
+    .pdf-link {
+        width: 20px;
+        height: 20px;
+        margin: 0px;
+    }
+}

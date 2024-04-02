@@ -1,0 +1,13 @@
+{
+    "name": "Kids",
+    "alias": "kids",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Kids\\Providers\\KidsServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

@@ -1,30 +1,36 @@
 @extends('kids::front.layouts.main')
 
-@section('title'," تعديل ملف المريض ($kid->name)")
+@section('title', " تعديل ملف المريض ($kid->name)")
 
 @section('content')
     <style>
-        .select2-container--default .select2-selection--single
-        {
+        .select2-container--default .select2-selection--single {
             height: 42px !important;
             margin-top: 0.4px !important;
+        }
 
-        }
-        .select2-container--default .select2-selection--single .select2-selection__arrow b
-        {
+        .select2-container--default .select2-selection--single .select2-selection__arrow b {
             display: none !important;
         }
-        .select2-container--default .select2-selection--single .select2-selection__rendered
-        {
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
             display: none !important;
+        }
+
+        #family_with_live_com input {
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            flex-basis: 100%;
+            margin-top: 10px;
         }
     </style>
     <!--header-->
     <nav aria-label="breadcrumb mt-5 mb-5">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('welcome')}}">الرئيسية </a></li>
-                <li class="breadcrumb-item"><a href="{{route('kids.index')}}"><i class="fa-solid fa-chevron-left"></i>ملفات
+                <li class="breadcrumb-item"><a href="{{ route('welcome') }}">الرئيسية </a></li>
+                <li class="breadcrumb-item"><a href="{{ route('kids.index') }}"><i class="fa-solid fa-chevron-left"></i>ملفات
                         المرضي </a></li>
 
                 <li class="breadcrumb-item active" aria-current="page">
@@ -37,7 +43,7 @@
 
 
     <div class="tab-form">
-        <form action="{{route('kids.update',$kid->id)}}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('kids.update', $kid->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="container">
@@ -80,30 +86,14 @@
 @endsection
 
 @section('script')
-
-
-{{--    <script>--}}
-{{--        //Validation of name--}}
-{{--        let childNme = document.querySelector(".child-name");--}}
-{{--        let saveData = document.querySelector(".save-data");--}}
-{{--        let error = document.querySelector(".error");--}}
-{{--        childNme.onkeyup = function () {--}}
-{{--            let count = childNme.value.length;--}}
-
-{{--            error.style.color = "red";--}}
-{{--            let countMsg = 20 - count;--}}
-{{--            error.innerText = "باقي" + countMsg;--}}
-{{--            saveData.disabled = true;--}}
-
-{{--            if (countMsg == 1) {--}}
-
-{{--                error.innerText = "باقي حرف واحد";--}}
-{{--                saveData.disabled = true;--}}
-{{--            } else if (countMsg === 0 || count > 20) {--}}
-
-{{--                error.style.display = "none";--}}
-{{--                saveData.disabled = false;--}}
-{{--            }--}}
-{{--        }--}}
-{{--    </script>--}}
+    <script>
+        $('.familyWithLive').on('change', function() {
+            var selectedValue = $(this).val();
+            if (selectedValue == 'other') {
+                $("#family_with_live_com").css("display", "block").find("input").prop('disabled', false);
+            } else {
+                $("#family_with_live_com").css("display", "none").find("input").prop('disabled', true).val("");
+            }
+        });
+    </script>
 @endsection

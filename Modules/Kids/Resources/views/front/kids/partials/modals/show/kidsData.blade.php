@@ -36,14 +36,14 @@
                 @endif
             </p>
         </div>
-        
-        <div class="form-group">
-            <label>منطقة السكن</label>
-            <p>{{$kid->area}}</p>
-        </div>
 
         <div class="form-group">
             <label>الجنسية</label>
+            <p class="form-control">{{$kid->nationality}}</p>
+        </div>
+
+        <div class="form-group">
+            <label>الدولة</label>
             <p class="form-control">
                 {{$kid->country->name_ar}}
             </p>
@@ -51,7 +51,12 @@
 
         <div class="form-group">
             <label>المدينة </label>
-            <p>{{$kid->city->name_ar}}</p>
+            <p class="form-control">{{$kid->city->name_ar}}</p>
+        </div>
+
+        <div class="form-group">
+            <label>رقم التواصل </label>
+            <p class="form-control">{{$kid->phone}}</p>
         </div>
 
 

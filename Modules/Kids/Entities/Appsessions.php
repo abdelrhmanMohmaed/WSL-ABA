@@ -9,6 +9,7 @@ class Appsessions extends Model
 {
 
     protected $table = 'app_sessions';
+
     public function Usersessions()
     {
         return $this->belongsTo('Modules\Kids\Entities\Usersessions', 'session_id', 'id');

@@ -16,7 +16,7 @@ class Kid extends Model
     protected $table = 'kids';
     protected $fillable = [
         'doctor_id', 'city_id', 'country_id',
-        'name', 'num', 'date', 'place_date', 'area', 'gender',
+        'name', 'num', 'date', 'place_date', 'nationality', 'gender','phone',
         'other_obstruction', 'other_obstruction_com', 'chronic_diseases', 'chronic_diseases_com',
         'genetic_diseases', 'genetic_diseases_com', 'health_problems', 'health_problems_com',
         'growth_stage', 'growth_stage_com'

@@ -26,45 +26,45 @@ class EvaluationController extends Controller
         $session_Id = $request->input("session");
 
         try {
-            $countSession = Usersessions::with('Appsessions.Appale', 'Appsessions.Anssessions')
-                ->where('doctor_id', auth()->guard('customer')->id())
-                ->where('kid_id', $kid->id)->count();
+            $userSessionsQuery = Usersessions::where('doctor_id', auth()->guard('customer')->id())
+            ->where('kid_id', $kid->id);
 
-
+            $countSession = $userSessionsQuery->count();
             if ($session_Id) {
-//                dd('test');
-                $SessionK = SessionK::where('id', $session_Id)->first();
-                if (!$SessionK) {
+
+                $sessionColor = SessionK::where('id', $session_Id)->first();
+                if (!$sessionColor) {
                     Alert::error(' عملية فاشلة', ' لقد وصلت للحد النهائي');
                     return back();
                 }
             } else {
-                $SessionK = SessionK::whereId(1)->first();
+                $sessionColor = SessionK::whereId(1)->first();
             }
 
-            $apps = Appale::with('Appale_Nums', 'Appale_Nums.Appale_Ques')->get();
-
-            $userSessions = Usersessions::with('Appsessions.Appale', 'Appsessions.Anssessions')
-                ->where('session_id', $SessionK->id)
-                ->where('doctor_id', auth()->guard('customer')->id())
-                ->where('kid_id', $kid->id)->latest()->first();
+            $userSessions = $userSessionsQuery->with('Appsessions.Appale', 'Appsessions.Anssessions')
+            ->where('session_id', $sessionColor->id)
+            ->latest()->first(); 
 
 
             if ($userSessions) {
             } else {
+                // Create new session in first one
                 $userSessionsOld = Usersessions::with('Appsessions.Appale', 'Appsessions.Anssessions', 'Anssessions')
-                    ->where('session_id', $SessionK->id - 1)
+                    ->where('session_id', $sessionColor->id - 1)
                     ->where('doctor_id', auth()->guard('customer')->id())
                     ->where('kid_id', $kid->id)->latest()->first();
 
+                // Create New session to open in this page
                 $userSessions = new Usersessions;
-                $userSessions->session_id = $SessionK->id;
+                $userSessions->session_id = $sessionColor->id;
                 $userSessions->doctor_id = auth()->guard('customer')->id();
                 $userSessions->kid_id = $kid->id;
                 $userSessions->save();
 
+                $apps = Appale::with('Appale_Nums', 'Appale_Nums.Appale_Ques')->get(); // characters and Ques and sub Ques
                 foreach ($apps as $key => $value) {
 
+                    // بيربط الحروف ب السيشن دى 
                     $Appsessions = new Appsessions;
                     $Appsessions->session_id = $userSessions->id;
                     $Appsessions->app_id = $value->id;
@@ -98,18 +98,18 @@ class EvaluationController extends Controller
                 ->where('kid_id', $kid->id)->get();
 
             return view('kids::front.kids.evaluations.appeals',
-                compact('kid', 'apps', 'sessions', 'userSessions', 'countSession'));
+                compact('kid',  'sessions', 'userSessions', 'countSession'));
         } catch (\Exception $e) {
 
             Alert::warning('not found ', 'حدث خطا ما يجب التحقق');
             return redirect()->back();
         }
-    }
+    }                   
     public function storeAppeals(Request $request, Kid $kid): \Illuminate\Http\RedirectResponse
     {
         $apps = Appale::with('Appale_Nums', 'Appale_Nums.Appale_Ques')->get();
         $answer = $request->ans;
-
+// dd($request->all());
         try {
 
             $userSessions = Usersessions::with('Appsessions.Appale', 'Appsessions.Anssessions')
@@ -226,7 +226,8 @@ class EvaluationController extends Controller
             return redirect()->back();
         }
     }
-    public function showVerticalDraw(Request $request, $id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+
+    public function showVerticalDraw(Request $request, $id, $seesionId = null) : \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         $session_Id = $request->input("session_Id");
         $app_Id = $request->input("app_Id");
@@ -243,7 +244,7 @@ class EvaluationController extends Controller
 
         if ($app_Id) {
 
-            $nums = Appsessions::where('app_id', $app_Id)->whereIn('session_id', $sessionIds)->get();
+            $nums = Appsessions::with(['Usersessions','Usersessions.Session'])->where('app_id', $app_Id)->whereIn('session_id', $sessionIds)->get();
             $letr = Appale::where('id', $app_Id)->with('Appale_Nums', 'Appale_Nums.Appale_Ques')->first();
 
         } else {
@@ -253,7 +254,7 @@ class EvaluationController extends Controller
         $kid = Kid::find($id);
         $apps = Appale::with('Appale_Nums', 'Appale_Nums.Appale_Ques')->get();
 
-
-        return view('kids::front.kids.evaluations.vertical_drawing', compact('nums', 'letr', 'kid', 'apps', 'sessions', 'countSession'));
+        return view('kids::front.kids.evaluations.vertical_drawing', 
+        compact('nums', 'letr', 'kid', 'apps', 'sessions', 'countSession'));
     }
 }

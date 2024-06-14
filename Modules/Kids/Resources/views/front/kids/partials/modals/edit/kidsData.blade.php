@@ -13,7 +13,6 @@
             <input type="text" placeholder="أدخل اسم كاملاً..."
                    class="form-control child-name"
                    name="name" value="{{$kid->name}}"/>
-            <div class="error">يجب ألا يقل أسم الطفل عن 20 حرف</div>
             @error('name')
             <span class="text-danger">
                     <i class="fa fa-info-circle" aria-hidden="true"></i>
@@ -92,16 +91,12 @@
             @enderror
         </div>
 
-        <div class="form-group">
-            <label>منطقة السكن</label>
-            <input
-                type="text"
-                class="form-control"
-                placeholder="أدخل  منطقة السكن ..."
-                name="area"
-                value="{{$kid->area}}"
-            />
-            @error('area')
+        <div class="form-group" style="position:relative;">
+            <label>الجنسية</label>
+            <input id="name" type="text" name="nationality" placeholder="أدخل الجنسية..."
+                   class="form-control"
+                   value="{{$kid->nationality}}"/>
+            @error('nationality')
             <span class="text-danger">
                     <i class="fa fa-info-circle" aria-hidden="true"></i>
                        {{ $message }}
@@ -110,9 +105,10 @@
         </div>
 
         <div class="form-group" style="position:relative;">
-            <label>الجنسية</label>
-            <select name="country_id" class="form-control js-example-basic-single country">
-                <option selected>...اختر الجنسية</option>
+            <label>الدولة</label>
+            <select name="country_id"
+                    class="form-control js-example-basic-single country">
+                <option selected disabled>اختار الدولة...</option>
                 @foreach($countries as $item)
                     <option value="{{$item->id}}"
                             @if($kid->country_id == $item->id) selected @endif>{{$item->name_ar}}</option>
@@ -126,15 +122,29 @@
             @enderror
         </div>
 
-        <div class="form-group" style="position:relative;">
+        <div class="form-group" style="position:relative">
             <label>المدينة </label>
+
             <select name="city_id" class="form-control cities js-example-basic-single">
                 <option selected value="{{$kid->city->id}}">
                     {{$kid->city->name_ar}}
                 </option>
-            {{-- display all cites bt ajax--}}
+                <!-- Display by ajax request -->
             </select>
             @error('city_id')
+            <span class="text-danger">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                       {{ $message }}
+                 </span>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="name">رقم التواصل </label>
+            <input type="tel" name="phone" placeholder="+0965612546"
+                   class="form-control"
+                   value="{{$kid->phone}}"/>
+            @error('phone')
             <span class="text-danger">
                     <i class="fa fa-info-circle" aria-hidden="true"></i>
                        {{ $message }}
@@ -344,13 +354,13 @@
                 </div>
                 <div class="custom-control custom-radio">
                     <input
-                        type="radio" class="custom-control-input comment-tab" value="1" name="growth_stage"
-                        @if($kid->growth_stage == '1') checked @endif/>
+                        type="radio" class="custom-control-input comment-tab" value="0" name="growth_stage"
+                        @if($kid->growth_stage == '0') checked @endif/>
                     <label class="custom-control-label"> نعم </label>
 
                     <input
-                        type="radio" class="custom-control-input" value="0" name="growth_stage"
-                        @if($kid->growth_stage == '0') checked @endif />
+                        type="radio" class="custom-control-input" value="1" name="growth_stage"
+                        @if($kid->growth_stage == '1') checked @endif />
                     <label class="custom-control-label">لا</label>
                 </div>
             </div>

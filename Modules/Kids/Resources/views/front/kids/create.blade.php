@@ -1,28 +1,35 @@
 @extends('kids::front.layouts.main')
 
-@section('title','انشاء ملف جديد')
+@section('title', 'انشاء ملف جديد')
 
 @section('content')
     <style>
-        .select2-container--default .select2-selection--single
-        {
+        .select2-container--default .select2-selection--single {
             height: 42px !important;
             margin-top: 0.4px !important;
 
         }
-        .select2-container--default .select2-selection--single .select2-selection__arrow b
-        {
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow b {
             display: none !important;
         }
-        .select2-container--default .select2-selection--single .select2-selection__rendered
-        {
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
             display: none !important;
+        }
+
+        #family_with_live_com input {
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            flex-basis: 100%;
+            margin-top: 10px;
         }
     </style>
     <nav aria-label="breadcrumb mt-5 mb-5">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('welcome')}}">الرئيسية </a></li>
+                <li class="breadcrumb-item"><a href="{{ route('welcome') }}">الرئيسية </a></li>
 
                 <li class="breadcrumb-item active" aria-current="page">
                     <i class="fa-solid fa-chevron-left"></i>
@@ -63,14 +70,12 @@
             </div>
 
             <div class="d-flex justify-content-center ">
-                <button type="submit" name="submit" value="saveDataBtn1"
-                        class="btn mx-1 d-block">حفظ البيانات
+                <button type="submit" name="submit" value="saveDataBtn1" class="btn mx-1 d-block">حفظ البيانات
                 </button>
-                <a style="font-weight:900;font-size:20px;line-height:27px" href="{{route('welcome')}}" type="submit"
-                   class="btn mx-1 d-block">الرجوع للرئيسية
+                <a style="font-weight:900;font-size:20px;line-height:27px" href="{{ route('welcome') }}" type="submit"
+                    class="btn mx-1 d-block">الرجوع للرئيسية
                 </a>
-                <button type="submit" name="submit" value="saveDataBtn2"
-                        class="btn mx-1 d-block">حفظ و ملئ بيانات جديدة
+                <button type="submit" name="submit" value="saveDataBtn2" class="btn mx-1 d-block">حفظ و ملئ بيانات جديدة
                 </button>
             </div>
 
@@ -84,8 +89,7 @@
 
     <!-- start get cities Done -->
     <script>
-
-        $('body').on('change', '.country', function () {
+        $('body').on('change', '.country', function() {
             let data = {
                 country: $(this).val(),
                 _token: $("input[name='_token']").val()
@@ -95,47 +99,31 @@
                 url: "{{ route('kids.cities') }}",
                 method: 'post',
                 data: data,
-                success: function (result) {
+                success: function(result) {
                     $('.cities').html(result)
                 }
             });
         });
 
-        $(':radio').on('click', function () {
+        $(':radio').on('click', function() {
             if ($(this).val() == '1') {
-                $(this).parent().parent().siblings('.comment').find('#comment').css("visibility", "visible").prop('disabled', false);
+                $(this).parent().parent().siblings('.comment').find('#comment').css("visibility", "visible").prop(
+                    'disabled', false);
             } else {
 
-                $(this).parent().parent().siblings('.comment').find('#comment').css("visibility", "hidden").prop('disabled', true);
+                $(this).parent().parent().siblings('.comment').find('#comment').css("visibility", "hidden").prop(
+                    'disabled', true);
                 $(this).parent().parent().siblings('.comment').find('#comment').val("");
             }
         });
 
+        $('#familyWithLive').on('change', function() {
+            var selectedValue = $(this).val();
+            if (selectedValue == 'other') {
+                $("#family_with_live_com").css("display", "block").find("input").prop('disabled', false);
+            } else {
+                $("#family_with_live_com").css("display", "none").find("input").prop('disabled', true).val("");
+            }
+        });
     </script>
-    <!-- end get cities Done -->
-
-{{--    <script>--}}
-{{--        //Validation of name--}}
-{{--        let childNme = document.querySelector(".child-name");--}}
-{{--        let saveData = document.querySelector(".save-data");--}}
-{{--        let error = document.querySelector(".error");--}}
-{{--        childNme.onkeyup = function () {--}}
-{{--            let count = childNme.value.length;--}}
-
-{{--            error.style.color = "red";--}}
-{{--            let countMsg = 20 - count;--}}
-{{--            error.innerText = "باقي" + countMsg;--}}
-{{--            saveData.disabled = true;--}}
-
-{{--            if (countMsg == 1) {--}}
-
-{{--                error.innerText = "باقي حرف واحد";--}}
-{{--                saveData.disabled = true;--}}
-{{--            } else if (countMsg === 0 || count > 20) {--}}
-
-{{--                error.style.display = "none";--}}
-{{--                saveData.disabled = false;--}}
-{{--            }--}}
-{{--        }--}}
-{{--    </script>--}}
 @endsection

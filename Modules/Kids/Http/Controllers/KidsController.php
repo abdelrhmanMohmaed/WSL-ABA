@@ -33,8 +33,9 @@ class KidsController extends Controller
 //        return $pdf->stream('document.pdf');
 
 
-        return \view('kids::front.test2',compact('kid'));
+        return \view('kids::front.test2', compact('kid'));
     }
+
     public function __construct()
     {
         View::share([
@@ -53,7 +54,7 @@ class KidsController extends Controller
             $kids = $this->filterKids($request);
         } else {
             $kids = Kid::
-                // where('doctor_id',auth()->user()->id)->
+            // where('doctor_id',auth()->user()->id)->
             get();
         }
 
@@ -70,6 +71,12 @@ class KidsController extends Controller
     public function details(Kid $kid): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('kids::front.kids.details',
+            compact('kid'));
+    }
+
+    public function print(Kid $kid): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    {
+        return view('kids::front.kids.print',
             compact('kid'));
     }
 
@@ -98,13 +105,14 @@ class KidsController extends Controller
 
             $kid = new Kid;
             $kid->doctor_id = Auth::guard('customer')->id();
-            $kid->city_id = $validatedData['city_id'];
-            $kid->country_id = $validatedData['country_id'];
+            $kid->city_id = $validatedData['city_id'];//
+            $kid->country_id = $validatedData['country_id'];//
             $kid->name = $validatedData['name'];
+            $kid->nationality = $validatedData['nationality'];
             $kid->num = $validatedData['num'];
+            $kid->phone = $validatedData['phone'];
             $kid->date = $validatedData['date'];
             $kid->place_date = $validatedData['place_date'];
-            $kid->area = $validatedData['area'];
             $kid->gender = $validatedData['gender'];
             $kid->other_obstruction = $validatedData['other_obstruction'];
             $kid->other_obstruction_com = $validatedData['other_obstruction_com'] ?? null;
@@ -120,74 +128,75 @@ class KidsController extends Controller
 
             $dad = new Dad;
             $dad->kid_id = $kid->id;
-            $dad->name = $validatedData['dad_name'];
-            $dad->num = $validatedData['dad_num'];
-            $dad->date = $validatedData['dad_date'];
-            $dad->marital_status = $validatedData['dad_marital_status'];
-            $dad->phone = $validatedData['dad_phone'];
-            $dad->learning = $validatedData['dad_learning'];
-            $dad->work = $validatedData['dad_work'];
-            $dad->smoking = $validatedData['dad_smoking'];
-            $dad->obstruction = $validatedData['dad_obstruction'];
+            $dad->name = $validatedData['dad_name'] ?? null;
+            $dad->num = $validatedData['dad_num'] ?? null;
+            $dad->date = $validatedData['dad_date'] ?? null;
+            $dad->marital_status = $validatedData['dad_marital_status'] ?? null;
+            $dad->phone = $validatedData['dad_phone'] ?? null;
+            $dad->learning = $validatedData['dad_learning'] ?? null;
+            $dad->work = $validatedData['dad_work'] ?? null;
+            $dad->smoking = $validatedData['dad_smoking'] ?? null;
+            $dad->obstruction = $validatedData['dad_obstruction'] ?? null;
             $dad->obstruction_com = $validatedData['dad_obstruction_com'] ?? null;
-            $dad->chronic_diseases = $validatedData['dad_chronic_diseases'];
+            $dad->chronic_diseases = $validatedData['dad_chronic_diseases'] ?? null;
             $dad->chronic_diseases_com = $validatedData['dad_chronic_diseases_com'] ?? null;
-            $dad->genetic_diseases = $validatedData['dad_genetic_diseases'];
+            $dad->genetic_diseases = $validatedData['dad_genetic_diseases'] ?? null;
             $dad->genetic_diseases_com = $validatedData['dad_genetic_diseases_com'] ?? null;
-            $dad->mental_state = $validatedData['dad_mental_state'];
+            $dad->mental_state = $validatedData['dad_mental_state'] ?? null;
             $dad->mental_state_com = $validatedData['dad_mental_state_com'] ?? null;
-            $dad->health_problems = $validatedData['dad_health_problems'];
+            $dad->health_problems = $validatedData['dad_health_problems'] ?? null;
             $dad->health_problems_com = $validatedData['dad_health_problems_com'] ?? null;
-            $dad->communication = $validatedData['dad_communication'];
+            $dad->communication = $validatedData['dad_communication'] ?? null;
             $dad->communication_com = $validatedData['dad_communication_com'] ?? null;
             $dad->save();
 
             $mom = new Mom;
             $mom->kid_id = $kid->id;
-            $mom->name = $validatedData['mom_name'];
-            $mom->num = $validatedData['mom_num'];
-            $mom->date = $validatedData['mom_date'];
-            $mom->marital_status = $validatedData['mom_marital_status'];
-            $mom->phone = $validatedData['mom_phone'];
-            $mom->learning = $validatedData['mom_learning'];
-            $mom->work = $validatedData['mom_work'];
-            $mom->smoking = $validatedData['mom_smoking'];
-            $mom->obstruction = $validatedData['mom_obstruction'];
+            $mom->name = $validatedData['mom_name'] ?? null;
+            $mom->num = $validatedData['mom_num'] ?? null;
+            $mom->date = $validatedData['mom_date'] ?? null;
+            $mom->marital_status = $validatedData['mom_marital_status'] ?? null;
+            $mom->phone = $validatedData['mom_phone'] ?? null;
+            $mom->learning = $validatedData['mom_learning'] ?? null;
+            $mom->work = $validatedData['mom_work'] ?? null;
+            $mom->smoking = $validatedData['mom_smoking'] ?? null;
+            $mom->obstruction = $validatedData['mom_obstruction'] ?? null;
             $mom->obstruction_com = $validatedData['mom_obstruction_com'] ?? null;
-            $mom->chronic_diseases = $validatedData['mom_chronic_diseases'];
+            $mom->chronic_diseases = $validatedData['mom_chronic_diseases'] ?? null;
             $mom->chronic_diseases_com = $validatedData['mom_chronic_diseases_com'] ?? null;
-            $mom->genetic_diseases = $validatedData['mom_genetic_diseases'];
+            $mom->genetic_diseases = $validatedData['mom_genetic_diseases'] ?? null;
             $mom->genetic_diseases_com = $validatedData['mom_genetic_diseases_com'] ?? null;
-            $mom->health_problems = $validatedData['mom_health_problems'];
+            $mom->health_problems = $validatedData['mom_health_problems'] ?? null;
             $mom->health_problems_com = $validatedData['mom_health_problems_com'] ?? null;
-            $mom->mental_state = $validatedData['mom_mental_state'];
+            $mom->mental_state = $validatedData['mom_mental_state'] ?? null;
             $mom->mental_state_com = $validatedData['mom_mental_state_com'] ?? null;
-            $mom->communication = $validatedData['mom_communication'];
+            $mom->communication = $validatedData['mom_communication'] ?? null;
             $mom->communication_com = $validatedData['mom_communication_com'] ?? null;
-            $mom->pregnancy = $validatedData['mom_pregnancy'];
+            $mom->pregnancy = $validatedData['mom_pregnancy'] ?? null;
             $mom->pregnancy_com = $validatedData['mom_pregnancy_com'] ?? null;
-            $mom->pregnancy_month = $validatedData['mom_pregnancy_month'];
-            $mom->pregnancy_problems = $validatedData['mom_pregnancy_problems'];
+            $mom->pregnancy_month = $validatedData['mom_pregnancy_month'] ?? null;
+            $mom->pregnancy_problems = $validatedData['mom_pregnancy_problems'] ?? null;
             $mom->pregnancy_problems_com = $validatedData['mom_pregnancy_problems_com'] ?? null;
-            $mom->birth_status = $validatedData['mom_birth_status'];
-            $mom->birth_problems = $validatedData['mom_birth_problems'];
+            $mom->birth_status = $validatedData['mom_birth_status'] ?? null;
+            $mom->birth_problems = $validatedData['mom_birth_problems'] ?? null;
             $mom->birth_problems_com = $validatedData['mom_birth_problems_com'] ?? null;
-            $mom->birth_after_problems = $validatedData['mom_birth_after_problems'];
+            $mom->birth_after_problems = $validatedData['mom_birth_after_problems'] ?? null;
             $mom->birth_after_problems_com = $validatedData['mom_birth_after_problems_com'] ?? null;
-            $mom->lactation = $validatedData['mom_lactation'];
+            $mom->lactation = $validatedData['mom_lactation'] ?? null;
             $mom->save();
 
             $family = new Family;
             $family->kid_id = $kid->id;
-            $family->num_of = $validatedData['family_num_of'];
-            $family->num_of_pro = $validatedData['family_num_of_pro'];
-            $family->num_of_sis = $validatedData['family_num_of_sis'];
-            $family->sort_of = $validatedData['family_sort_of'];
-            $family->bro_autism = $validatedData['family_bro_autism'];
-            $family->has_twins = $validatedData['family_has_twins'];
-            $family->with_live = $validatedData['family_with_live'];
-            $family->marital_status = $validatedData['family_marital_status'];
-            $family->income = $validatedData['family_income'];
+            $family->num_of = $validatedData['family_num_of'] ?? null;
+            $family->num_of_pro = $validatedData['family_num_of_pro'] ?? null;
+            $family->num_of_sis = $validatedData['family_num_of_sis'] ?? null;
+            $family->sort_of = $validatedData['family_sort_of'] ?? null;
+            $family->bro_autism = $validatedData['family_bro_autism'] ?? null;
+            $family->has_twins = $validatedData['family_has_twins'] ?? null;
+            $family->with_live = $validatedData['family_with_live'] ?? null;
+            $family->with_live_comm = $validatedData['family_with_live_com'] ?? null;
+            $family->marital_status = $validatedData['family_marital_status'] ?? null;
+            $family->income = $validatedData['family_income'] ?? null;
             $family->save();
 
             DB::commit();
@@ -205,6 +214,7 @@ class KidsController extends Controller
             }
 
         } catch (\Exception $e) {
+            dd($e);
             DB::rollBack();
 
             Alert::warning('not found ', 'حدث خطا ما يجب التحقق');
@@ -224,13 +234,15 @@ class KidsController extends Controller
         try {
             $validatedData = $request->validated();
 
-            $kid->city_id = $validatedData['city_id'];
-            $kid->country_id = $validatedData['country_id'];
+
+            $kid->city_id = $validatedData['city_id'];//
+            $kid->country_id = $validatedData['country_id'];//
             $kid->name = $validatedData['name'];
+            $kid->nationality = $validatedData['nationality'];
             $kid->num = $validatedData['num'];
+            $kid->phone = $validatedData['phone'];
             $kid->date = $validatedData['date'];
             $kid->place_date = $validatedData['place_date'];
-            $kid->area = $validatedData['area'];
             $kid->gender = $validatedData['gender'];
             $kid->other_obstruction = $validatedData['other_obstruction'];
             $kid->other_obstruction_com = $validatedData['other_obstruction_com'] ?? null;
@@ -245,72 +257,73 @@ class KidsController extends Controller
             $kid->save();
 
             $dad = Dad::where('kid_id', $kid->id)->first();
-            $dad->name = $validatedData['dad_name'];
-            $dad->num = $validatedData['dad_num'];
-            $dad->date = $validatedData['dad_date'];
-            $dad->marital_status = $validatedData['dad_marital_status'];
-            $dad->phone = $validatedData['dad_phone'];
-            $dad->learning = $validatedData['dad_learning'];
-            $dad->work = $validatedData['dad_work'];
-            $dad->smoking = $validatedData['dad_smoking'];
-            $dad->obstruction = $validatedData['dad_obstruction'];
+            $dad->name = $validatedData['dad_name'] ?? null;
+            $dad->num = $validatedData['dad_num'] ?? null;
+            $dad->date = $validatedData['dad_date'] ?? null;
+            $dad->marital_status = $validatedData['dad_marital_status'] ?? null;
+            $dad->phone = $validatedData['dad_phone'] ?? null;
+            $dad->learning = $validatedData['dad_learning'] ?? null;
+            $dad->work = $validatedData['dad_work'] ?? null;
+            $dad->smoking = $validatedData['dad_smoking'] ?? null;
+            $dad->obstruction = $validatedData['dad_obstruction'] ?? null;
             $dad->obstruction_com = $validatedData['dad_obstruction_com'] ?? null;
-            $dad->chronic_diseases = $validatedData['dad_chronic_diseases'];
+            $dad->chronic_diseases = $validatedData['dad_chronic_diseases'] ?? null;
             $dad->chronic_diseases_com = $validatedData['dad_chronic_diseases_com'] ?? null;
-            $dad->genetic_diseases = $validatedData['dad_genetic_diseases'];
+            $dad->genetic_diseases = $validatedData['dad_genetic_diseases'] ?? null;
             $dad->genetic_diseases_com = $validatedData['dad_genetic_diseases_com'] ?? null;
-            $dad->mental_state = $validatedData['dad_mental_state'];
+            $dad->mental_state = $validatedData['dad_mental_state'] ?? null;
             $dad->mental_state_com = $validatedData['dad_mental_state_com'] ?? null;
-            $dad->health_problems = $validatedData['dad_health_problems'];
+            $dad->health_problems = $validatedData['dad_health_problems'] ?? null;
             $dad->health_problems_com = $validatedData['dad_health_problems_com'] ?? null;
-            $dad->communication = $validatedData['dad_communication'];
+            $dad->communication = $validatedData['dad_communication'] ?? null;
             $dad->communication_com = $validatedData['dad_communication_com'] ?? null;
             $dad->save();
 
             $mom = Mom::where('kid_id', $kid->id)->first();
-            $mom->name = $validatedData['mom_name'];
-            $mom->num = $validatedData['mom_num'];
-            $mom->date = $validatedData['mom_date'];
-            $mom->marital_status = $validatedData['mom_marital_status'];
-            $mom->phone = $validatedData['mom_phone'];
-            $mom->learning = $validatedData['mom_learning'];
-            $mom->work = $validatedData['mom_work'];
-            $mom->smoking = $validatedData['mom_smoking'];
-            $mom->obstruction = $validatedData['mom_obstruction'];
+            $mom->name = $validatedData['mom_name'] ?? null;
+            $mom->num = $validatedData['mom_num'] ?? null;
+            $mom->date = $validatedData['mom_date'] ?? null;
+            $mom->marital_status = $validatedData['mom_marital_status'] ?? null;
+            $mom->phone = $validatedData['mom_phone'] ?? null;
+            $mom->learning = $validatedData['mom_learning'] ?? null;
+            $mom->work = $validatedData['mom_work'] ?? null;
+            $mom->smoking = $validatedData['mom_smoking'] ?? null;
+            $mom->obstruction = $validatedData['mom_obstruction'] ?? null;
             $mom->obstruction_com = $validatedData['mom_obstruction_com'] ?? null;
-            $mom->chronic_diseases = $validatedData['mom_chronic_diseases'];
+            $mom->chronic_diseases = $validatedData['mom_chronic_diseases'] ?? null;
             $mom->chronic_diseases_com = $validatedData['mom_chronic_diseases_com'] ?? null;
-            $mom->genetic_diseases = $validatedData['mom_genetic_diseases'];
+            $mom->genetic_diseases = $validatedData['mom_genetic_diseases'] ?? null;
             $mom->genetic_diseases_com = $validatedData['mom_genetic_diseases_com'] ?? null;
-            $mom->health_problems = $validatedData['mom_health_problems'];
+            $mom->health_problems = $validatedData['mom_health_problems'] ?? null;
             $mom->health_problems_com = $validatedData['mom_health_problems_com'] ?? null;
-            $mom->mental_state = $validatedData['mom_mental_state'];
+            $mom->mental_state = $validatedData['mom_mental_state'] ?? null;
             $mom->mental_state_com = $validatedData['mom_mental_state_com'] ?? null;
-            $mom->communication = $validatedData['mom_communication'];
+            $mom->communication = $validatedData['mom_communication'] ?? null;
             $mom->communication_com = $validatedData['mom_communication_com'] ?? null;
-            $mom->pregnancy = $validatedData['mom_pregnancy'];
+            $mom->pregnancy = $validatedData['mom_pregnancy'] ?? null;
             $mom->pregnancy_com = $validatedData['mom_pregnancy_com'] ?? null;
-            $mom->pregnancy_month = $validatedData['mom_pregnancy_month'];
-            $mom->pregnancy_problems = $validatedData['mom_pregnancy_problems'];
+            $mom->pregnancy_month = $validatedData['mom_pregnancy_month'] ?? null;
+            $mom->pregnancy_problems = $validatedData['mom_pregnancy_problems'] ?? null;
             $mom->pregnancy_problems_com = $validatedData['mom_pregnancy_problems_com'] ?? null;
-            $mom->birth_status = $validatedData['mom_birth_status'];
-            $mom->birth_problems = $validatedData['mom_birth_problems'];
+            $mom->birth_status = $validatedData['mom_birth_status'] ?? null;
+            $mom->birth_problems = $validatedData['mom_birth_problems'] ?? null;
             $mom->birth_problems_com = $validatedData['mom_birth_problems_com'] ?? null;
-            $mom->birth_after_problems = $validatedData['mom_birth_after_problems'];
+            $mom->birth_after_problems = $validatedData['mom_birth_after_problems'] ?? null;
             $mom->birth_after_problems_com = $validatedData['mom_birth_after_problems_com'] ?? null;
-            $mom->lactation = $validatedData['mom_lactation'];
+            $mom->lactation = $validatedData['mom_lactation'] ?? null;
             $mom->save();
 
             $family = Family::where('kid_id', $kid->id)->first();
-            $family->num_of = $validatedData['family_num_of'];
-            $family->num_of_pro = $validatedData['family_num_of_pro'];
-            $family->num_of_sis = $validatedData['family_num_of_sis'];
-            $family->sort_of = $validatedData['family_sort_of'];
-            $family->bro_autism = $validatedData['family_bro_autism'];
-            $family->has_twins = $validatedData['family_has_twins'];
-            $family->with_live = $validatedData['family_with_live'];
-            $family->marital_status = $validatedData['family_marital_status'];
-            $family->income = $validatedData['family_income'];
+            $family->num_of = $validatedData['family_num_of'] ?? null;
+            $family->num_of_pro = $validatedData['family_num_of_pro'] ?? null;
+            $family->num_of_sis = $validatedData['family_num_of_sis'] ?? null;
+            $family->sort_of = $validatedData['family_sort_of'] ?? null;
+            $family->bro_autism = $validatedData['family_bro_autism'] ?? null;
+            $family->has_twins = $validatedData['family_has_twins'] ?? null;
+            $family->with_live = $validatedData['family_with_live'] ?? null;
+            $family->with_live_comm = $validatedData['family_with_live_com'] ?? null;
+            $family->marital_status = $validatedData['family_marital_status'] ?? null;
+            $family->income = $validatedData['family_income'] ?? null;
             $family->save();
 
             DB::commit();
@@ -318,6 +331,7 @@ class KidsController extends Controller
             Alert::success('عملية ناجحة', 'تم التعديل');
             return redirect()->route('kids.index');
         } catch (\Exception $e) {
+            // dd($e);
             DB::rollBack();
 
             Alert::warning('not found ', 'حدث خطا ما يجب التحقق');
@@ -338,4 +352,4 @@ class KidsController extends Controller
         }
     }
 
-   }
+}

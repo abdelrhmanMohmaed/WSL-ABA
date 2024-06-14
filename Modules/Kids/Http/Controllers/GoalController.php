@@ -2,7 +2,6 @@
 
 namespace Modules\Kids\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Kids\Entities\Goal;
@@ -31,7 +30,7 @@ class GoalController extends Controller
             Goal::create([
                 'kid_id' => $kid->id,
                 'customer_id' => auth()->guard('customer')->id(),
-                'appeal_id' => $request->appeal,
+                'appeal_id' => $request->appeal ?? 545,
                 'target' => $request->target,
                 'stimulus' => $request->stimulus ,
             ]);

@@ -3,35 +3,35 @@
 
         <div class="form-group family-data">
             <label>عدد أفراد الاسره</label>
-            <p>
+            <p class="form-control">
                 {{$kid->family->num_of}}
             </p>
         </div>
 
         <div class="form-group family-data">
             <label>عدد الأشقاء الذكور</label>
-            <p>
+            <p class="form-control">
                 {{$kid->family->num_of_pro}}
             </p>
         </div>
 
         <div class="form-group family-data">
             <label>عدد الأشقاء الاناث </label>
-            <p>
+            <p class="form-control">
                 {{$kid->family->num_of_sis}}
             </p>
         </div>
 
         <div class="form-group family-data">
             <label> الطفل بين أشقاءه</label>
-            <p>
+            <p class="form-control">
                 {{$kid->family->sort_of}}
             </p>
         </div>
 
         <div class="form-group family-data">
             <label>هل لدى الطفل شقيق يعاني من التوحد </label>
-            <p>
+            <p class="form-control">
                 @if($kid->family->bro_autism == 'no')
                     لا، لا يوجد
                 @endif
@@ -46,7 +46,7 @@
 
         <div class="form-group family-data">
             <label> هل لدى الطفل توأم</label>
-            <p>
+            <p class="form-control">
                 @if($kid->family->has_twins == 'no')
                     لا، لا يوجد
                 @endif
@@ -61,7 +61,7 @@
 
         <div class="form-group family-data">
             <label>الحالة الاجتماعية للأسرة</label>
-            <p>
+            <p class="form-control">
                 @if($kid->family->marital_status == 'mum_dad_together')
                     دان على علاقتهما الزوجية
                 @endif
@@ -82,7 +82,7 @@
 
         <div class="form-group family-data">
             <label>مع من يسكن الطفل</label>
-            <p>
+            <p class=" ">
                 @if($kid->family->with_live == 'parenthood')
                     مع والديه
                 @endif
@@ -92,15 +92,16 @@
                 @if($kid->family->with_live == 'mom')
                     مع الأم
                 @endif
-                @if($kid->family->with_live == 'other')
+                    @if($kid->family->with_live == 'other')
                     أخرى
                 @endif
             </p>
+            <p class="form-control"> {{@$kid->family->with_live_comm}} </p>
         </div>
 
         <div class="form-group family-data">
             <label>متوسط دخل الأسرة الشهري</label>
-            <p>
+            <p class="form-control">
                 @if($kid->family->income == '0')
                     لا يوجد دخل
                 @endif

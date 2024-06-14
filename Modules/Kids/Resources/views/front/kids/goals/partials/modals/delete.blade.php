@@ -1,35 +1,32 @@
-<div class="delete-form">
-    <div class="register-form pt-0">
-        <div class="container">
-            <div style="margin-top: 10%" class="row">
-                <form action="{{route('kids.treatment-plans.goals.destroy')}}" method="post" class="mt-5">
+<div class="delete-model">
+    <div class="delete-form h-100">
+        <div class="container mw-100 d-flex justify-content-center align-items-center h-100">
+            <div class="row w-50 justify-content-center h-100">
+                <form
+                    class="w-50 m-auto mx-2 bg-white rounded-4 pt-5 pb-2 h-50 d-flex justify-center align-content-center"
+                    action="{{ route('kids.treatment-plans.goals.destroy') }}" method="post">
                     @csrf
-                    <div class="row container me-1 text-center">
-
-                        <div class="form-group col-12 pt-5">
-                            <img width="80" height="80" src="{{asset('dist/front/assets/images/Group.png')}}"/>
+                    <div class="row">
+                        <div class="form-group col-12 text-center">
+                            <img width="80" height="80" src="{{ asset('dist/front/assets/images/Group.png') }}" />
                         </div>
 
-                        <div class="form-group col-12">
-                            <span style="font-weight: bolder" class="pb-2">هل انت متاكد انك تريد حذف هذا الهدف</span>
+                        <div class="form-group col-12 text-center">
+                            <span style="font-weight: bolder" class="pb-2">هل انت متأكد أنك تريد حذف هذا الهدف؟</span>
                             <br>
-                            <span style="color: #C4C4C4">لايمكن التراجع عن هذه الخطوه</span>
+                            <span style="color: #C4C4C4">لا يمكن التراجع عن هذه الخطوة.</span>
                         </div>
 
-                        <input type="hidden" name="goal" class="goal"/>
-                        <div class="form-group col-12">
-                            <button style="background: #D82C2C" type="submit"
-                                    class="btn w-75 text-center m-auto btn-danger">
-                                حذف
-                            </button>
+                        <input type="hidden" name="goal" class="goal" />
+
+                        <button style="background: #D82C2C" type="submit"
+                            class="btn w-75 text-center m-auto btn-danger">
+                            حذف
+                        </button>
+                        <div type="button" class="btn-cancel w-75 text-center m-auto">
+                            الغاء
                         </div>
 
-                        <div class="form-group col-12 pb-5">
-                            <div id="close" type="button"
-                                    class=" w-75 text-center m-auto">
-                                الغاء
-                            </div>
-                        </div>
                     </div>
                 </form>
             </div>

@@ -18,7 +18,7 @@ use Illuminate\Http\Response;
 use Modules\Kids\Entities\Kid;
 
 Route::get('/download-pdf/', function () {
-    $kid = Kid::find(1);
+    $kid = Kid::find(4);
     if (!$kid) {
         // إذا لم يتم العثور على الطفل، يمكنك التعامل مع ذلك هنا
         abort(404);
@@ -51,6 +51,7 @@ Route::middleware(['customer', 'customerVerification'])->group(function () {
         ->group(function () {
 
             Route::get('kids-details/{kid}', [\Modules\Kids\Http\Controllers\KidsController::class, 'details'])->name('details');
+            Route::get('kids-details/print/{kid}', [\Modules\Kids\Http\Controllers\KidsController::class, 'print'])->name('print');
             Route::post('get-cities', [\Modules\Kids\Http\Controllers\KidsController::class, 'getCities'])->name('cities');
 
             # Start Evaluate Plans Routes kids.evaluate.
@@ -66,7 +67,8 @@ Route::middleware(['customer', 'customerVerification'])->group(function () {
                             Route::get('{kid}', 'appeals')->name('create');
                             Route::post('store/{kid}', 'storeAppeals')->name('store');
                             Route::post('destroy', 'destroy')->name('destroy');
-                            Route::get('{kid}/vertical-draw', 'showVerticalDraw')->name('vertical-draw');
+                            Route::get('{kid}/vertical-draw/{sessionId?}', 'showVerticalDraw')->name('vertical-draw');
+
                         });
                     # End Appeals Routes
 

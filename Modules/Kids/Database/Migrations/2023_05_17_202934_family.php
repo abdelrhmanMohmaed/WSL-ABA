@@ -24,6 +24,7 @@ class Family extends Migration
             $table->string('has_twins')->nullable();
             $table->string('marital_status')->nullable();
             $table->string('with_live')->nullable();
+            $table->string('with_live_comm')->nullable();
             $table->string('income')->nullable();
             $table->timestamps();
         });

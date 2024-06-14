@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 mx-auto">
-                    <form class="bg-white rounded-4 p-4 text-center" method="post"
+                    <form class="bg-white rounded-4 p-4" method="post"
                         action="{{ route('kids.treatment-plans.goals.store', $kid->id) }}">
                         @csrf
                         <div class="d-flex justify-content-end pt-3">

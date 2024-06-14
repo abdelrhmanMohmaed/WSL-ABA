@@ -23,7 +23,8 @@ class Kids extends Migration
             $table->string('num')->nullable();
             $table->date('date')->nullable();
             $table->longText('place_date')->nullable();
-            $table->longText('area')->nullable();
+            $table->longText('nationality')->nullable();
+            $table->string('phone')->nullable();
             $table->string('gender')->nullable();
             $table->string('other_obstruction')->nullable();    // اعاقة اخري
             $table->longText('other_obstruction_com')->nullable();

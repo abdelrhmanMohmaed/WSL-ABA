@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>ABLLA وصل | الرسم العمودي لتقييم </title>
+    <title>ABLLS وصل | الرسم العمودي لتقييم </title>
     <link rel="shortcut icon" type="image/svg" href="{{asset('dist/front/assets/images/headerlogo.png')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -30,80 +30,48 @@
               right:  75%;
         }
 
-        /*    */
-        .fixed-form {
-            position: fixed;
-            height: 100vh;
+        /* Start Create Model  */ 
+        .createModel {
             display: none;
+            position: fixed;
             background-color: rgba(0, 0, 0, 0.495);
             inset: 0;
-            z-index: 99999;
+            z-index: 9;
         }
 
-        .fixed-form .container {
-            max-width: 100%;
-            padding: 0;
-        }
-
-        .fixed-form form {
-            width: 50%;
-            margin: 10px auto;
-            background-color: #fff;
-            border-radius: 20px;
+        .createModel form {
             transform: scale(.8);
         }
-
-        .btn-blue {
-            background-color: #58B8C2 !important;
-        }
-
-        .register-form form .form-group label {
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 28px;
-            color: #171215;
-            margin-bottom: 4px;
-            display: block;
+        .model-body form .form-group label {
             text-align: right;
         }
 
-        .form_item .form-group {
-            width: 48%;
+        .btn-new-target {
+            background: #834E9A;
+            transition: 0.5s ease-in-out;
         }
 
-        form .form-group {
-            margin-top: 12px;
+        .btn-new-target:hover {
+            color: black !important;
         }
 
-        .register-form form .form-group input {
-            width: 100%;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            padding: 10px;
+        .btn-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
-
-        form .form-group input {
-            width: 70%;
-            margin: auto;
-        }
-
-        .number-block {
-            width: 80%;
-            margin: 0 auto;
-        }
-
-        .number-block .number {
-            display: inline-block;
-            width: 25%;
-            text-align: center;
-        }
+        /* End Create Model  */ 
     </style>
 </head>
 
 <body class="patiant-file">
 
-
 @include('front.parts_auth.nav')
+
+<!-- Create Form Html -->
+@include('kids::front.kids.treatment-plans.partials.modals.create.create')
+<!-- Create Form Html -->
 
 <!--nav-->
 <nav aria-label="breadcrumb mt-5 mb-5">
@@ -132,9 +100,7 @@
 </nav>
 <!--nav-->
 
-<!-- Create Form Html -->
-@include('kids::front.kids.treatment-plans.partials.modals.create.create')
-<!-- Create Form Html -->
+
 
 <div class="wrapper">
     <div class="container">
@@ -142,8 +108,8 @@
 
             <div class="col-md-6">
                 <div class="form-title mt-4 mb-4 ">
-                    <img src="{{asset('dist/front/assets/images/Business, Chart.png')}}"/>
-                    <h3> الرسم العمودى لتقيم ABLLSS</h3>
+                    <img src="{{asset('dist/front/assets/images/paint.png')}}"/>
+                    <h3> الرسم العمودى لتقيم ABLLS</h3>
                 </div>
             </div>
 
@@ -230,7 +196,7 @@
                                                     <p>
                                                         <img
                                                             data-name="{{$value->name}}" data-id="{{$value->id}}"
-                                                            class="editDate" height="20px" width="20px"
+                                                            class="storeBtn" height="20px" width="20px"
                                                             src="{{asset('dist/front/assets/images/Plus_Add.png')}}"
                                                             alt=""/>
                                                         {{$value->name}}
@@ -343,6 +309,7 @@
 <script src="{{ asset('dist/front/assets/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('dist/front/assets/js/jquery-3.6.3.js') }}"></script>
 <script src="{{ asset('dist/front/assets/js/app.js') }}"></script>
+<script src="{{ asset('vendor\realrashid\sweet-alert\resources\js\sweetalert.all.js') }}"></script>
 
 <script>
     // Start left and right
@@ -407,34 +374,44 @@
         window.location.href = link
     });
 
-    // end display a session and character to graph
-    let editDateList = document.querySelectorAll('.editDate');
-    let fixedForm = document.querySelector(".fixed-form");
-    let fixedFormRow = document.querySelector('.register-form .container .row');
 
-    editDateList.forEach(function (editDate) {
-        editDate.addEventListener('click', function () {
-            let name = $(this).data('name');
-            let id = $(this).data('id');
 
-            $('#titleModel').text('المهمة ' + name)
-            $('#task').val(id)
 
-            fixedForm.style.display = "block";
+
+
+    // Start Create Model
+    let closeBtns = document.querySelectorAll(".btn-close");
+    let cancelButtons = document.querySelectorAll(".btn-cancel");
+
+    let storeBtn = document.querySelectorAll(".storeBtn");
+    let createModel = document.querySelector(".createModel"); 
+    storeBtn.forEach(function (createItem) {
+    createItem.addEventListener('click', function () {
+
+        let name = $(this).data('name');
+        let id = $(this).data('id');
+
+        $('#titleModel').text('المهمة ' + name)
+        $('#task').val(id)
+
+            createModel.style.display = "block";
         });
     });
 
-    window.onclick = function (event) {
-        if (event.target == fixedFormRow) {
+    window.onclick = function(event) {
 
-            $('#target').val('')
-            $('#stimulus').val('')
-            $('#task').val('')
-            fixedForm.style.display = "none";
+        if (Array.from(cancelButtons).includes(event.target) || Array.from(closeBtns).includes(event.target)) { 
+
+            $('.target').val('')
+            $('.goal').val('')
+
+            createModel.style.display = "none";
         }
-    };
+    }
+    // End Create Model 
 
 </script>
+
 @include('sweetalert::alert')
 @include('sweetalert::validation-alert')
 </body>

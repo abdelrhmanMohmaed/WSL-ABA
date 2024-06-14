@@ -95,7 +95,7 @@
                     <p>
                         @if($kid->mom->smoking == '1')
                             نعم
-                        @else
+                        @elseif($kid->mom->smoking == '0' && $kid->mom->smoking != null)
                             لا
                         @endif
                     </p>
@@ -113,7 +113,7 @@
                     <p>
                         @if($kid->mom->obstruction == '1')
                             نعم
-                        @else
+                        @elseif($kid->mom->obstruction == '0' && $kid->mom->obstruction != null)
                             لا
                         @endif
                     </p>
@@ -133,7 +133,7 @@
                     <p>
                         @if($kid->mom->chronic_diseases == '1')
                             نعم
-                        @else
+                        @elseif($kid->mom->chronic_diseases == '0' && $kid->mom->chronic_diseases != null)
                             لا
                         @endif
                     </p>
@@ -153,9 +153,10 @@
                 </div>
                 <div class="custom-control custom-radio">
 
-                    <p>@if($kid->mom->genetic_diseases == '1')
+                    <p>
+                        @if($kid->mom->genetic_diseases == '1')
                             نعم
-                        @else
+                        @elseif($kid->mom->genetic_diseases == '0' && $kid->mom->genetic_diseases != null)
                             لا
                         @endif
                     </p>
@@ -175,7 +176,7 @@
                     <p>
                         @if($kid->mom->health_problems == '1')
                             نعم
-                        @else
+                        @elseif($kid->mom->health_problems == '0' && $kid->mom->health_problems != null)
                             لا
                         @endif
                     </p>
@@ -195,7 +196,7 @@
                     <p>
                         @if($kid->mom->mental_state == '1')
                             نعم
-                        @else
+                        @elseif($kid->mom->mental_state == '0' && $kid->mom->mental_state != null)
                             لا
                         @endif
                     </p>
@@ -262,7 +263,10 @@
                 </div>
                 <div class="custom-control custom-radio">
                     <p>
-                        {{$kid->mom->pregnancy_month}} شهور
+                        {{$kid->mom->pregnancy_month}}
+                        @if($kid->mom->pregnancy_month != null)
+                        شهور
+                            @endif
                     </p>
                 </div>
             </div>
@@ -276,7 +280,7 @@
                 <div class="custom-control custom-radio">
                     <p> @if($kid->mom->pregnancy_problems == '1')
                             نعم
-                        @else
+                        @elseif($kid->mom->pregnancy_problems == '0' && $kid->mom->pregnancy_problems != null)
                             لا
                         @endif
                     </p>
@@ -296,7 +300,7 @@
                     <p>
                         @if($kid->mom->birth_status == '1')
                             طبيعية
-                        @else
+                        @elseif($kid->mom->birth_status == '0' && $kid->mom->birth_status != null)
                             قيصرية
                         @endif
                     </p>
@@ -317,7 +321,8 @@
                         @if($kid->mom->birth_problems == '1')
                             نعم
                         @endif
-                        @if($kid->mom->birth_problems == '0')
+
+                        @if($kid->mom->birth_problems == '0' && $kid->mom->birth_status != null)
                             لا
                         @endif
                     </p>
@@ -338,7 +343,7 @@
                     <p>
                         @if($kid->mom->birth_after_problems == '1')
                             نعم
-                        @else
+                        @elseif($kid->mom->birth_after_problems == '0' && $kid->mom->birth_after_problems != null)
                             لا
                         @endif
                     </p>
@@ -359,7 +364,7 @@
                     <p>
                         @if($kid->mom->lactation == '1')
                             نعم
-                        @else
+                        @elseif($kid->mom->lactation == '0' && $kid->mom->lactation != null)
                             لا
                         @endif
                     </p>

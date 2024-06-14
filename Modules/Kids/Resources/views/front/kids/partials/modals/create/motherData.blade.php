@@ -126,7 +126,7 @@
                     أعمال حرة
                 </option>
                 <option value="don't_work" @selected(old('mom_work')=="don't_work")>
-                    لا يعمل
+                    لا تعمل
                 </option>
             </select>
             @error('mom_work')

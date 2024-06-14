@@ -96,7 +96,7 @@
                     <p>
                         @if($kid->dad->smoking == '1')
                             نعم
-                        @else
+                        @elseif($kid->dad->smoking == '0' && $kid->dad->smoking != null)
                             لا
                         @endif
                     </p>
@@ -113,7 +113,7 @@
                     <p>
                         @if($kid->dad->obstruction == '1')
                             نعم
-                        @else
+                        @elseif($kid->dad->obstruction == '0' && $kid->dad->obstruction != null)
                             لا
                         @endif
                     </p>
@@ -133,7 +133,7 @@
                     <p>
                         @if($kid->dad->chronic_diseases == '1')
                             نعم  -
-                        @else
+                        @elseif($kid->dad->chronic_diseases == '0' && $kid->dad->chronic_diseases != null)
                             لا
                         @endif
                     </p>
@@ -153,7 +153,7 @@
                     <p>
                         @if($kid->dad->genetic_diseases == '1')
                             نعم
-                        @else
+                        @elseif($kid->dad->genetic_diseases == '0' && $kid->dad->genetic_diseases != null)
                             لا
                         @endif
                     </p>
@@ -173,7 +173,7 @@
                     <p>
                         @if($kid->dad->mental_state == '1')
                             يعاني من مشاكل نفسية
-                        @else
+                        @elseif($kid->dad->mental_state == '0' && $kid->dad->mental_state != null)
                             طبيعي
                         @endif
                     </p>
@@ -192,7 +192,7 @@
                 <div class="custom-control custom-radio">
                     <p> @if($kid->dad->health_problems == '1')
                             نعم
-                        @else
+                        @elseif($kid->dad->health_problems == '0' && $kid->dad->health_problems != null)
                             لا
                         @endif
                     </p>

@@ -644,9 +644,7 @@
 
         buildCustomCharts()
     }
-
     initReport()
-
 </script>
 </body>
 </html>

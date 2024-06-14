@@ -9,25 +9,28 @@
 
         <div class="form-group">
             <label>الاسم كاملاً </label>
-            <input type="text" class="form-control"
-                   name="dad_name" value="{{$kid->dad->name}}"/>
+            <input type="text" class="form-control" name="dad_name"
+                   value="{{ $kid->dad->name ?? old('dad_name') }}"
+                   placeholder="{{ $kid->dad->name ? '' : 'ادخل اسم الأب' }}"/>
             @error('dad_name')
             <span class="text-danger">
-                    <i class="fa fa-info-circle" aria-hidden="true"></i>
-                       {{ $message }}
-                 </span>
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                {{ $message }}
+            </span>
             @enderror
         </div>
 
+
         <div class="form-group">
             <label>رقم الهوية</label>
-            <input type="number" class="form-control" name="dad_num" value="{{$kid->dad->num}}"/>
+            <input type="number" class="form-control" name="dad_num" value="{{$kid->dad->num ?? old('dad_num') }}"
+                   placeholder="{{ $kid->dad->num ? '' : 'ادخل رقم الهوية' }}"/>
 
             @error('dad_num')
             <span class=" text-danger">
-            <i class="fa fa-info-circle" aria-hidden="true"></i>
-            {{ $message }}
-            </span>
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    {{ $message }}
+                </span>
             @enderror
         </div>
 
@@ -35,7 +38,10 @@
             <label> تاريخ الميلاد</label>
 
             <input
-                class="form-control datePicker" type="text"  value="{{$kid->dad->date}}" name="dad_date"/>
+                class="form-control datePicker" type="text" value="{{$kid->dad->date ?? old('dad_date')}}"
+                name="dad_date"
+                placeholder="{{ $kid->dad->num ? '' : 'ادخل تاريخ الميلاد' }}"/>
+
             <img src="{{asset('dist/front/assets/images/calender.png')}}"
                  class="datepickerimg" width="20px" alt="">
 
@@ -50,105 +56,115 @@
         <div class="form-group">
             <label>الحالة الاجتماعية</label>
             <select name="dad_marital_status" class="form-control">
-                <option disabled>اختر الحالة الاجتماعية...</option>
-                <option value="married"
-                        @if($kid->dad->marital_status == 'married') selected @endif>
+                <option disabled selected>اختر الحالة الاجتماعية...</option>
+                <option
+                    value="married" {{ (old('dad_marital_status') == 'married' || $kid->dad->marital_status == 'married') ? 'selected' : '' }}>
                     متزوج
                 </option>
-                <option value="divorce"
-                        @if($kid->dad->marital_status == 'divorce') selected @endif>
+                <option
+                    value="divorce" {{ (old('dad_marital_status') == 'divorce' || $kid->dad->marital_status == 'divorce') ? 'selected' : '' }}>
                     مطلق
                 </option>
-                <option value="Widower"
-                        @if($kid->dad->marital_status == 'Widower') selected @endif>
+                <option
+                    value="Widower" {{ (old('dad_marital_status') == 'Widower' || $kid->dad->marital_status == 'Widower') ? 'selected' : '' }}>
                     أرمل
                 </option>
             </select>
             @error('dad_marital_status')
             <span class="text-danger">
-                    <i class="fa fa-info-circle" aria-hidden="true"></i>
-                       {{ $message }}
-                 </span>
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                {{ $message }}
+            </span>
             @enderror
         </div>
 
+
         <div class="form-group">
-            <label> رقم التواصل</label>
-            <input type="text" class="form-control" name="dad_phone" value="{{$kid->dad->phone}}"/>
+            <label>رقم التواصل</label>
+            <input type="text" class="form-control" name="dad_phone"
+                   value="{{ $kid->dad->phone ?? old('dad_phone') }}"
+                   placeholder="{{ $kid->dad->phone ? '' : 'ادخل رقم التواصل' }}"/>
+
             @error('dad_phone')
             <span class="text-danger">
-                    <i class="fa fa-info-circle" aria-hidden="true"></i>
-                       {{ $message }}
-                 </span>
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                {{ $message }}
+            </span>
             @enderror
         </div>
+
 
         <div class="form-group">
             <label>المستوى التعليمي</label>
             <select name="dad_learning" class="form-control">
-                <option disabled>اختر المستوى التعليمي...</option>
-                <option value="none" @if($kid->dad->learning == 'none') selected @endif>
+                <option disabled selected>اختر المستوى التعليمي...</option>
+                <option
+                    value="none" {{ (old('dad_learning') == 'none' || $kid->dad->learning == 'none') ? 'selected' : '' }}>
                     أمّي
                 </option>
-                <option value="primary"
-                        @if($kid->dad->learning == 'primary') selected @endif>
+                <option
+                    value="primary" {{ (old('dad_learning') == 'primary' || $kid->dad->learning == 'primary') ? 'selected' : '' }}>
                     ابتدائي
                 </option>
-                <option value="middle" @if($kid->dad->learning == 'middle') selected @endif>
+                <option
+                    value="middle" {{ (old('dad_learning') == 'middle' || $kid->dad->learning == 'middle') ? 'selected' : '' }}>
                     متوسط
                 </option>
-                <option value="secondary"
-                        @if($kid->dad->learning == 'secondary') selected @endif>
+                <option
+                    value="secondary" {{ (old('dad_learning') == 'secondary' || $kid->dad->learning == 'secondary') ? 'selected' : '' }}>
                     ثانوي
                 </option>
-                <option value="diploma"
-                        @if($kid->dad->learning == 'diploma') selected @endif>دبلوم
+                <option
+                    value="diploma" {{ (old('dad_learning') == 'diploma' || $kid->dad->learning == 'diploma') ? 'selected' : '' }}>
+                    دبلوم
                 </option>
-                <option value="Bachelor"
-                        @if($kid->dad->learning == 'Bachelor') selected @endif>
+                <option
+                    value="Bachelor" {{ (old('dad_learning') == 'Bachelor' || $kid->dad->learning == 'Bachelor') ? 'selected' : '' }}>
                     بكالوريس
                 </option>
-                <option value="Master" @if($kid->dad->learning == 'Master') selected @endif>
+                <option
+                    value="Master" {{ (old('dad_learning') == 'Master' || $kid->dad->learning == 'Master') ? 'selected' : '' }}>
                     ماجستير
                 </option>
-                <option value="doctor" @if($kid->dad->learning == 'doctor') selected @endif>
+                <option
+                    value="doctor" {{ (old('dad_learning') == 'doctor' || $kid->dad->learning == 'doctor') ? 'selected' : '' }}>
                     دكتوراه
                 </option>
             </select>
             @error('dad_learning')
             <span class="text-danger">
-                    <i class="fa fa-info-circle" aria-hidden="true"></i>
-                       {{ $message }}
-                 </span>
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                {{ $message }}
+            </span>
             @enderror
         </div>
 
         <div class="form-group">
-            <label> طبيعة العمل</label>
+            <label>طبيعة العمل</label>
             <select class="form-control" name="dad_work">
-                <option disabled>اختر طبيعة العمل...</option>
-                <option value="public_work"
-                        @if($kid->dad->work == 'public_work') selected @endif>
+                <option disabled selected>اختر طبيعة العمل...</option>
+                <option
+                    value="public_work" {{ (old('dad_work') == 'public_work' || $kid->dad->work == 'public_work') ? 'selected' : '' }}>
                     موظف حكومي
                 </option>
-                <option value="private_work"
-                        @if($kid->dad->work == 'private_work') selected @endif>
+                <option
+                    value="private_work" {{ (old('dad_work') == 'private_work' || $kid->dad->work == 'private_work') ? 'selected' : '' }}>
                     موظف قطاع خاص
                 </option>
-                <option value="free_work"
-                        @if($kid->dad->work == 'free_work') selected @endif >
+                <option
+                    value="free_work" {{ (old('dad_work') == 'free_work' || $kid->dad->work == 'free_work') ? 'selected' : '' }}>
                     أعمال حرة
                 </option>
-                <option value="don't_work"
-                        @if($kid->dad->work == "don't_work") selected @endif>
+                <option
+                    value="don't_work" {{ (old('dad_work') == "don't_work" || $kid->dad->work == "don't_work") ? 'selected' : '' }}>
                     لا يعمل
                 </option>
             </select>
             @error('dad_work')
             <span class="text-danger">
-                    <i class="fa fa-info-circle" aria-hidden="true"></i>
-                       {{ $message }}
-                 </span>
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                {{ $message }}
+            </span>
             @enderror
         </div>
     </div>
@@ -158,13 +174,11 @@
             <img src="{{asset('dist/front/assets/images/medical 1.jpg')}}"/>
             <h3>بيانات صحية</h3>
         </div>
-
         <!-- dad_smoking -->
         <div class="medical-data w-100"
              @error('dad_smoking')
              style="border-color: red"
-            @enderror
-        >
+            @enderror >
             <div class="questions d-flex justify-content-between">
                 <div class="medical-data-title">
                     <h4>هل الأب مدخن</h4>
@@ -175,9 +189,7 @@
                         class="custom-control-input"
                         value="1"
                         name="dad_smoking"
-                        @if($kid->dad->smoking == '1') checked @endif
-
-                    />
+                        @if(old('dad_smoking') == '1' || $kid->dad->smoking == '1') checked @endif />
                     <label class="custom-control-label"> نعم </label>
 
                     <input
@@ -185,16 +197,11 @@
                         class="custom-control-input comment-tab"
                         value="0"
                         name="dad_smoking"
-                        @if($kid->dad->smoking == '0') checked @endif
-
-                    />
+                        @if(old('dad_smoking') == '0' || $kid->dad->smoking == '0') checked @endif />
                     <label class="custom-control-label">لا</label>
                 </div>
-
             </div>
-
         </div>
-
         <!-- dad_obstruction -->
         <div class="medical-data w-100"
              @error('dad_obstruction')
@@ -203,7 +210,7 @@
              @error('dad_obstruction_com')
              style="border-color: red"
             @enderror
-        >
+         >
             <div class="questions d-flex justify-content-between">
                 <div class="medical-data-title">
                     <h4>هل لدى الأب إعاقة</h4>
@@ -214,7 +221,7 @@
                         class="custom-control-input comment-tab"
                         value="1"
                         name="dad_obstruction"
-                        @if($kid->dad->obstruction == '1') checked @endif
+                        @if(old('dad_obstruction') == '1' || $kid->dad->obstruction == '1') checked @endif
 
                     />
                     <label class="custom-control-label"> نعم </label>
@@ -224,7 +231,7 @@
                         class="custom-control-input"
                         value="0"
                         name="dad_obstruction"
-                        @if($kid->dad->obstruction == '0') checked @endif
+                        @if(old('dad_obstruction') == '0' || $kid->dad->obstruction == '0') checked @endif
 
                     />
                     <label class="custom-control-label">لا</label>
@@ -234,12 +241,11 @@
                 <input type="text" class="form-control"
                        placeholder="أذكر التعليق هنا..." name="dad_obstruction_com"
                        id="comment"
-                       value="{{$kid->dad->obstruction_com}}"
-                       style="{{ $kid->dad->obstruction != null && $kid->dad->obstruction == 1 ? '' : 'visibility: hidden;' }}"
-                    {{ $kid->dad->obstruction != null && $kid->dad->obstruction == 1 ? '' : 'disabled' }} />
+                       value="{{$kid->dad->obstruction_com??old('dad_obstruction_com')}}"
+                       style="{{ ($kid->dad->obstruction != null && $kid->dad->obstruction == 1) || old('dad_obstruction') == '1' ? '' : 'visibility: hidden;' }}"
+                    {{ ($kid->dad->obstruction != null && $kid->dad->obstruction == 1 )|| old('dad_obstruction') == '1'? '' : 'disabled' }} />
             </div>
         </div>
-
         <!-- dad_chronic_diseases -->
         <div class="medical-data w-100"
              @error('dad_chronic_diseases')
@@ -248,7 +254,7 @@
              @error('dad_chronic_diseases_com')
              style="border-color: red"
             @enderror
-        >
+         >
             <div class="questions d-flex justify-content-between">
                 <div class="medical-data-title">
                     <h4>هل يعاني الأب من أمراض مزمنة</h4>
@@ -259,7 +265,7 @@
                         class="custom-control-input comment-tab"
                         value="1"
                         name="dad_chronic_diseases"
-                        @if($kid->dad->chronic_diseases == '1') checked @endif
+                        @if(old('dad_chronic_diseases') == '1' || $kid->dad->chronic_diseases == '1') checked @endif
 
                     />
                     <label class="custom-control-label"> نعم </label>
@@ -269,7 +275,7 @@
                         class="custom-control-input"
                         value="0"
                         name="dad_chronic_diseases"
-                        @if($kid->dad->chronic_diseases == '0') checked @endif
+                        @if(old('dad_chronic_diseases') == '0' || $kid->dad->chronic_diseases == '0') checked @endif
                     />
                     <label class="custom-control-label">لا</label>
                 </div>
@@ -278,12 +284,11 @@
                 <input type="text" class="form-control"
                        placeholder="أذكر التعليق هنا..." name="dad_chronic_diseases_com"
                        id="comment"
-                       value="{{$kid->dad->chronic_diseases_com}}"
-                       style="{{ $kid->dad->chronic_diseases != null && $kid->dad->chronic_diseases == 1 ? '' : 'visibility: hidden;' }}"
-                    {{ $kid->dad->chronic_diseases != null && $kid->dad->chronic_diseases == 1 ? '' : 'disabled' }} />
+                       value="{{$kid->dad->chronic_diseases_com??old('dad_chronic_diseases_com')}}"
+                       style="{{ ($kid->dad->chronic_diseases != null && $kid->dad->chronic_diseases == 1 )|| old('dad_chronic_diseases') == '1'? '' : 'visibility: hidden;' }}"
+                    {{ ($kid->dad->chronic_diseases != null && $kid->dad->chronic_diseases == 1 )|| old('dad_chronic_diseases') == '1'? '' : 'disabled' }} />
             </div>
         </div>
-
         <!-- dad_genetic_diseases -->
         <div class="medical-data w-100"
              @error('dad_genetic_diseases')
@@ -292,7 +297,7 @@
              @error('dad_genetic_diseases_com')
              style="border-color: red"
             @enderror
-        >
+         >
             <div class="questions d-flex justify-content-between">
                 <div class="medical-data-title">
                     <h4>هل يعاني الأب من أمراض وراثية</h4>
@@ -303,7 +308,7 @@
                         class="custom-control-input comment-tab"
                         value="1"
                         name="dad_genetic_diseases"
-                        @if($kid->dad->genetic_diseases == '1') checked @endif
+                        @if(old('dad_genetic_diseases') == '1' || $kid->dad->genetic_diseases == '1') checked @endif
 
                     />
                     <label class="custom-control-label"> نعم </label>
@@ -313,7 +318,7 @@
                         class="custom-control-input"
                         value="0"
                         name="dad_genetic_diseases"
-                        @if($kid->dad->genetic_diseases == '0') checked @endif
+                        @if(old('dad_genetic_diseases') == '0' || $kid->dad->genetic_diseases == '0') checked @endif
 
                     />
                     <label class="custom-control-label">لا</label>
@@ -323,12 +328,11 @@
                 <input type="text" class="form-control"
                        placeholder="أذكر التعليق هنا..." name="dad_genetic_diseases_com"
                        id="comment"
-                       value="{{$kid->dad->genetic_diseases_com}}"
-                       style="{{ $kid->dad->genetic_diseases != null && $kid->dad->genetic_diseases == 1 ? '' : 'visibility: hidden;' }}"
-                    {{ $kid->dad->genetic_diseases != null && $kid->dad->genetic_diseases == 1 ? '' : 'disabled' }} />
+                       value="{{$kid->dad->genetic_diseases_com??old('genetic_diseases_com')}}"
+                       style="{{ ($kid->dad->genetic_diseases != null && $kid->dad->genetic_diseases == 1) || old('dad_genetic_diseases') == '1' ? '' : 'visibility: hidden;' }}"
+                    {{ ($kid->dad->genetic_diseases != null && $kid->dad->genetic_diseases == 1) || old('dad_genetic_diseases') == '1' ? '' : 'disabled' }} />
             </div>
         </div>
-
         <!-- dad_mental_state -->
         <div class="medical-data w-100"
              @error('dad_mental_state')
@@ -336,8 +340,7 @@
              @enderror
              @error('dad_mental_state_com')
              style="border-color: red"
-            @enderror
-        >
+            @enderror>
             <div class="questions d-flex justify-content-between">
                 <div class="medical-data-title">
                     <h4>ما هي الحالة النفسية للأب</h4>
@@ -348,7 +351,7 @@
                         class="custom-control-input"
                         value="0"
                         name="dad_mental_state"
-                        @if($kid->dad->mental_state == '0') checked @endif
+                        @if(old('dad_mental_state') == '0' || $kid->dad->mental_state == '0') checked @endif
 
                     />
                     <label class="custom-control-label"> طبيعي </label>
@@ -358,7 +361,7 @@
                         class="custom-control-input comment-tab"
                         value="1"
                         name="dad_mental_state"
-                        @if($kid->dad->mental_state == '1') checked @endif
+                        @if(old('dad_mental_state') == '1' || $kid->dad->mental_state == '1') checked @endif
 
                     />
                     <label class="custom-control-label"
@@ -370,9 +373,9 @@
                 <input type="text" class="form-control"
                        placeholder="أذكر التعليق هنا..." name="dad_mental_state_com"
                        id="comment"
-                       value="{{$kid->dad->mental_state_com}}"
-                       style="{{ $kid->dad->mental_state != null && $kid->dad->mental_state == 1 ? '' : 'visibility: hidden;' }}"
-                    {{ $kid->dad->mental_state != null && $kid->dad->mental_state == 1 ? '' : 'disabled' }} />
+                       value="{{$kid->dad->mental_state_com??old('dad_mental_state_com')}}"
+                       style="{{ ($kid->dad->mental_state != null && $kid->dad->mental_state == 1) || old('dad_mental_state') == '1'? '' : 'visibility: hidden;' }}"
+                    {{ ($kid->dad->mental_state != null && $kid->dad->mental_state == 1) || old('dad_mental_state') == '1'? '' : 'disabled' }} />
             </div>
         </div>
 
@@ -383,8 +386,7 @@
              @enderror
              @error('dad_health_problems_com')
              style="border-color: red"
-            @enderror
-        >
+            @enderror>
             <div class="questions d-flex justify-content-between">
                 <div class="medical-data-title">
                     <h4>هل يعاني الأب من مشاكل صحية أخرى</h4>
@@ -395,7 +397,7 @@
                         class="custom-control-input comment-tab"
                         value="1"
                         name="dad_health_problems"
-                        @if($kid->dad->health_problems == '1') checked @endif
+                        @if(old('dad_health_problems') == '1' || $kid->dad->health_problems == '1') checked @endif
 
                     />
                     <label class="custom-control-label"> نعم </label>
@@ -405,7 +407,7 @@
                         class="custom-control-input"
                         value="0"
                         name="dad_health_problems"
-                        @if($kid->dad->health_problems == '0') checked @endif
+                        @if(old('dad_health_problems') == '0' || $kid->dad->health_problems == '0') checked @endif
 
                     />
                     <label class="custom-control-label">لا</label>
@@ -415,9 +417,9 @@
                 <input type="text" class="form-control"
                        placeholder="أذكر التعليق هنا..." name="dad_health_problems_com"
                        id="comment"
-                       value="{{$kid->dad->health_problems_com}}"
-                       style="{{ $kid->dad->health_problems != null && $kid->dad->health_problems == 1 ? '' : 'visibility: hidden;' }}"
-                    {{ $kid->dad->health_problems != null && $kid->dad->health_problems == 1 ? '' : 'disabled' }} />
+                       value="{{$kid->dad->health_problems_com??old('dad_health_problems_com')}}"
+                       style="{{ ($kid->dad->health_problems != null && $kid->dad->health_problems == 1) || old('dad_health_problems') == '1'? '' : 'visibility: hidden;' }}"
+                    {{ ($kid->dad->health_problems != null && $kid->dad->health_problems == 1) || old('dad_health_problems') == '1'? '' : 'disabled' }} />
             </div>
         </div>
 
@@ -440,7 +442,7 @@
                         class="custom-control-input comment-tab"
                         value="good"
                         name="dad_communication"
-                        @if($kid->dad->communication == 'good') checked @endif
+                        @if(old('dad_communication') == 'good' || $kid->dad->communication == 'good') checked @endif
 
                     />
                     <label class="custom-control-label"> قوية </label>
@@ -450,7 +452,7 @@
                         class="custom-control-input comment-tab"
                         value="medium"
                         name="dad_communication"
-                        @if($kid->dad->communication == 'medium') checked @endif
+                        @if(old('dad_communication') == 'medium' || $kid->dad->communication == 'medium') checked @endif
 
                     />
                     <label class="custom-control-label">متوسطة</label>
@@ -459,7 +461,7 @@
                         class="custom-control-input comment-tab"
                         value="week"
                         name="dad_communication"
-                        @if($kid->dad->communication == 'week') checked @endif
+                        @if(old('dad_communication') == 'week' || $kid->dad->communication == 'week') checked @endif
 
                     />
                     <label class="custom-control-label">ضعيفة</label>
@@ -469,7 +471,7 @@
                 <input
                     type="text" class="form-control" placeholder="أذكر التعليق هنا..."
                     name="dad_communication_com"
-                    value="{{@$kid->dad->communication_com}}" />
+                    value="{{@$kid->dad->communication_com??old('dad_communication_com')}}"/>
             </div>
         </div>
 

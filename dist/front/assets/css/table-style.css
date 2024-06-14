@@ -6,9 +6,9 @@ table {
     table-layout: fixed;
     width: 100%;
   }
-  .patiant-table{
+  /* .patiant-table{
     overflow-x: auto;
-  }
+  } */
   table tr th {
     background-color: rgba(115, 201, 204, 0.3) !important;
     border-right: 1px solid rgba(115, 201, 204, 0.3);

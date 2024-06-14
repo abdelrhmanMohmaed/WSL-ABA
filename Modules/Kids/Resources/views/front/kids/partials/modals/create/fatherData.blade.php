@@ -19,7 +19,7 @@
                  </span>
             @enderror
         </div>
-        
+
         <div class="form-group">
             <label>رقم الهوية</label>
             <input type="number" class="form-control" value="{{old('dad_num')}}"
@@ -113,7 +113,7 @@
 
         <div class="form-group">
             <label> طبيعة العمل</label>
-            <select class="form-control" name="dad_work">
+            <select class="form-control" name="dad_work" >
                 <option selected disabled>اختر طبيعة العمل...</option>
                 <option value="public_work" @selected(old('dad_work')=='public_work')>
                     موظف حكومي

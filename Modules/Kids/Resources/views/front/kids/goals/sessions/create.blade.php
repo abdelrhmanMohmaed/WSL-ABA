@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{asset('dist/front/assets/css/albss.css')}}">
 
     <style>
-        .SS-btn a {
+        .SS-btn a, .title-btn a {
             color: #000;
             background: #F3F7F7;
             border-radius: 8px;
@@ -188,12 +188,12 @@
                     <div style="width: 1170px;background-color: #F8FCFC!important;" class="row">
                         <div class="col-md-7">
                             <!-- start title -->
-                            <div class="SS-btn my-3">
-                                <a style="padding-top:20px;width:188px;height: 64px; font-weight: 1000; font-size: 20px;">
+                            <div class="title-btn my-3">
+                                <a class="custom-style" style="padding-top:20px;width:188px;height: 64px; font-weight: 1000; font-size: 20px;">
                                     المحاولة
                                 </a>
 
-                                <a class="nav-item me-3"
+                                <a class="nav-item me-3 custom-style"
                                    style="padding-top:20px;width:450px;height: 64px; font-weight: 1000; font-size: 20px;">
                                     النتيحة
                                 </a>
@@ -390,7 +390,7 @@
                             <!-- End Add item -->
 
                             <!-- Start الاستجابة -->
-                            <div class="SS-btn my-3">
+                            <div class="title-btn my-3">
                                 <a style="padding:20px;width:188px;height: 64px; font-weight: 1000; font-size: 20px;">
                                     نسبة الاستجابة
                                 </a>
@@ -434,21 +434,26 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="{{asset('vendor\realrashid\sweet-alert\resources\js\sweetalert.all.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-
 <script>
-    $(document).on("click", '.SS-btn span', function () {
-        let $modalActiveElement = $(this).siblings(".modalActive");
-        $(this).addClass("modalActive").siblings().removeClass("modalActive");
+    let lastAddedItem = null; // تخزين العنصر الأخير المضاف
 
-        // حساب النسبة
+    function updatePercentage() {
         let modalActivePositiveCount = $(".modalActive.positive").length;
         let totalPositiveCount = $(".positive").length;
         let percentage = (modalActivePositiveCount / totalPositiveCount) * 100;
 
-        $('.percentage').text(percentage.toFixed(0) + "%")
-        $('.percentage').val(percentage.toFixed(0))
+        $('.percentage').text(percentage.toFixed(0) + "%");
+        $('.percentage').val(percentage.toFixed(0));
+    }
+
+    $(document).on("click", '.SS-btn span', function () {
+        let $modalActiveElement = $(this).siblings(".modalActive");
+        $(this).addClass("modalActive").siblings().removeClass("modalActive");
+        updatePercentage();
     });
-    let counter = 10;
+
+    let counter = 10; // تعيين الرقم الابتدائي
+
     $("#addItem").on("click", function () {
         if (counter < 20) {
             let div = $("<div>").addClass("SS-btn my-3");
@@ -460,12 +465,12 @@
                 height: "64px",
                 fontWeight: "1000",
                 fontSize: "20px"
-            }).text(counter + 1);
+            }).text(counter + 1); // زيادة الرقم بواحد
 
             let positiveSpan = $("<span>").addClass("positive nav-item me-3").css({
                 padding: "20px",
-                width: "219px",
-                cursor:"pointer",
+                width: "214.5px",
+                cursor: "pointer",
                 height: "64px",
                 fontWeight: "1000",
                 fontSize: "20px"
@@ -473,22 +478,141 @@
 
             let nativeSpan = $("<span>").addClass("native nav-item me-3").css({
                 padding: "20px",
-                width: "219px",
-                cursor:"pointer",
+                width: "214.5px",
+                cursor: "pointer",
                 height: "64px",
                 fontWeight: "1000",
                 fontSize: "20px"
             }).text("سلبية");
 
-            div.append(a, positiveSpan, nativeSpan);
+            let removeButton = $("<div>").addClass("remove-btn").css({
+                cursor: "pointer",
+                padding: "20px",
+                width: "188px",
+                height: "64px",
+                fontWeight: "1000",
+                fontSize: "20px"
+            }).append(
+                $("<img>").attr({
+                    width: "35",
+                    height: "35",
+                    src: "{{asset('dist/front/assets/images/ؤ.png')}}"
+                })
+            ).on("click", function () {
+                $(this).parent().remove();
+                counter--; // تقليل الرقم بواحد
+                updateNumbers(); // تحديث الرقم
+                updatePercentage(); // تحديث النسبة المئوية بعد الحذف
+                updateButtonsVisibility(); // تحديث ظهور واختفاء زر الحذف
+            });
+
+            $("#addDiv").append(removeButton); // إضافة الزر "حذف" داخل العنصر #addDiv
+
+
+            div.append(a, positiveSpan, nativeSpan, removeButton);
 
             $("#addDiv").before(div);
-            counter++;
+            counter++; // زيادة الرقم بواحد
 
             if (counter == 20) $('#addDiv').hide();
+            updatePercentage(); // تحديث النسبة المئوية بعد الإضافة
+            updateButtonsVisibility(); // تحديث ظهور واختفاء زر الحذف
         }
     });
+
+    $(document).on("click", ".remove-btn", function () {
+        let removedItem = $(this).parent();
+        let removedItemNumber = parseInt(removedItem.find('a').text());
+        removedItem.remove();
+
+        // تحديث counter بعد الحذف
+        counter = removedItemNumber - 1;
+
+        updateNumbers(); // تحديث الرقم
+        updatePercentage(); // تحديث النسبة المئوية بعد الحذف
+        updateButtonsVisibility(); // تحديث ظهور واختفاء زر الحذف
+    });
+
+    function updateNumbers() {
+        $('.SS-btn a').each(function(index) {
+            $(this).text(index + 1);
+        });
+    }
+
+    function updateButtonsVisibility() {
+        // إخفاء زر الحذف لجميع العناصر
+        $(".remove-btn").hide();
+
+        // إظهار زر الحذف للعنصر الأخير المضاف فقط
+        if (counter > 0) {
+            let lastItem = $(".SS-btn").eq(counter - 1);
+            lastItem.find(".remove-btn").show();
+        }
+
+        // إظهار زر الإضافة إذا كان العدد أقل من 20 بعد حذف العنصر
+        if (counter < 20) {
+            $('#addDiv').show();
+        }
+    }
 </script>
+
+
+
+
+{{--<script>--}}
+{{--    $(document).on("click", '.SS-btn span', function () {--}}
+{{--        let $modalActiveElement = $(this).siblings(".modalActive");--}}
+{{--        $(this).addClass("modalActive").siblings().removeClass("modalActive");--}}
+
+{{--        // حساب النسبة--}}
+{{--        let modalActivePositiveCount = $(".modalActive.positive").length;--}}
+{{--        let totalPositiveCount = $(".positive").length;--}}
+{{--        let percentage = (modalActivePositiveCount / totalPositiveCount) * 100;--}}
+
+{{--        $('.percentage').text(percentage.toFixed(0) + "%")--}}
+{{--        $('.percentage').val(percentage.toFixed(0))--}}
+{{--    });--}}
+{{--    let counter = 10;--}}
+{{--    $("#addItem").on("click", function () {--}}
+{{--        if (counter < 20) {--}}
+{{--            let div = $("<div>").addClass("SS-btn my-3");--}}
+
+{{--            let a = $("<a>").css({--}}
+{{--                padding: "20px",--}}
+{{--                cursor: "pointer",--}}
+{{--                width: "188px",--}}
+{{--                height: "64px",--}}
+{{--                fontWeight: "1000",--}}
+{{--                fontSize: "20px"--}}
+{{--            }).text(counter + 1);--}}
+
+{{--            let positiveSpan = $("<span>").addClass("positive nav-item me-3").css({--}}
+{{--                padding: "20px",--}}
+{{--                width: "219px",--}}
+{{--                cursor: "pointer",--}}
+{{--                height: "64px",--}}
+{{--                fontWeight: "1000",--}}
+{{--                fontSize: "20px"--}}
+{{--            }).text("ايجابية");--}}
+
+{{--            let nativeSpan = $("<span>").addClass("native nav-item me-3").css({--}}
+{{--                padding: "20px",--}}
+{{--                width: "219px",--}}
+{{--                cursor: "pointer",--}}
+{{--                height: "64px",--}}
+{{--                fontWeight: "1000",--}}
+{{--                fontSize: "20px"--}}
+{{--            }).text("سلبية");--}}
+
+{{--            div.append(a, positiveSpan, nativeSpan);--}}
+
+{{--            $("#addDiv").before(div);--}}
+{{--            counter++;--}}
+
+{{--            if (counter == 20) $('#addDiv').hide();--}}
+{{--        }--}}
+{{--    });--}}
+{{--</script>--}}
 @include('sweetalert::alert')
 @include('sweetalert::validation-alert')
 </body>

@@ -85,7 +85,7 @@ class DatabaseSeeder extends Seeder
             array('id' => '68', 'name_ar' => 'جزر صناعية', 'name_fr' => 'Îles Féroé', 'name_en' => 'Faroe Islands', 'code' => 'fo'),
             array('id' => '69', 'name_ar' => 'فرنسا', 'name_fr' => 'France', 'name_en' => 'France', 'code' => 'fr'),
             array('id' => '70', 'name_ar' => 'الغابون', 'name_fr' => 'Gabon', 'name_en' => 'Gabon', 'code' => 'ga'),
-            array('id' => '71', 'name_ar' => 'بريطانيا العظمى (المملكة المتحدة)', 'name_fr' => 'Grande-Bretagne (UK)', 'name_en' => 'Great Britain (UK)', 'code' => 'gb'),
+            array('id' => '71', 'name_ar' => 'المملكة المتحدة', 'name_fr' => 'UK', 'name_en' => 'Great Britain (UK)', 'code' => 'gb'),
             array('id' => '72', 'name_ar' => 'غرينادا', 'name_fr' => 'Grenade', 'name_en' => 'Grenada', 'code' => 'gd'),
             array('id' => '73', 'name_ar' => 'جورجيا', 'name_fr' => 'Géorgie', 'name_en' => 'Georgia', 'code' => 'ge'),
             array('id' => '74', 'name_ar' => 'غيانا الفرنسية', 'name_fr' => 'Guinée Française', 'name_en' => 'French Guiana', 'code' => 'gf'),
@@ -3652,6 +3652,7 @@ class DatabaseSeeder extends Seeder
             array('id' => '23', 'name' => 'X'),
             array('id' => '24', 'name' => 'Y'),
             array('id' => '25', 'name' => 'Z'),
+            array('id' => '26', 'name' => 'Other'),
         ];
         $apps_num = [
             array('id' => '1', 'app_id' => '1', 'name' => 'A1', 'quest' => 'أخد المعزز حينما بعرض عليه'),
@@ -4222,8 +4223,7 @@ class DatabaseSeeder extends Seeder
             array('id' => '542', 'app_id' => '25', 'name' => 'Z26', 'quest' => 'طي قطعة من الورق'),
             array('id' => '543', 'app_id' => '25', 'name' => 'Z27', 'quest' => 'قص الأشكال'),
             array('id' => '544', 'app_id' => '25', 'name' => 'Z28', 'quest' => 'نقل رسم الأشكال والأنماط بدقة'),
-
-
+            array('id' => '545', 'app_id' => '26', 'name' => 'Other', 'quest' => 'Other'),
         ];
         $apps_qus = [
             array('id' => '1', 'num_id' => '1', 'name' => 'ياخذه في كل مرة يعرض عليه خلال (۳) ثواني من عرضه.'),

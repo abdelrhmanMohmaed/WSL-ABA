@@ -881,6 +881,7 @@ footer {
     background: #f3f7f7;
     width: 25%;
     height: 100%;
+    flex: 1;
     background-size: contain;
 }
 
@@ -1099,6 +1100,7 @@ footer {
     background: #f3f7f7;
     width: 25%;
     height: 100%;
+    flex: 1;
     background-size: contain;
 }
 

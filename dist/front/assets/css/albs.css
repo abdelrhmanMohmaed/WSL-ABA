@@ -352,7 +352,7 @@ li.nav-item {
     padding: 0px 20px;
     height: 100%;
     left: 0;
-    z-index: 999999;
+    z-index: 8;
     cursor: pointer;
     line-height: 40px;
 }
@@ -489,7 +489,7 @@ ul.nav.nav-tabs.ablis-tabs {
     padding: 0px 20px;
     height: 100%;
     left: 0;
-    z-index: 999999;
+    z-index: 8;
     cursor: pointer;
     line-height: 40px;
 }
@@ -1037,7 +1037,7 @@ footer {
 .question-element {
     position: relative;
     cursor: pointer;
-    width:24px;
+    /* width:24px; */
 }
 
 .letter-question {

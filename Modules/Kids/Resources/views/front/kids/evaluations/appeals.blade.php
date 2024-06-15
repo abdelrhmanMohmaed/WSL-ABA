@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>وصل | التقيمات</title>
+    <title>وصل | تقييم ABLLS</title>
     <link rel="shortcut icon" type="image/svg" href="{{ asset('dist/front/assets/images/headerlogo.png') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -43,7 +43,8 @@
                 <li class="breadcrumb-item"><a href="{{ route('welcome') }}">الرئيسية </a></li>
                 <li class="breadcrumb-item"><a href="{{ route('kids.index') }}"><i
                             class="fa-solid fa-chevron-left"></i>ملفات
-                        المرضي </a></li>
+                        المرضي </a>
+                </li>
                 <li class="breadcrumb-item" aria-current="page">
                     <a href="{{ route('kids.show', $kid->id) }}"><i class="fa-solid fa-chevron-left"></i>
                         {{ $kid->name }}
@@ -121,12 +122,14 @@
                                     style="width: calc(100% - 100px); margin: auto;align-items:center;">
                                     <input type="hidden" name="Session" value="{{ $userSessions->Session->id }}">
                                     @foreach ($userSessions->Appsessions as $key => $val)
-                                        <li class="nav-item">
-                                            <a class="nav-link {{ $val->Appale->name == 'A' ? 'active' : '' }}"
-                                                data-bs-toggle="tab"
-                                                href="#{{ $val->Appale->name }}">{{ $val->Appale->name }}
-                                            </a>
-                                        </li>
+                                        @if ($val->id != 26)
+                                            <li class="nav-item">
+                                                <a class="nav-link {{ $val->Appale->name == 'A' ? 'active' : '' }}"
+                                                    data-bs-toggle="tab"
+                                                    href="#{{ $val->Appale->name }}">{{ $val->Appale->name }}
+                                                </a>
+                                            </li>
+                                        @endif
                                     @endforeach
                                 </ul>
                             </div>

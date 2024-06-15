@@ -29,4 +29,9 @@ class Anssessions extends Model
         return $this->belongsTo('Modules\Kids\Entities\Appale_Num','ans_id','id');
     }
 
+    public function Appale_quests()
+    {
+        return $this->hasMany('Modules\Kids\Entities\Appale_Que','num_id','id');
+    }
+
 }

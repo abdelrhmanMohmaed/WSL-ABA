@@ -31,7 +31,7 @@
                                     placeholder="أدخل المثير..." />
                             </div>
                         </div>
-
+                        <input type="hidden" name="appeal" id="appeal">
                         <button type="submit" class="mt-3 w-75 btn-new-target text-center rounded-2 text-white p-2">
                             حفظ
                         </button>

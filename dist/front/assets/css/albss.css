@@ -435,7 +435,7 @@ li.nav-item {
     padding: 0px 20px;
     height: 100%;
     left: 0;
-    z-index: 999999;
+    z-index: 8;
     cursor: pointer;
     line-height: 40px;
 }
@@ -572,7 +572,7 @@ ul.nav.nav-tabs.ablis-tabs {
     padding: 0px 20px;
     height: 100%;
     left: 0;
-    z-index: 999999;
+    z-index: 8;
     cursor: pointer;
 }
 
@@ -953,15 +953,15 @@ footer {
 .letter {
     width: 100%;
     text-align: center;
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     height: 70vh;
     flex-wrap: wrap;
 }
 
-.letter > * {
+/* .letter > * {
     width: 32%;
-}
+} */
 
 .tab-pane .B {
     width: 100%;
@@ -1085,7 +1085,7 @@ footer {
 
 
 .question-element {
-    width:24px !important;
+    /* width:24px !important; */
     position: relative;
     cursor: pointer;
 }
@@ -1386,11 +1386,11 @@ footer {
     }
 }
 
-@media (max-width: 375px) {
+/* @media (max-width: 375px) {
     .letter > * {
         width: 70%;
     }
-}
+} */
 
 @media (max-width: 360px) {
     .numbers-ques {

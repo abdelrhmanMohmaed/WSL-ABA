@@ -92,99 +92,148 @@
         </div>
     </nav>
 
-
     <div class="wrapper">
         <div class="container">
+
             <div class="dates row" style="border-radius: 8px;overflow: hidden;">
+                @foreach ($sessions as $key => $val)
+                    <div class="date col-lg-2 col-md-3 col-6 text-center"
+                        style="background-color: {{ $val->session->hex }};">
+
+                        <h9>
+                            <span> تقييم بتاريخ</span> {{ date('Y/m/d', strtotime($val->created_at)) }}
+                        </h9>
+                    </div>
+                @endforeach
             </div>
+
             <div class="scroller-tab">
                 <div class="left" style="width: 50px !important;"><i class="fa-solid fa-arrow-left"></i></div>
-                <div class="right" style="width: 50px !important;"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="right" style="width: 50px !important;"><i class="fa-solid fa-arrow-right"></i>
+                </div>
                 <ul class="nav nav-tabs ablis-tabs" role="tablist"
                     style="width: calc(100% - 100px); margin: auto;align-items:center;">
                     @foreach ($apps as $key => $val)
-                        <li class="nav-item sessions-date" data-id="{{ $val->id }}">
-                            <a class="nav-link {{ $val->name == $letr->name ? 'active' : '' }}" data-bs-toggle="tab"
-                                href="{{ url()->current() . '?app_Id=' . $val->id }}">{{ $val->name }}</a>
-                        </li>
+                        @if ($val->id != 26)
+                            <li class="nav-item sessions-date" data-id="{{ $val->id }}">
+                                <a class="nav-link {{ $val->name == $letr->name ? 'active' : '' }}"
+                                    data-bs-toggle="tab"
+                                    href="{{ url()->current() . '?app_Id=' . $val->id }}">{{ $val->name }}</a>
+                            </li>
+                        @endif
                     @endforeach
                 </ul>
             </div>
-
             <div class="row tab-content mt-5">
                 <div id="A" class="container tab-pane active tab-pane-ablis">
                     <br />
                     <div class="letter-container">
-                        <div class="B letterHover pt-5">
-                            <div class="letter-title text-center">
+                        <div class="B letterHover py-5">
+                            <div class="letter-title text-center mt-2 mb-5">
                                 <h3>({{ $letr->name }}) التعاون وفعالية المعزز</h3>
                             </div>
-                            <div class="letter-graph d-flex ">
-                                <div class="letter mb-5" style="height: auto;" {{-- style="height: 1100px!important; width:100%; text-align: center;" --}}>
-                                    @foreach ($letr->Appale_Nums as $value)
-                                        <div class="d-flex justify-content-around">
-                                            <div class="question-element"
-                                                style="position: relative;width: 24px !important;">
-                                                <p>{{ $value->name }}</p>
 
-                                                <div class="letter-question">
-                                                    <p>{{ $value->quest }}</p>
-                                                </div>
+                            <div class="letter-graph">
+                                <div class="letter mb-5" style="height: auto;">
+                                    @php
+                                        $total_boxes = 0;
+                                        // حساب العدد الإجمالي للمربعات
+                                        foreach ($letr->Appale_Nums as $value) {
+                                            $total_boxes += count($value->Appale_Ques);
+                                        }
 
-                                            </div>
-                                            <div class="graph" style="width: 50%;">
+                                        $num_items = count($letr->Appale_Nums);
+                                        $num_columns = 3; // تحديد عدد الأعمدة لكل صف
+                                        $items_per_column = ceil($num_items / $num_columns); // حساب عدد العناصر لكل عمود
+                                    @endphp
+
+                                    <div class="row">
+                                        @for ($column = 0; $column < $num_columns; $column++)
+                                            <div class="col-md-4">
                                                 @php
-                                                    $num_boxes = count($value->Appale_Ques);
-                                                    $box_width = 100 / $num_boxes;
-                                                    $count = 0;
-                                                    $filled_color = '';
+                                                    $start = $column * $items_per_column;
+                                                    $end = min($start + $items_per_column, $num_items);
                                                 @endphp
-                                                {{-- @dd($value) --}}
-                                                <div class="garph-color" style="--num-boxes: {{ $num_boxes }};">
-                                                    @foreach ($nums as $ke => $val)
-                                                        @foreach ($val->Anssessions as $key => $vall)
-                                                            @if ($vall->ques_id == $value->id)
-                                                                @if ($vall->ans_id !== null)
-                                                                    @php
-                                                                        $count++;
-                                                                        $span = $vall->Usersessions->Session->hex;
-                                                                        if ($count == 1) {
-                                                                            $filled_color = $span;
+
+                                                @for ($item = $start; $item < $end; $item++)
+                                                    @php
+                                                        $value = $letr->Appale_Nums[$item];
+                                                        $num_boxes = count($value->Appale_Ques);
+                                                        $box_width = 100 / $num_boxes;
+                                                        $span_colors = array_fill(0, $num_boxes, '#FFFFFF'); // الافتراضي لون الخلفية أبيض
+
+                                                        // تحديث الألوان بناءً على الإجابات الموجودة
+                                                        foreach ($value->Appale_Ques as $index => $question) {
+                                                            $currentColor = '#FFFFFF'; // اللون الافتراضي
+                                                            foreach ($nums as $ke => $val) {
+                                                                foreach ($val->Anssessions as $key => $vall) {
+                                                                    if (
+                                                                        $vall->ques_id == $value->id &&
+                                                                        $vall->ans_id == $question->id
+                                                                    ) {
+                                                                        if ($span_colors[$index] == '#FFFFFF') {
+                                                                            $currentColor =
+                                                                                $vall->Usersessions->Session->hex;
+                                                                            $span_colors[$index] = $currentColor;
+
+                                                                            // تحديث الألوان للأسئلة السابقة أيضًا إذا كانت لا تحتوي على لون
+                                                                            for ($k = $index - 1; $k >= 0; $k--) {
+                                                                                if ($span_colors[$k] == '#FFFFFF') {
+                                                                                    $span_colors[$k] = $currentColor;
+                                                                                } else {
+                                                                                    break; // انقطاع التحديث إذا وجد لون سابق
+                                                                                }
+                                                                            }
                                                                         }
+                                                                        break; // انقطاع التحقق بعد العثور على إجابة
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    @endphp
+
+                                                    <div class="d-flex justify-content-around">
+                                                        <div class="question-element"
+                                                            style="position: relative; width: 24px !important;">
+                                                            <p>{{ $value->name }}</p>
+                                                            <div class="letter-question">
+                                                                <p>{{ $value->quest }}</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="graph" style="width: 50%;">
+                                                            <div class="garph-color"
+                                                                style="--num-boxes: {{ $num_boxes }};">
+                                                                @foreach ($value->Appale_Ques as $index => $question)
+                                                                    @php
+                                                                        // تحقق مما إذا كان السؤال تم تلوينه بالفعل
+                                                                        $currentColor = $span_colors[$index];
                                                                     @endphp
                                                                     <span class="line"
-                                                                        style="background-color: {{ $span }}; width: {{ $box_width }}%;">
+                                                                        style="width: {{ $box_width }}%; background-color: {{ $currentColor }};">
                                                                         <div class="line-0"></div>
-                                                                        {{-- {{ $vall->ans_old_id }}
-                                                                        {{ $value->Appale_Ques }} --}}
-
-                                                                        {{-- {{ count($value->Appale_Ques) }} --}}
                                                                     </span>
-                                                                @endif
-                                                            @endif
-                                                        @endforeach
-                                                    @endforeach
-                                                    @for ($i = $count; $i < $num_boxes; $i++)
-                                                        <span class="line"
-                                                            style="width: {{ $box_width }}%; background-color: #FFFFFF;">
-                                                            <div class="line-0"></div>
-                                                        </span>
-                                                    @endfor
-                                                </div>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endfor
                                             </div>
-                                        </div>
-                                    @endforeach
+                                        @endfor
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
-
     <!--footer-->
     @include('front.parts.footer')
+
+
     <!--footer-->
     <script src="{{ asset('dist/front/assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('dist/front/assets/js/jquery-3.6.3.js') }}"></script>

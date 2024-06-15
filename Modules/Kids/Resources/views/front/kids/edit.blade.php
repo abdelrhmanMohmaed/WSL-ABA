@@ -31,8 +31,13 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('welcome') }}">الرئيسية </a></li>
                 <li class="breadcrumb-item"><a href="{{ route('kids.index') }}"><i class="fa-solid fa-chevron-left"></i>ملفات
-                        المرضي </a></li>
-
+                        المرضي </a>
+                </li>
+                <li class="breadcrumb-item" aria-current="page">
+                    <a href="{{ route('kids.show', $kid->id) }}"><i class="fa-solid fa-chevron-left"></i>
+                        {{ $kid->name }}
+                    </a>
+                </li>
                 <li class="breadcrumb-item active" aria-current="page">
                     <i class="fa-solid fa-chevron-left"></i>
                     تعديل ملف المريض

@@ -242,7 +242,7 @@
                                                                     alt="" />
                                                                 {{ $value->name }}
                                                             </p>
-                                                            <div class="letter-question">
+                                                            <div class="letter-question text-center">
                                                                 <p>{{ $value->quest }}</p>
                                                             </div>
                                                         </div>
@@ -283,6 +283,7 @@
     <script src="{{ asset('dist/front/assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('dist/front/assets/js/jquery-3.6.3.js') }}"></script>
     <script src="{{ asset('dist/front/assets/js/app.js') }}"></script>
+    <script src="{{ asset('vendor\realrashid\sweet-alert\resources\js\sweetalert.all.js') }}"></script>
 
     <script>
         // Start left and right
@@ -371,6 +372,9 @@
             }
         }
     </script>
+    
+    @include('sweetalert::alert')
+    @include('sweetalert::validation-alert')
 </body>
 
 </html>

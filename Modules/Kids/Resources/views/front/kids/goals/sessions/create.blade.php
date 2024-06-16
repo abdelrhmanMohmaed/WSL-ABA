@@ -12,56 +12,73 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('dist/front/assets/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('dist/front/assets/css/style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('dist/front/assets/css/albss.css') }}">
 
     <style>
-        .SS-btn a,
-        .title-btn a {
-            color: #000;
-            background: #F3F7F7;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 10px;
-            line-height: 25px;
-            display: inline-block;
-            width: 170px;
-            height: 64px;
-            /*padding: 15px 20px;*/
-            text-align: center;
-            text-decoration: none;
+        /* Start Form Fields */
+        .custom-bg {
+            background-color: #F8FCFC;
         }
 
-        .SS-btn span {
-            color: #000;
-            background: #F8FCFC;
-            border-radius: 8px;
-            font-weight: 700;
-            border: 2px solid #F3F7F7;
-            font-size: 10px;
-            line-height: 25px;
-            display: inline-block;
-            width: 170px;
+        .custom-box {
+            background: #F3F3F7;
             height: 64px;
-            /*padding: 15px 20px;*/
-            text-align: center;
-            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .custom-content {
+            background: #F8FCFC;
+            border: 1px solid #EDF1F1;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .rounded-start-custom {
+            border-radius: 0 8px 8px 0;
+        }
+
+        .rounded-end-custom {
+            border-radius: 8px 0 0 8px;
+        }
+
+        /* Start Form Fields */
+        .try-box-title,
+        .try-box-title-header {
+            background: #F3F3F7;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+
+        }
+
+        .try-box-count {
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #EDF1F1;
+            border-radius: 8px;
+            cursor: pointer;
         }
 
         .modalActive {
-            background: rgb(200, 162, 200) !important;
+            background-color: rgb(200, 162, 200);
         }
 
-        /*.container-div {*/
-        /*    width: 1170px;*/
-        /*    border: 0;*/
-        /*    border-radius: 8px;*/
-        /*}*/
-
-        textarea::placeholder {
-            color: #616363;
+        .custom-textarea {
+            background-color: #F3F7F7;
+            width: 100%;
+            border-radius: 0.375rem;
+            border: none;
+            padding: 1rem;
+            box-sizing: border-box;
         }
     </style>
-
 </head>
 
 <body>
@@ -112,327 +129,285 @@
 
     <div class="wrapper">
         <div class="container">
-            <div class="row align-items-center">
-                <form method="POST"
-                    action="{{ route('kids.treatment-plans.goals.sessions.store', [$kid->id, $goal->id]) }}"
-                    class="container">
-                    @csrf
-                    <div class="container-div d-flex justify-content-center">
-                        <div style="border-radius: 8px; width: 1170px; height: 210px; background-color: #F8FCFC!important;"
-                            class="row my-5">
+            <form method="POST"
+                action="{{ route('kids.treatment-plans.goals.sessions.store', [$kid->id, $goal->id]) }}">
+                @csrf
 
-                            <div class="col-md-12 justify-content-center row pt-4 pe-4">
-                                <div style="width: 1110px; height: 5px;display: flex;">
-                                    <div
-                                        style="border: 0;border-top-right-radius: 8px;border-bottom-right-radius: 8px; background: #F3F3F7; width: 134px; height: 64px; display: flex; align-items: center; justify-content: center;">
-                                        <span style="font-weight: bold; font-size: 18px;">الهدف</span>
-                                    </div>
-
-                                    <div
-                                        style="border: 1px solid #EDF1F1;padding-right: 10px ;background: #F8FCFC; width: 418px; height: 65px; display: flex; align-items: center;">
-                                        <span style="font-weight: bold; font-size: 15px;">{{ $goal->target }}</span>
-                                    </div>
-
-                                    <div
-                                        style="border: 0;background: #F3F3F7; width: 134px; height: 64px; display: flex; align-items: center; justify-content: center;">
-                                        <span style="font-weight: bold; font-size: 18px;">المثير SD</span>
-                                    </div>
-
-                                    <div
-                                        style="border: 1px solid #EDF1F1;border-bottom-left-radius: 8px;border-top-left-radius: 8px ;padding-right: 10px ;background: #F8FCFC; width: 418px; height: 65px; display: flex; align-items: center;">
-                                        <span style="font-weight: bold; font-size: 18px;">{{ $goal->stimulus }}</span>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-12 justify-content-center row pt-1 pe-4">
-                                <div style="width: 1110px; height: 5px;display: flex;">
-                                    <div
-                                        style="border: 0;border-top-right-radius: 8px;border-bottom-right-radius: 8px; background: #F3F3F7; width: 134px; height: 64px; display: flex; align-items: center; justify-content: center;">
-                                        <span style="font-weight: bold; font-size: 18px;">نوع التلقين</span>
-                                    </div>
-
-                                    <select name="indoctrinationType" id="indoctrinationTypes" class="form-control"
-                                        style="border: 1px solid #EDF1F1;padding-right: 10px ;background: #F8FCFC; width: 418px; height: 65px; display: flex; align-items: center;">
-                                        <option selected disabled>اختر نوع التلقين...</option>
-                                        @foreach ($indoctrinationTypes as $item)
-                                            <option value="{{ $item->id }}" @selected(old('indoctrinationType') == $item->id)>
-                                                {{ $item->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-
-                                    <div
-                                        style="border: 0;background: #F3F3F7; width: 134px; height: 64px; display: flex; align-items: center; justify-content: center;">
-                                        <span style="font-weight: bold; font-size: 18px;">الاخصائى</span>
-                                    </div>
-
-                                    <div
-                                        style="border: 1px solid #EDF1F1;border-bottom-left-radius: 8px;border-top-left-radius: 8px ;padding-right: 10px ;background: #F8FCFC; width: 418px; height: 65px; display: flex; align-items: center;">
-                                        <span
-                                            style="font-weight: bold; font-size: 18px;">{{ Auth::guard('customer')->user()->name }}</span>
-                                    </div>
-                                </div>
-                            </div>
-
+                <div class="row d-flex justify-content-center align-items-center rounded-3 p-3 my-5 custom-bg">
+                    <div class="col-12 col-md-12 d-flex flex-wrap align-items-center p-3">
+                        <div class="custom-box col-12 col-md-2 rounded-start-custom">
+                            <span class="fw-bold fs-5">الهدف</span>
+                        </div>
+                        <div class="custom-content col-12 col-md-4">
+                            <span class="fw-bold fs-6">{{ $goal->target }}</span>
+                        </div>
+                        <div class="custom-box col-12 col-md-2">
+                            <span class="fw-bold fs-5">المثير SD</span>
+                        </div>
+                        <div class="custom-content col-12 col-md-4 rounded-end-custom">
+                            <span class="fw-bold fs-6">{{ $goal->stimulus }}</span>
                         </div>
                     </div>
 
-                    <div style="width: 50px;height: 50px" class="container d-flex justify-content-center">
-
+                    <div class="col-12 col-md-12 d-flex flex-wrap align-items-center p-3">
+                        <div class="custom-box col-12 col-md-2 rounded-start-custom">
+                            <span class="fw-bold fs-5">نوع التلقين</span>
+                        </div>
+                        <div class="custom-content col-12 col-md-4">
+                            <select name="indoctrinationType" id="indoctrinationTypes" class="form-control">
+                                <option selected disabled>اختر نوع التلقين...</option>
+                                @foreach ($indoctrinationTypes as $item)
+                                    <option value="{{ $item->id }}" @selected(old('indoctrinationType') == $item->id)>
+                                        {{ $item->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="custom-box col-12 col-md-2">
+                            <span class="fw-bold fs-5">الأخصائي</span>
+                        </div>
+                        <div class="custom-content col-12 col-md-4 rounded-end-custom">
+                            <span class="fw-bold fs-6">{{ Auth::guard('customer')->user()->name }}</span>
+                        </div>
                     </div>
+                </div>
 
-                    <!-- Start session test -->
-                    <div class="container-div d-flex justify-content-center">
-                        <div style="width: 1170px;background-color: #F8FCFC!important;" class="row">
-                            <div class="col-md-7">
-                                <!-- start title -->
-                                <div class="title-btn my-3">
-                                    <a class="custom-style"
-                                        style="padding-top:20px;width:188px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        المحاولة
-                                    </a>
+                <div class="row d-flex justify-content-center align-items-center rounded-3 p-3 my-5 custom-bg">
+                    <div class="col-12 col-md-12 d-flex flex-wrap align-items-center p-3">
+                        <div id="reference-div" class="col-12 col-md-8">
+                            <div class="d-flex justify-content-around">
 
-                                    <a class="nav-item me-3 custom-style"
-                                        style="padding-top:20px;width:450px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        النتيحة
-                                    </a>
+                                <div class="col-md-3 col-3">
+                                    <div class="try-box-title-header col-12 col-md-12">
+                                        <span class="fw-bold fs-5">المحاولة</span>
+                                    </div>
                                 </div>
-                                <!-- end title -->
-                                <!-- frist try -->
-                                <div class="SS-btn my-3">
-                                    <a
-                                        style="padding:20px;width:188px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        1
-                                    </a>
-
-                                    <span class="positive nav-item me-3"
-                                        style="cursor:pointer;padding:20px;width:214.5px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        ايجابية
-                                    </span>
-
-                                    <span class="native nav-item me-3"
-                                        style="cursor:pointer;padding:20px;width:214.5px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        سلبية
-                                    </span>
+                                <div class="col-md-8 col-8">
+                                    <div class="try-box-title-header col-12 col-md-12">
+                                        <span class="fw-bold fs-5">النتيجة</span>
+                                    </div>
                                 </div>
-                                <!-- End frist try -->
+                            </div>
 
-                                <!-- Start second try -->
-                                <div class="SS-btn my-3">
-                                    <a
-                                        style="padding:20px;width:188px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        2
-                                    </a>
-
-                                    <span class="positive nav-item me-3"
-                                        style="cursor:pointer;padding:20px;width:214.5px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        ايجابية
-                                    </span>
-
-                                    <span class="native nav-item me-3"
-                                        style="cursor:pointer;padding:20px;width:214.5px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        سلبية
-                                    </span>
+                            <!-- 1 -->
+                            <div class="d-flex justify-content-around pt-3">
+                                <div class="col-md-3 col-3">
+                                    <div class="try-box-title col-12 col-md-12">
+                                        <span class="fw-bold fs-5">1</span>
+                                    </div>
                                 </div>
-                                <!-- End second try -->
-
-                                <!-- Start third try -->
-                                <div class="SS-btn my-3">
-                                    <a
-                                        style="padding:20px;width:188px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        3
-                                    </a>
-
-                                    <span class="positive nav-item me-3"
-                                        style="cursor:pointer;padding:20px;width:214.5px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        ايجابية
-                                    </span>
-
-                                    <span class="native nav-item me-3"
-                                        style="cursor:pointer;padding:20px;width:214.5px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        سلبية
-                                    </span>
+                                <div class="col-md-8 d-flex justify-content-between col-9 choices-container">
+                                    <div class="try-box-count col-4 col-md-6 positive" style="width: 48%">
+                                        <span class="fw-bold fs-5">إيجابية</span>
+                                    </div>
+                                    <div class="try-box-count col-4 col-md-6 native" style="width: 48%">
+                                        <span class="fw-bold fs-5">سلبية</span>
+                                    </div>
                                 </div>
-                                <!-- End third try -->
-
-                                <!-- Start fourth try -->
-                                <div class="SS-btn my-3">
-                                    <a
-                                        style="padding:20px;width:188px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        4
-                                    </a>
-
-                                    <span class="positive nav-item me-3"
-                                        style="cursor:pointer;padding:20px;width:214.5px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        ايجابية
-                                    </span>
-
-                                    <span class="native nav-item me-3"
-                                        style="cursor:pointer;padding:20px;width:214.5px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        سلبية
-                                    </span>
+                            </div>
+                            <!-- 1 -->
+                            <!-- 2 -->
+                            <div class="d-flex justify-content-around pt-3">
+                                <div class="col-md-3 col-3">
+                                    <div class="try-box-title col-12 col-md-12">
+                                        <span class="fw-bold fs-5">2</span>
+                                    </div>
                                 </div>
-                                <!-- End fourth try -->
-
-                                <!-- Start fifth try -->
-                                <div class="SS-btn my-3">
-                                    <a
-                                        style="padding:20px;width:188px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        5
-                                    </a>
-
-                                    <span class="positive nav-item me-3"
-                                        style="cursor:pointer;padding:20px;width:214.5px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        ايجابية
-                                    </span>
-
-                                    <span class="native nav-item me-3"
-                                        style="cursor:pointer;padding:20px;width:214.5px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        سلبية
-                                    </span>
+                                <div class="col-md-8 d-flex justify-content-between col-9 choices-container">
+                                    <div class="try-box-count col-4 col-md-6 positive" style="width: 48%">
+                                        <span class="fw-bold fs-5">إيجابية</span>
+                                    </div>
+                                    <div class="try-box-count col-4 col-md-6 native" style="width: 48%">
+                                        <span class="fw-bold fs-5">سلبية</span>
+                                    </div>
                                 </div>
-                                <!-- End fifth try -->
-
-                                <!-- Start sixth try -->
-                                <div class="SS-btn my-3">
-                                    <a
-                                        style="padding:20px;width:188px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        6
-                                    </a>
-
-                                    <span class="positive nav-item me-3"
-                                        style="cursor:pointer;padding:20px;width:214.5px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        ايجابية
-                                    </span>
-
-                                    <span class="native nav-item me-3"
-                                        style="cursor:pointer;padding:20px;width:214.5px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        سلبية
-                                    </span>
+                            </div>
+                            <!-- 2 -->
+                            <!-- 3 -->
+                            <div class="d-flex justify-content-around pt-3">
+                                <div class="col-md-3 col-3">
+                                    <div class="try-box-title col-12 col-md-12">
+                                        <span class="fw-bold fs-5">3</span>
+                                    </div>
                                 </div>
-                                <!-- End sixth try -->
-
-                                <!-- Start seventh try -->
-                                <div class="SS-btn my-3">
-                                    <a
-                                        style="padding:20px;width:188px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        7
-                                    </a>
-
-                                    <span class="positive nav-item me-3"
-                                        style="cursor:pointer;padding:20px;width:214.5px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        ايجابية
-                                    </span>
-
-                                    <span class="native nav-item me-3"
-                                        style="cursor:pointer;padding:20px;width:214.5px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        سلبية
-                                    </span>
+                                <div class="col-md-8 d-flex justify-content-between col-9 choices-container">
+                                    <div class="try-box-count col-4 col-md-6 positive" style="width: 48%">
+                                        <span class="fw-bold fs-5">إيجابية</span>
+                                    </div>
+                                    <div class="try-box-count col-4 col-md-6 native" style="width: 48%">
+                                        <span class="fw-bold fs-5">سلبية</span>
+                                    </div>
                                 </div>
-                                <!-- End seventh try -->
-
-                                <!-- Start eight try -->
-                                <div class="SS-btn my-3">
-                                    <a
-                                        style="padding:20px;width:188px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        8
-                                    </a>
-
-                                    <span class="positive nav-item me-3"
-                                        style="cursor:pointer;padding:20px;width:214.5px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        ايجابية
-                                    </span>
-
-                                    <span class="native nav-item me-3"
-                                        style="cursor:pointer;padding:20px;width:214.5px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        سلبية
-                                    </span>
+                            </div>
+                            <!-- 3 -->
+                            <!-- 4 -->
+                            <div class="d-flex justify-content-around pt-3">
+                                <div class="col-md-3 col-3">
+                                    <div class="try-box-title col-12 col-md-12">
+                                        <span class="fw-bold fs-5">4</span>
+                                    </div>
                                 </div>
-                                <!-- End eight try -->
-
-                                <!-- Start nine try -->
-                                <div class="SS-btn my-3">
-                                    <a
-                                        style="padding:20px;width:188px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        9
-                                    </a>
-
-                                    <span class="positive nav-item me-3"
-                                        style="cursor:pointer;padding:20px;width:214.5px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        ايجابية
-                                    </span>
-
-                                    <span class="native nav-item me-3"
-                                        style="cursor:pointer;padding:20px;width:214.5px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        سلبية
-                                    </span>
+                                <div class="col-md-8 d-flex justify-content-between col-9 choices-container">
+                                    <div class="try-box-count col-4 col-md-6 positive" style="width: 48%">
+                                        <span class="fw-bold fs-5">إيجابية</span>
+                                    </div>
+                                    <div class="try-box-count col-4 col-md-6 native" style="width: 48%">
+                                        <span class="fw-bold fs-5">سلبية</span>
+                                    </div>
                                 </div>
-                                <!-- End nine try -->
-
-                                <!-- Start ten try -->
-                                <div class="SS-btn my-3">
-                                    <a
-                                        style="padding:20px;width:188px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        10
-                                    </a>
-
-                                    <span class="positive nav-item me-3"
-                                        style="cursor:pointer;padding:20px;width:214.5px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        ايجابية
-                                    </span>
-
-                                    <span class="native nav-item me-3"
-                                        style="cursor:pointer;padding:20px;width:214.5px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        سلبية
-                                    </span>
+                            </div>
+                            <!-- 4 -->
+                            <!-- 5 -->
+                            <div class="d-flex justify-content-around pt-3">
+                                <div class="col-md-3 col-3">
+                                    <div class="try-box-title col-12 col-md-12">
+                                        <span class="fw-bold fs-5">5</span>
+                                    </div>
                                 </div>
-                                <!-- End ten try -->
-
-                                <!-- Start Add item-->
-                                <div id="addDiv" class="SS-btn my-3 me-5">
-                                    <dix id="addItem"
-                                        style="cursor: pointer; padding:20px;width:188px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        <img width="35" height="35"
-                                            src="{{ asset('dist/front/assets/images/Plus, Add.png') }}" />
-                                    </dix>
+                                <div class="col-md-8 d-flex justify-content-between col-9 choices-container">
+                                    <div class="try-box-count col-4 col-md-6 positive" style="width: 48%">
+                                        <span class="fw-bold fs-5">إيجابية</span>
+                                    </div>
+                                    <div class="try-box-count col-4 col-md-6 native" style="width: 48%">
+                                        <span class="fw-bold fs-5">سلبية</span>
+                                    </div>
                                 </div>
-                                <!-- End Add item -->
+                            </div>
+                            <!-- 5 -->
+                            <!-- 6 -->
+                            <div class="d-flex justify-content-around pt-3">
+                                <div class="col-md-3 col-3">
+                                    <div class="try-box-title col-12 col-md-12">
+                                        <span class="fw-bold fs-5">6</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 d-flex justify-content-between col-9 choices-container">
+                                    <div class="try-box-count col-4 col-md-6 positive" style="width: 48%">
+                                        <span class="fw-bold fs-5">إيجابية</span>
+                                    </div>
+                                    <div class="try-box-count col-4 col-md-6 native" style="width: 48%">
+                                        <span class="fw-bold fs-5">سلبية</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 6 -->
+                            <!-- 7 -->
+                            <div class="d-flex justify-content-around pt-3">
+                                <div class="col-md-3 col-3">
+                                    <div class="try-box-title col-12 col-md-12">
+                                        <span class="fw-bold fs-5">7</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 d-flex justify-content-between col-9 choices-container">
+                                    <div class="try-box-count col-4 col-md-6 positive" style="width: 48%">
+                                        <span class="fw-bold fs-5">إيجابية</span>
+                                    </div>
+                                    <div class="try-box-count col-4 col-md-6 native" style="width: 48%">
+                                        <span class="fw-bold fs-5">سلبية</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 7 -->
+                            <!-- 8 -->
+                            <div class="d-flex justify-content-around pt-3">
+                                <div class="col-md-3 col-3">
+                                    <div class="try-box-title col-12 col-md-12">
+                                        <span class="fw-bold fs-5">8</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 d-flex justify-content-between col-9 choices-container">
+                                    <div class="try-box-count col-4 col-md-6 positive" style="width: 48%">
+                                        <span class="fw-bold fs-5">إيجابية</span>
+                                    </div>
+                                    <div class="try-box-count col-4 col-md-6 native" style="width: 48%">
+                                        <span class="fw-bold fs-5">سلبية</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 8 -->
+                            <!-- 9 -->
+                            <div class="d-flex justify-content-around pt-3">
+                                <div class="col-md-3 col-3">
+                                    <div class="try-box-title col-12 col-md-12">
+                                        <span class="fw-bold fs-5">9</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 d-flex justify-content-between col-9 choices-container">
+                                    <div class="try-box-count col-4 col-md-6 positive" style="width: 48%">
+                                        <span class="fw-bold fs-5">إيجابية</span>
+                                    </div>
+                                    <div class="try-box-count col-4 col-md-6 native" style="width: 48%">
+                                        <span class="fw-bold fs-5">سلبية</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 9 -->
+                            <!-- 10 -->
+                            <div class="d-flex justify-content-around pt-3">
+                                <div class="col-md-3 col-3">
+                                    <div class="try-box-title col-12 col-md-12">
+                                        <span class="fw-bold fs-5">10</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 d-flex justify-content-between col-9 choices-container">
+                                    <div class="try-box-count col-4 col-md-6 positive" style="width: 48%">
+                                        <span class="fw-bold fs-5">إيجابية</span>
+                                    </div>
+                                    <div class="try-box-count col-4 col-md-6 native" style="width: 48%">
+                                        <span class="fw-bold fs-5">سلبية</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 10 -->
 
-                                <!-- Start الاستجابة -->
-                                <div class="title-btn my-3">
-                                    <a
-                                        style="padding:20px;width:188px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        نسبة الاستجابة
-                                    </a>
+                            <!-- + and - -->
+                            <div class="d-flex justify-content-around pt-3 lastOneDiv">
+                                <div class="col-md-3 col-12">
+                                    <div class="try-box-title-header col-12 col-md-12">
+                                        <div class="addDiv">
+                                            <dix id="addItem">
+                                                <img width="33" height="33"
+                                                    src="{{ asset('dist/front/assets/images/Plus, Add.png') }}" />
+                                            </dix>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 d-flex justify-content-between col-9 choices-container">
+
+                                </div>
+                            </div>
+                            <!-- + and - -->
+
+                            <div class="d-flex justify-content-around pt-3">
+                                <div class="col-md-3 col-3">
+                                    <div class="try-box-title-header col-12 col-md-12">
+                                        <span class="fw-bold fs-5">نسبة الاستجابة</span>
+                                    </div>
+
                                     <input type="hidden" name="percentage" class="percentage">
-                                    <button type="button" class="percentage" class="nav-item me-3"
-                                        style="border: 0;border-radius: 8px;
-                                   padding:20px;width:449px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                        %
-                                    </button>
                                 </div>
-                                <!-- End الاستجابة -->
-                            </div>
-
-                            <div class="col-md-5">
-                                <div style="height: 97%; margin-top: 20px">
-                                    <textarea name="description" class="p-3" placeholder="ملاحظات الجلسة..."
-                                        style="width: 98%; height: 100%;background-color: #F3F7F7;
-                                            border-radius: 8px; border: 0;">{{ old('description') }}</textarea>
+                                <div class="col-md-8 col-8">
+                                    <div class="try-box-title-header col-12 col-md-12">
+                                        <span class="percentage fw-bold fs-5">%</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- End session test -->
 
-                    <div class="d-flex justify-content-center mt-5 w-100">
-                        <button type="submit" class="btn mx-1 mt-5 w-50 d-block">حفظ
-                        </button>
+                        <div class="col-12 col-md-4">
+                            <div class="col-md-12">
+                                <textarea class="custom-textarea" placeholder="ملاحظات الجلسة..." name="description" id="description"
+                                    cols="30" rows="42">{{ old('description') }}</textarea>
+                            </div>
+                        </div>
                     </div>
-                </form>
-            </div>
+                </div>
+
+                <div class="d-flex justify-content-center mt-5 w-100">
+                    <button type="submit" class="btn mx-1 mt-5 w-50 d-block">حفظ
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
     <!--footer-->
@@ -442,11 +417,16 @@
     <script src="{{ asset('dist/front/assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('dist/front/assets/js/jquery-3.6.3.js') }}"></script>
     <script src="{{ asset('dist/front/assets/js/app.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{{ asset('vendor\realrashid\sweet-alert\resources\js\sweetalert.all.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
     <script>
-        let lastAddedItem = null; // تخزين العنصر الأخير المضاف
+        // Start choice positive or negative
+        $(document).on("click", '.choices-container .try-box-count', function() {
+            let $parent = $(this).closest('.choices-container');
+            $parent.find('.modalActive').removeClass('modalActive');
+            $(this).addClass('modalActive');
+            updatePercentage();
+        });
 
         function updatePercentage() {
             let modalActivePositiveCount = $(".modalActive.positive").length;
@@ -456,174 +436,87 @@
             $('.percentage').text(percentage.toFixed(0) + "%");
             $('.percentage').val(percentage.toFixed(0));
         }
+        // End choice positive or negative 
 
-        $(document).on("click", '.SS-btn span', function() {
-            let $modalActiveElement = $(this).siblings(".modalActive");
-            $(this).addClass("modalActive").siblings().removeClass("modalActive");
-            updatePercentage();
-        });
-
-        let counter = 10; // تعيين الرقم الابتدائي
+        let counter = 10;
 
         $("#addItem").on("click", function() {
             if (counter < 20) {
-                let div = $("<div>").addClass("SS-btn my-3");
+                let div = $("<div>").addClass("d-flex justify-content-around pt-3 new-item");
 
-                let a = $("<a>").css({
-                    padding: "20px",
-                    cursor: "pointer",
-                    width: "188px",
-                    height: "64px",
-                    fontWeight: "1000",
-                    fontSize: "20px"
-                }).text(counter + 1); // زيادة الرقم بواحد
+                let numberDiv = $("<div>").addClass("col-md-3 col-3");
+                let numberTitle = $("<div>").addClass("try-box-title col-12 col-md-12");
+                let numberSpan = $("<span>").addClass("fw-bold fs-5").text(counter + 1);
 
-                let positiveSpan = $("<span>").addClass("positive nav-item me-3").css({
-                    padding: "20px",
-                    width: "214.5px",
-                    cursor: "pointer",
-                    height: "64px",
-                    fontWeight: "1000",
-                    fontSize: "20px"
-                }).text("ايجابية");
+                numberTitle.append(numberSpan);
+                numberDiv.append(numberTitle);
 
-                let nativeSpan = $("<span>").addClass("native nav-item me-3").css({
-                    padding: "20px",
-                    width: "214.5px",
-                    cursor: "pointer",
-                    height: "64px",
-                    fontWeight: "1000",
-                    fontSize: "20px"
-                }).text("سلبية");
+                let choicesContainer = $("<div>").addClass(
+                    "col-md-8 d-flex justify-content-between col-9 choices-container");
 
-                let removeButton = $("<div>").addClass("remove-btn").css({
-                    cursor: "pointer",
-                    padding: "20px",
-                    width: "188px",
-                    height: "64px",
-                    fontWeight: "1000",
-                    fontSize: "20px"
-                }).append(
-                    $("<img>").attr({
-                        width: "35",
-                        height: "35",
-                        src: "{{ asset('dist/front/assets/images/ؤ.png') }}"
-                    })
-                ).on("click", function() {
-                    $(this).parent().remove();
-                    counter--; // تقليل الرقم بواحد
-                    updateNumbers(); // تحديث الرقم
-                    updatePercentage(); // تحديث النسبة المئوية بعد الحذف
-                    updateButtonsVisibility(); // تحديث ظهور واختفاء زر الحذف
-                });
+                let positiveDiv = $("<div>").addClass("try-box-count col-4 col-md-6 positive").css("width", "48%");
+                let positiveSpan = $("<span>").addClass("fw-bold fs-5").text("إيجابية");
+                positiveDiv.append(positiveSpan);
 
-                $("#addDiv").append(removeButton); // إضافة الزر "حذف" داخل العنصر #addDiv
+                let nativeDiv = $("<div>").addClass("try-box-count col-4 col-md-6 native").css("width", "48%");
+                let nativeSpan = $("<span>").addClass("fw-bold fs-5").text("سلبية");
+                nativeDiv.append(nativeSpan);
 
+                choicesContainer.append(positiveDiv, nativeDiv);
 
-                div.append(a, positiveSpan, nativeSpan, removeButton);
+                div.append(numberDiv, choicesContainer);
 
-                $("#addDiv").before(div);
-                counter++; // زيادة الرقم بواحد
+                if ($(".remove-btn").length === 0) {
+                    let removeButton = $("<div>").addClass("remove-btn").css({
+                        cursor: "pointer",
+                    }).append(
+                        $("<img>").attr({
+                            width: "25",
+                            height: "25",
+                            src: "{{ asset('dist/front/assets/images/minus.png') }}",
+                        })
+                    ).on("click", function() {
+                        $(".new-item").last().remove();
+                        counter--;
+                        updateNumbers();
+                        updatePercentage();
+                        if (counter < 20) {
+                            $('.addDiv').show();
+                        }
+                        if (counter === 10) {
+                            $(this).remove();
+                        }
+                    });
 
-                if (counter == 20) $('#addDiv').hide();
-                updatePercentage(); // تحديث النسبة المئوية بعد الإضافة
-                updateButtonsVisibility(); // تحديث ظهور واختفاء زر الحذف
+                    $(".addDiv").before(removeButton);
+                }
+
+                $(".lastOneDiv").before(div);
+                counter++;
+
+                if (counter == 20) {
+                    $('.addDiv').hide();
+                }
+                updatePercentage();
             }
-        });
-
-        $(document).on("click", ".remove-btn", function() {
-            let removedItem = $(this).parent();
-            let removedItemNumber = parseInt(removedItem.find('a').text());
-            removedItem.remove();
-
-            // تحديث counter بعد الحذف
-            counter = removedItemNumber - 1;
-
-            updateNumbers(); // تحديث الرقم
-            updatePercentage(); // تحديث النسبة المئوية بعد الحذف
-            updateButtonsVisibility(); // تحديث ظهور واختفاء زر الحذف
         });
 
         function updateNumbers() {
-            $('.SS-btn a').each(function(index) {
+            $('.try-box-title span').each(function(index) {
                 $(this).text(index + 1);
             });
         }
+        document.addEventListener('DOMContentLoaded', function() {
+            // احصل على ارتفاع العمود المرجعي
+            var referenceDiv = document.getElementById('reference-div');
+            var referenceDivHeight = referenceDiv.offsetHeight;
 
-        function updateButtonsVisibility() {
-            // إخفاء زر الحذف لجميع العناصر
-            $(".remove-btn").hide();
-
-            // إظهار زر الحذف للعنصر الأخير المضاف فقط
-            if (counter > 0) {
-                let lastItem = $(".SS-btn").eq(counter - 1);
-                lastItem.find(".remove-btn").show();
-            }
-
-            // إظهار زر الإضافة إذا كان العدد أقل من 20 بعد حذف العنصر
-            if (counter < 20) {
-                $('#addDiv').show();
-            }
-        }
+            // اضبط ارتفاع التكسيت اريا ليكون مطابقًا
+            var textArea = document.getElementById('description');
+            textArea.style.height = referenceDivHeight + 'px';
+        });
     </script>
 
-
-
-
-    {{-- <script> --}}
-    {{--    $(document).on("click", '.SS-btn span', function () { --}}
-    {{--        let $modalActiveElement = $(this).siblings(".modalActive"); --}}
-    {{--        $(this).addClass("modalActive").siblings().removeClass("modalActive"); --}}
-
-    {{--        // حساب النسبة --}}
-    {{--        let modalActivePositiveCount = $(".modalActive.positive").length; --}}
-    {{--        let totalPositiveCount = $(".positive").length; --}}
-    {{--        let percentage = (modalActivePositiveCount / totalPositiveCount) * 100; --}}
-
-    {{--        $('.percentage').text(percentage.toFixed(0) + "%") --}}
-    {{--        $('.percentage').val(percentage.toFixed(0)) --}}
-    {{--    }); --}}
-    {{--    let counter = 10; --}}
-    {{--    $("#addItem").on("click", function () { --}}
-    {{--        if (counter < 20) { --}}
-    {{--            let div = $("<div>").addClass("SS-btn my-3"); --}}
-
-    {{--            let a = $("<a>").css({ --}}
-    {{--                padding: "20px", --}}
-    {{--                cursor: "pointer", --}}
-    {{--                width: "188px", --}}
-    {{--                height: "64px", --}}
-    {{--                fontWeight: "1000", --}}
-    {{--                fontSize: "20px" --}}
-    {{--            }).text(counter + 1); --}}
-
-    {{--            let positiveSpan = $("<span>").addClass("positive nav-item me-3").css({ --}}
-    {{--                padding: "20px", --}}
-    {{--                width: "219px", --}}
-    {{--                cursor: "pointer", --}}
-    {{--                height: "64px", --}}
-    {{--                fontWeight: "1000", --}}
-    {{--                fontSize: "20px" --}}
-    {{--            }).text("ايجابية"); --}}
-
-    {{--            let nativeSpan = $("<span>").addClass("native nav-item me-3").css({ --}}
-    {{--                padding: "20px", --}}
-    {{--                width: "219px", --}}
-    {{--                cursor: "pointer", --}}
-    {{--                height: "64px", --}}
-    {{--                fontWeight: "1000", --}}
-    {{--                fontSize: "20px" --}}
-    {{--            }).text("سلبية"); --}}
-
-    {{--            div.append(a, positiveSpan, nativeSpan); --}}
-
-    {{--            $("#addDiv").before(div); --}}
-    {{--            counter++; --}}
-
-    {{--            if (counter == 20) $('#addDiv').hide(); --}}
-    {{--        } --}}
-    {{--    }); --}}
-    {{-- </script> --}}
     @include('sweetalert::alert')
     @include('sweetalert::validation-alert')
 </body>

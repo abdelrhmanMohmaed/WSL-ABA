@@ -215,7 +215,7 @@
 
                                         <div class="" style="position:relative;">
                                             <h4 class="font-weight-bold "> تقرير التقييم :</h4>
-                                            <textarea id="placeholder-teaxtarea" name="desc[{{ $val->Appale->id }}]" class="textarea"> {{ $val->desc }} </textarea>
+                                            <textarea id="placeholder-teaxtarea" name="desc[{{ $val->Appale->id }}]" class="textarea">{{ $val->desc }}</textarea>
                                         </div>
 
                                         <input type="hidden" value="{{ $val->name }}"

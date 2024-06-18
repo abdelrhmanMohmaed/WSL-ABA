@@ -38,6 +38,11 @@
                         {{ $kid->name }}
                     </a>
                 </li>
+                <li class="breadcrumb-item" aria-current="page">
+                    <a href="{{ route('kids.details', $kid->id) }}"><i class="fa-solid fa-chevron-left"></i>
+                        بيانات المريض
+                    </a>
+                </li>
                 <li class="breadcrumb-item active" aria-current="page">
                     <i class="fa-solid fa-chevron-left"></i>
                     تعديل ملف المريض

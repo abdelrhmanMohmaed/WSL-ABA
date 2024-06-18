@@ -2,11 +2,10 @@
 
 namespace Modules\Kids\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Kids\Entities\Goal;
-use Modules\Kids\Entities\Kid;
-use Modules\Kids\Entities\Session;
-use PDF;
+use Modules\Kids\Entities\Kid;  
 
 class ReportController extends Controller
 {
@@ -105,17 +104,60 @@ class ReportController extends Controller
             $dataModalTwo['goals'][] = $goalData;
         }
 
-//dd($dataModalTwo['goals']);
         return view('kids::front.kids.reports.index', compact("kid", "dataModalOne", "dataModalTwo"));
     }
 
-    public function getData($id): \Illuminate\Http\JsonResponse
-    {
-        $goals = Goal::with('appeal', 'sessions', 'sessions.customer', 'sessions.IndoctrinationType')
+    public function getData(Request $request,$id): \Illuminate\Http\JsonResponse
+    { 
+        $goals = Goal::with(['appeal', 'sessions' => function ($query) {
+            $query->orderBy('created_at');
+        }, 'sessions.customer', 'sessions.IndoctrinationType'])
             ->whereHas('sessions', function ($query) {
                 $query->whereNotNull('sessions.id');
             })->where('kid_id', $id)
             ->get();
+
+        foreach ($goals as $goal) {
+            $sessions = $goal->sessions;
+            $currentGroup = null;
+            $groups = [];
+
+            foreach ($sessions as $session) {
+                if ($currentGroup === null || $currentGroup['indoctrination_type_id'] !== $session->indoctrination_type_id) {
+                    // Save the current group if it exists
+                    if ($currentGroup !== null) {
+                        $groups[] = $currentGroup;
+                    }
+
+                    // Start a new group
+                    $currentGroup = [
+                        'doctors' => [$session->customer->name],
+                        'indoctrination_type_id' => $session->indoctrination_type_id,
+                        'indoctrination_name' => $session->indoctrinationType->name,
+                        'indoctrination_color' => $session->indoctrinationType->color,
+                        'first_percentage' => $session->percentage,
+                        'last_percentage' => $session->percentage,
+                        'session_count' => 1
+                    ];
+                } else {
+                    // Update the last percentage of the current group and increase session count
+                    $currentGroup['last_percentage'] = $session->percentage;
+                    $currentGroup['session_count']++;
+                    // Add doctor to the list if not already present
+                    if (!in_array($session->customer->name, $currentGroup['doctors'])) {
+                        $currentGroup['doctors'][] = $session->customer->name;
+                    }
+                }
+            }
+
+            // Add the last group
+            if ($currentGroup !== null) {
+                $groups[] = $currentGroup;
+            }
+
+            // Add the groups to the goal object
+            $goal->session_groups = $groups;
+        }
 
         return response()->json($goals);
     }

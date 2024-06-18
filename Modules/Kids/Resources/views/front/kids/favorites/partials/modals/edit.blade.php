@@ -1,22 +1,31 @@
-<div class="fixed-form pt-5">
-    <div class="register-form pt-0">
+<div class="edit-model">
+    <div class="edit-form">
         <div class="container">
-            <div style="height: 100vh" class="row">
-                <form style="height: 35vh" method="post" action="{{route('kids.evaluate.favorites.update')}}" class="mt-5">
+            <div class="row vh-100 justify-content-center">
+                <form class="w-50 m-auto mx-2 bg-white rounded-4" action="{{ route('kids.evaluate.favorites.update') }}"
+                    method="post">
+                    <div class="d-flex justify-content-end pt-3">
+                        <button type="button" class="btn-close text-danger fw-bolder" aria-label="Close">x</button>
+                    </div>
                     @csrf
-                    <input id="favoriteId" type="hidden" name="favorite" >
-                    <legend class="text-center m-2 mt-5"> تعديل تاريخ المفضلات</legend>
-                    <div class="row container">
-                        <div class="form-group col-8 ">
-                            <label>التاريخ</label>
-                            <input
-                                type="date" name="date" class="form-control pr-5"
-                                placeholder="أدخل التاريخ الجديد..."/>
+                    <legend class="my-4 pl-4 fw-bolder text-center">
+                        تعديل تاريخ المفضلات
+                    </legend>
+
+                    <div class="row container me-1 justify-content-center">
+                        <div class="form-group col-12">
+                            <label for="favoriteDate" style="font-weight: bolder">التاريخ</label>
+                            <input id="favoriteDate" type="date" name="date" class="form-control w-100 target" />
                         </div>
-                        <button type="submit"
-                                class="btn mt-5 mb-5 w-25 text-center m-auto btn-blue">
-                            موافق
+
+                        <input id="favoriteId" type="hidden" name="favorite">
+
+                        <button type="submit" class="mt-5 w-75 btn-new-target text-center rounded-2 text-white p-2">
+                            حفط
                         </button>
+                        <div type="button" class="btn-cancel rounded-2 p-2 mb-4 text-center">
+                            الغاء
+                        </div>
                     </div>
                 </form>
             </div>

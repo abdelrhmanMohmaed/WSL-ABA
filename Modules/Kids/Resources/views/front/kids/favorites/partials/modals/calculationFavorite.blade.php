@@ -1,129 +1,185 @@
-
 <div style="background-color: #F8FCFC!important;" class="tab-content mt-5">
     <div class="container">
-        <div class="text-data">
-            <div class="fw-bold">
-                <div class="col-md-12 text-center">
-                    <div class="SS-btn my-3">
-                        <a style="padding-top:20px;width: 203px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            المفضل
-                        </a>
-
-                        <a class="nav-item"
-                           style="padding-top:20px;width: 447px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            عدد مرات التكرار
-                        </a>
-                        <a class="nav-item"
-                           style="padding-top:20px;width: 447px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            تطبيق المعادلة (%)
-                        </a>
-                    </div>
-
-                    <div class="SS-btn my-3">
-                        <a class="firstFavoriteName"
-                           style="padding-top:20px;width: 203px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            المفضل الاولى
-                        </a>
-
-                        <a id="firstFavoriteCount" class="nav-item border border-blue"
-                           style="padding-top:20px;background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            عدد مرات التكرار
-                        </a>
-
-                        <a id="firstFavoritePercentage"
-                            class=" nav-item border border-blue"
-                           style="padding-top:20px;background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            (%)
-                        </a>
-                    </div>
-
-                    <div class="SS-btn my-3">
-                        <a class="secondFavoriteName"
-                           style="padding-top:20px;width: 203px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            المفضل الثاني
-                        </a>
-
-                        <a id="secondFavoriteCount" class="nav-item border border-blue"
-                           style="padding-top:20px;background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            عدد مرات التكرار
-                        </a>
-                        <a id="secondFavoritePercentage"
-                            class=" nav-item border border-blue"
-                           style="padding-top:20px;background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;">
-                             (%)
-                        </a>
-                    </div>
-
-                    <div class="SS-btn my-3">
-                        <a class="thirdFavoriteName"
-                           style="padding-top:20px;width: 203px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            المفضل الثالث
-                        </a>
-
-                        <a id="thirdFavoriteCount" class="nav-item border border-blue"
-                           style="padding-top:20px;background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            عدد مرات التكرار
-                        </a>
-                        <a id="thirdFavoritePercentage"
-                            class="nav-item border border-blue"
-                           style="padding-top:20px;background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                (%)
-                        </a>
-                    </div>
-
-                    <div class="SS-btn my-3">
-                        <a class="fourthFavoriteName"
-                           style="padding-top:20px;width: 203px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            المفضل الرابع
-                        </a>
-
-                        <a id="fourthFavoriteCount" class="nav-item border border-blue"
-                           style="padding-top:20px;background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            عدد مرات التكرار
-                        </a>
-                        <a id="fourthFavoritePercentage"
-                            class=" nav-item border border-blue"
-                           style="padding-top:20px;background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                (%)
-                        </a>
-                    </div>
-
-
-                    <div class="SS-btn my-3">
-                        <a class="fifthFavoriteName"
-                           style="padding-top:20px;width: 203px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            المفضل الخامس
-                        </a>
-
-                        <a id="fifthFavoriteCount" class="nav-item border border-blue"
-                           style="padding-top:20px;background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            عدد مرات التكرار
-                        </a>
-                        <a id="fifthFavoritePercentage"
-                            class=" nav-item border border-blue"
-                           style="padding-top:20px;background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                (%)
-                        </a>
-                    </div>
-
-                    <div class="SS-btn my-3">
-                        <a class="sixthFavoriteName"
-                           style="padding-top:20px;width: 203px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            المفضل السادس
-                        </a>
-
-                        <a id="sixthFavoriteCount" class="nav-item border border-blue"
-                           style="padding-top:20px;background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            عدد مرات التكرار
-                        </a>
-                        <a id="sixthFavoritePercentage"
-                            class="nav-item border border-blue"
-                           style="padding-top:20px;background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;">
-                                (%)
-                        </a>
+        <div class="row d-flex justify-content-center align-items-center rounded-3 p-3 my-5 custom-bg">
+            <div class="col-12 col-md-12 d-flex flex-wrap align-items-center p-2">
+                <div class="col-12 col-md-12">
+                    <div class="d-flex justify-content-around">
+                        <div class="col-md-2 col-2 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <span class="fw-bold fs-5 text-center">رقم المفضل</span>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <span class="fw-bold fs-5 text-center">عدد مرات التكرار</span>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <span class="fw-bold fs-5 text-center">تطبيق المعادلة (%)</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- 1 -->
+            <div class="col-12 col-md-12 d-flex flex-wrap align-items-center p-2">
+                <div class="col-12 col-md-12">
+                    <div class="d-flex justify-content-around">
+                        <div class="col-md-2 col-2 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <span class="firstFavoriteName fw-bold fs-5 text-center">المفضل الاولى</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input id="firstFavoriteCount" placeholder="عدد مرات التكرار" disabled
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue" />
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input id="firstFavoritePercentage" placeholder="(%)" disabled
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue firstFavoritePercentage" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 1 -->
+
+            <!-- 2 -->
+            <div class="col-12 col-md-12 d-flex flex-wrap align-items-center p-2">
+                <div class="col-12 col-md-12">
+                    <div class="d-flex justify-content-around">
+                        <div class="col-md-2 col-2 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <span class="secondFavoriteName fw-bold fs-5 text-center">المفضل الثاني</span>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input id="secondFavoriteCount" placeholder="عدد مرات التكرار" disabled
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue" />
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input id="secondFavoritePercentage" placeholder="(%)" disabled
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 2 -->
+
+            <!-- 3 -->
+            <div class="col-12 col-md-12 d-flex flex-wrap align-items-center p-2">
+                <div class="col-12 col-md-12">
+                    <div class="d-flex justify-content-around">
+                        <div class="col-md-2 col-2 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <span class="thirdFavoriteName fw-bold fs-5 text-center">المفضل الثالث</span>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input id="thirdFavoriteCount" placeholder="عدد مرات التكرار" disabled
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue" />
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input id="thirdFavoritePercentage" placeholder="(%)" disabled
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 3 -->
+
+            <!-- 4 -->
+            <div class="col-12 col-md-12 d-flex flex-wrap align-items-center p-2">
+                <div class="col-12 col-md-12">
+                    <div class="d-flex justify-content-around">
+                        <div class="col-md-2 col-2 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <span class="fourthFavoriteName fw-bold fs-5 text-center">المفضل الرابع</span>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input id="fourthFavoriteCount" placeholder="عدد مرات التكرار" disabled
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue" />
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input id="fourthFavoritePercentage" placeholder="(%)" disabled
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 4 -->
+
+            <!-- 5 -->
+            <div class="col-12 col-md-12 d-flex flex-wrap align-items-center p-2">
+                <div class="col-12 col-md-12">
+                    <div class="d-flex justify-content-around">
+                        <div class="col-md-2 col-2 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <span class="fifthFavoriteName fw-bold fs-5 text-center">المفضل الخامس</span>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input id="fifthFavoriteCount" placeholder="عدد مرات التكرار" disabled
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue" />
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input id="fifthFavoritePercentage" placeholder="(%)" disabled
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 5 -->
+
+            <!-- 6 -->
+            <div class="col-12 col-md-12 d-flex flex-wrap align-items-center p-2">
+                <div class="col-12 col-md-12">
+                    <div class="d-flex justify-content-around">
+                        <div class="col-md-2 col-2 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <span class="sixthFavoriteName fw-bold fs-5 text-center">المفضل السادس</span>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input id="sixthFavoriteCount" placeholder="عدد مرات التكرار" disabled
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue" />
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input id="sixthFavoritePercentage" placeholder="(%)" disabled
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 6 -->
+
         </div>
     </div>
 </div>

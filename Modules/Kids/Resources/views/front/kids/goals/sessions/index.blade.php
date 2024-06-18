@@ -8,10 +8,11 @@
     <title>وصل | الجلسات</title>
     <link rel="shortcut icon" type="image/svg" href="{{ asset('dist/front/assets/images/headerlogo.png') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="{{ asset('dist/front/assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dist/front/assets/css/style.css') }}">
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ asset('dist/front/assets/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('dist/front/assets/css/style.css') }}" />
+
     <link rel="stylesheet" href="{{ asset('dist/front/assets/css/session.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/front/assets/css/table-style.css') }}">
 </head>
@@ -25,17 +26,33 @@
         <div class="container">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('welcome') }}">الرئيسية</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('welcome') }}"><i class="fa-solid fa-chevron-left"></i>
-                        لوحة التحكم</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('kids.index') }}"><i
-                            class="fa-solid fa-chevron-left"></i>ملفات المرضى</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('kids.show', $kid->id) }}"><i
-                            class="fa-solid fa-chevron-left"></i>{{ $kid->name }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('kids.treatment-plans.index', $kid->id) }}"><i
-                            class="fa-solid fa-chevron-left"></i> الخطط العلاجية والجلسات</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('kids.treatment-plans.goals.index', $kid->id) }}"><i
-                            class="fa-solid fa-chevron-left"></i> الأهداف تحت التدريب</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><i class="fa-solid fa-chevron-left"></i> الجلسات
+                <li class="breadcrumb-item"><a href="{{ route('welcome') }}">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        لوحة التحكم
+                    </a>
+                </li>
+                <li class="breadcrumb-item"><a href="{{ route('kids.index') }}">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        ملفات المرضى
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ route('kids.show', $kid->id) }}">
+                        <i class="fa-solid fa-chevron-left"></i>{{ $kid->name }}
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ route('kids.treatment-plans.index', $kid->id) }}">
+                        <i class="fa-solid fa-chevron-left"></i> الخطط العلاجية والجلسات
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ route('kids.treatment-plans.goals.index', $kid->id) }}">
+                        <i class="fa-solid fa-chevron-left"></i> الأهداف تحت التدريب
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <i class="fa-solid fa-chevron-left"></i> الجلسات
                 </li>
             </ol>
         </div>

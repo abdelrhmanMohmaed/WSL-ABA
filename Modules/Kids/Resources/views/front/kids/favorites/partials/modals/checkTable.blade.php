@@ -1,5 +1,6 @@
 <h5 style="font-weight: 1000; font-size: 20px;margin-top: 70px">ملاحظة :</h5>
-<span style="opacity: 0.5;" >*الرجاء الأختيار من الخيارات أدناه حسب أختيار الطفل (يمين - يسار - NR (لم يختار الطفل شئ)).</span>
+<span style="opacity: 0.5;">*الرجاء الأختيار من الخيارات أدناه حسب أختيار الطفل (يمين - يسار - NR (لم يختار الطفل
+    شئ)).</span>
 
 <div style="background-color: #F8FCFC!important;" class="tab-content mt-2">
     <!-- Start Title Head -->
@@ -30,27 +31,21 @@
     <div class="container d-flex justify-content-center">
         <div style="width: 1122px;" class="favorite-question">
             <div class="c-rating-favorite numbers-ques">
-                            <span style="width: 145px;background-color: #F8FCFC;"
-                                  class="secondItem">
-                            </span>
-                <span style="width: 145px;background-color: #F8FCFC;"
-                      class=" firstItem"></span>
+                <span style="width: 145px;background-color: #F8FCFC;" class="secondItem">
+                </span>
+                <span style="width: 145px;background-color: #F8FCFC;" class=" firstItem"></span>
                 <span style="width: 84px;background-color: #F8FCFC;" class="">NR</span>
             </div>
 
             <div class="c-rating-favorite numbers-ques">
-                            <span style="width: 145px;background-color: #F8FCFC;"
-                                  class="fifthItem two"></span>
-                <span style="width: 145px;background-color: #F8FCFC;"
-                      class="thirdItem two"></span>
+                <span style="width: 145px;background-color: #F8FCFC;" class="fifthItem two"></span>
+                <span style="width: 145px;background-color: #F8FCFC;" class="thirdItem two"></span>
                 <span style="width: 84px;background-color: #F8FCFC;" class="two">NR</span>
             </div>
 
             <div class="c-rating-favorite numbers-ques">
-                            <span style="width: 145px;background-color: #F8FCFC;"
-                                  class="firstItem there"></span>
-                <span style="width: 145px;background-color: #F8FCFC;"
-                      class="secondItem there"></span>
+                <span style="width: 145px;background-color: #F8FCFC;" class="firstItem there"></span>
+                <span style="width: 145px;background-color: #F8FCFC;" class="secondItem there"></span>
                 <span style="width: 84px;background-color: #F8FCFC;" class="there">NR</span>
             </div>
         </div>
@@ -85,26 +80,20 @@
     <div class="container d-flex justify-content-center">
         <div style="width: 1122px;" class="favorite-question">
             <div class="c-rating-favorite numbers-ques">
-                            <span style="width: 145px;background-color: #F8FCFC;"
-                                  class="secondItem seven"></span>
-                <span style="width: 145px;background-color: #F8FCFC;"
-                      class="fourthItem seven"></span>
+                <span style="width: 145px;background-color: #F8FCFC;" class="secondItem seven"></span>
+                <span style="width: 145px;background-color: #F8FCFC;" class="fourthItem seven"></span>
                 <span style="width: 84px;background-color: #F8FCFC;" class="seven">NR</span>
             </div>
 
             <div class="c-rating-favorite numbers-ques">
-                            <span style="width: 145px;background-color: #F8FCFC;"
-                                  class="firstItem eight"></span>
-                <span style="width: 145px;background-color: #F8FCFC;"
-                      class="sixthItem eight"></span>
+                <span style="width: 145px;background-color: #F8FCFC;" class="firstItem eight"></span>
+                <span style="width: 145px;background-color: #F8FCFC;" class="sixthItem eight"></span>
                 <span style="width: 84px;background-color: #F8FCFC;" class="eight">NR</span>
             </div>
 
             <div class="c-rating-favorite numbers-ques">
-                            <span style="width: 145px;background-color: #F8FCFC;"
-                                  class="fifthItem nine"></span>
-                <span style="width: 145px;background-color: #F8FCFC;"
-                      class="sixthItem nine"></span>
+                <span style="width: 145px;background-color: #F8FCFC;" class="fifthItem nine"></span>
+                <span style="width: 145px;background-color: #F8FCFC;" class="sixthItem nine"></span>
                 <span style="width: 84px;background-color: #F8FCFC;" class="nine">NR</span>
             </div>
         </div>
@@ -151,10 +140,8 @@
             </div>
 
             <div class="c-rating-favorite numbers-ques">
-                            <span style="width: 145px;background-color: #F8FCFC;"
-                                  class="fifthItem"></span>
-                <span style="width: 145px;background-color: #F8FCFC;"
-                      class="firstItem"></span>
+                <span style="width: 145px;background-color: #F8FCFC;" class="fifthItem"></span>
+                <span style="width: 145px;background-color: #F8FCFC;" class="firstItem"></span>
                 <span style="width: 84px;background-color: #F8FCFC;" class="star">NR</span>
             </div>
         </div>
@@ -189,23 +176,19 @@
     <div class="container d-flex justify-content-center">
         <div style="width: 1122px;" class="favorite-question">
             <div class="c-rating-favorite numbers-ques">
-                            <span style="width: 145px;background-color: #F8FCFC;"
-                                  class="firstItem"></span>
+                <span style="width: 145px;background-color: #F8FCFC;" class="firstItem"></span>
                 <span style="width: 145px;background-color: #F8FCFC;" class="fourthItem"></span>
                 <span style="width: 84px;background-color: #F8FCFC;" class="star">NR</span>
             </div>
 
             <div class="c-rating-favorite numbers-ques">
-                            <span style="width: 145px;background-color: #F8FCFC;"
-                                  class="firstItem"></span>
-                <span style="width: 145px;background-color: #F8FCFC;"
-                      class="fifthItem"></span>
+                <span style="width: 145px;background-color: #F8FCFC;" class="firstItem"></span>
+                <span style="width: 145px;background-color: #F8FCFC;" class="fifthItem"></span>
                 <span style="width: 84px;background-color: #F8FCFC;" class="star">NR</span>
             </div>
 
             <div class="c-rating-favorite numbers-ques">
-                            <span style="width: 145px;background-color: #F8FCFC;"
-                                  class="fifthItem"></span>
+                <span style="width: 145px;background-color: #F8FCFC;" class="fifthItem"></span>
                 <span style="width: 145px;background-color: #F8FCFC;" class="fourthItem"></span>
                 <span style="width: 84px;background-color: #F8FCFC;" class="star">NR</span>
             </div>
@@ -242,22 +225,19 @@
         <div style="width: 1122px;" class="favorite-question">
             <div class="c-rating-favorite numbers-ques">
                 <span style="width: 145px;background-color: #F8FCFC;" class="fourthItem"></span>
-                <span style="width: 145px;background-color: #F8FCFC;"
-                      class="fifthItem"></span>
+                <span style="width: 145px;background-color: #F8FCFC;" class="fifthItem"></span>
                 <span style="width: 84px;background-color: #F8FCFC;" class="star">NR</span>
             </div>
 
             <div class="c-rating-favorite numbers-ques">
                 <span style="width: 145px;background-color: #F8FCFC;" class="sixthItem"></span>
-                <span style="width: 145px;background-color: #F8FCFC;"
-                      class="firstItem"></span>
+                <span style="width: 145px;background-color: #F8FCFC;" class="firstItem"></span>
                 <span style="width: 84px;background-color: #F8FCFC;" class="star">NR</span>
             </div>
 
             <div class="c-rating-favorite numbers-ques">
                 <span style="width: 145px;background-color: #F8FCFC;" class="sixthItem"></span>
-                <span style="width: 145px;background-color: #F8FCFC;"
-                      class="fifthItem"></span>
+                <span style="width: 145px;background-color: #F8FCFC;" class="fifthItem"></span>
                 <span style="width: 84px;background-color: #F8FCFC;" class="star">NR</span>
             </div>
         </div>

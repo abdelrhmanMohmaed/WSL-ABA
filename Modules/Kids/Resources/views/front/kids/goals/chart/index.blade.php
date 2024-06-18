@@ -157,7 +157,7 @@
             let htmlContent = ""
 
             for (let i = 0; i <= 100; i += 5) {
-                htmlContent += `<span style="bottom: ${i}%;">%${i}</span>`
+                htmlContent += `<span style="bottom: ${i-2}%;">%${i}</span>`
             }
             yAxis.innerHTML = htmlContent
         }
@@ -189,15 +189,19 @@
                     background-color: #${reservations[i].indoctrination_type.color};
                     --bg-color: #${reservations[i].indoctrination_type.color};
                 ">
-                <div >
+                <div>
+                    <span>
+                        الجلسة
+                        ${i + 1}
+                    </span>
+                    <span>
+                        ${reservations[i].percentage}%
+                    </span>
                     <span>
                         ${date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate()}
                     </span>
                     <span>
-                       ${reservations[i]['customer']['name']}
-                    </span> <span>
-                        الجلسة
-                        ${i + 1}
+                        ${reservations[i]['customer']['name']}
                     </span>
                 </div>
             </span>

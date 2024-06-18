@@ -618,13 +618,13 @@
                             المستوى الحالي
                         </div>
                     </div>
-                    ${jsonData[i].session_groups.map(session => `
+                    ${jsonData[i].sessions.map(session => `
                                         <div class="row">
-                        <div class="col">${session.doctors.join(', ')}</div>
-                                            <div class="col">${session.session_count}</div>
-                                            <div class="col" style="background-color: #${session.indoctrination_color}">${session.indoctrination_name}</div>
-                                            <div class="col">${session.first_percentage}</div>
-                                            <div class="col">${session.last_percentage}</div>
+                                            <div class="col">${session.customer.name}</div>
+                                            <div class="col">1</div>
+                                            <div class="col" style="background-color: #${session.indoctrination_type.color}">${session.indoctrination_type.name}</div>
+                                            <div class="col">${jsonData[i].sessions[0].percentage}</div>
+                                            <div class="col">${jsonData[i].sessions[jsonData[i].sessions.length - 1].percentage}</div>
                                         </div>
                                     `).join('')}
                 </div>

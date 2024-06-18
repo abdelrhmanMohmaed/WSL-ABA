@@ -22,7 +22,7 @@ const drawY_Axis = (chart) => {
 
     for (let i = 0; i <= 100; i += 5) {
         htmlContent += `
-            <span style="bottom: ${i}%;">%${i}</span>
+            <span style="bottom: ${i-2}%;">%${i}</span>
         `
     }
 

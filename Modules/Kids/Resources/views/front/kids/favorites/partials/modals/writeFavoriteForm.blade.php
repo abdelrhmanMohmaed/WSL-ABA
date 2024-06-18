@@ -1,143 +1,194 @@
 <div style="background-color: #F8FCFC!important;" class="tab-content mt-5">
     <div class="container">
-        <div class="text-data">
-            <div class="fw-bold">
-                <div class="col-md-12 text-center">
-                    <!-- start title -->
-                    <div class="SS-btn my-3">
-                        <a style="padding-top:20px;width: 203px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            رقم المفضل
-                        </a>
-
-                        <a class="nav-item"
-                           style="padding-top:20px;width: 447px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            اسم المفضل
-                        </a>
-                        <a class="nav-item"
-                           style="padding-top:20px;width: 447px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            نسبة المفضل
-                        </a>
+        <div class="row d-flex justify-content-center align-items-center rounded-3 p-3 my-5 custom-bg">
+            <div class="col-12 col-md-12 d-flex flex-wrap align-items-center p-2">
+                <div class="col-12 col-md-12">
+                    <div class="d-flex justify-content-around">
+                        <div class="col-md-2 col-2 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <span class="fw-bold fs-5 text-center">رقم المفضل</span>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <span class="fw-bold fs-5 text-center">اسم المفضل</span>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <span class="fw-bold fs-5 text-center">نسبة المفضل</span>
+                            </div>
+                        </div>
                     </div>
-                    <!-- end title -->
-
-                    <!-- start firstFavoritePercentage and Name -->
-                    <div class="SS-btn m-3">
-
-                        <a style="padding-top:20px;width: 203px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            المفضل الاولى
-                        </a>
-                        <input
-                            name="firstTitle" id="firstInput" placeholder="أدخل اسم المفضل"
-                            class="nav-item border border-blue border text-center rounded-3"
-                            style="background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;"/>
-
-                        <input placeholder="%" disabled
-                            class="firstFavoritePercentage nav-item border border-blue border text-center rounded-3"
-                            style="background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;"/>
-
-                        <input name="firstVal" class="firstFavoritePercentage" type="hidden">
-                    </div>
-                    <!-- end firstFavoritePercentage and Name -->
-
-                    <!-- start secondFavoritePercentage and Name -->
-                    <div class="SS-btn my-3">
-                        <a style="padding-top:20px;width: 203px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            المفضل الثاني
-                        </a>
-
-                        <input
-                            name="secondTitle" id="secondInput" placeholder="أدخل اسم المفضل "
-                            class="nav-item border border-blue border text-center rounded-3"
-                            style="background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;"/>
-
-                        <input placeholder="%" disabled
-                            class="secondFavoritePercentage nav-item border border-blue border text-center rounded-3"
-                            style="background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;"/>
-
-                        <input name="secondVal" class="secondFavoritePercentage" type="hidden">
-                    </div>
-                    <!-- end secondFavoritePercentage and Name -->
-
-                    <!-- start thirdFavoritePercentage and Name -->
-                    <div class="SS-btn my-3">
-                        <a style="padding-top:20px;width: 203px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            المفضل الثالث
-                        </a>
-
-                        <input
-                            name="thirdTitle" id="thirdInput" placeholder="أدخل اسم المفضل"
-                            class="nav-item border border-blue border text-center rounded-3"
-                            style="background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;"/>
-
-                        <input placeholder="%" disabled
-                            class="thirdFavoritePercentage nav-item border border-blue border text-center rounded-3"
-                            style="background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;"/>
-
-                        <input name="thirdVal" class="thirdFavoritePercentage" type="hidden">
-                    </div>
-                    <!-- end thirdFavoritePercentage and Name -->
-
-                    <!-- start fourthFavoritePercentage and Name -->
-                    <div class="SS-btn my-3">
-                        <a style="padding-top:20px;width: 203px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            المفضل الرابع
-                        </a>
-
-                        <input
-                            name="fourthTitle" id="fourthInput" placeholder="أدخل اسم المفضل "
-                            class="nav-item border border-blue border text-center rounded-3"
-                            style="background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;"/>
-
-                        <input placeholder="%" disabled
-                            class="fourthFavoritePercentage nav-item border border-blue border text-center rounded-3"
-                            style="background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;"/>
-
-                        <input name="fourthVal" class="fourthFavoritePercentage" type="hidden">
-
-                    </div>
-                    <!-- end fourthFavoritePercentage and Name -->
-
-                    <!-- start fifthFavoritePercentage and Name -->
-                    <div class="SS-btn my-3">
-                        <a style="padding-top:20px;width: 203px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            المفضل الخامس
-                        </a>
-
-                        <input
-                            name="fifthTitle" id="fifthInput" placeholder="أدخل اسم المفضل "
-                            class="nav-item border border-blue border text-center rounded-3"
-                            style="background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;"/>
-
-                        <input placeholder="%" disabled
-                            class="fifthFavoritePercentage nav-item border border-blue border text-center rounded-3"
-                            style="background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;"/>
-
-                        <input name="fifthVal" class="fifthFavoritePercentage" type="hidden">
-
-                    </div>
-                    <!-- end fifthFavoritePercentage and Name -->
-
-                    <!-- start sixthFavoritePercentage and Name -->
-                    <div class="SS-btn my-3">
-                        <a style="padding-top:20px;width: 203px;height: 64px; font-weight: 1000; font-size: 20px;">
-                            المفضل السادس
-                        </a>
-
-                        <input
-                            name="sixthTitle" id="sixthInput" placeholder="أدخل اسم المفضل "
-                            class="nav-item border border-blue border text-center rounded-3"
-                            style="background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;"/>
-
-                        <input placeholder="%" disabled
-                            class="sixthFavoritePercentage nav-item border border-blue border text-center rounded-3"
-                            style="background-color: #F8FCFC; width: 447px;height: 64px; font-weight: 1000; font-size: 20px;"/>
-
-                        <input name="sixthVal" class="sixthFavoritePercentage" type="hidden">
-                    </div>
-                    <!-- end sixthFavoritePercentage and Name -->
-
                 </div>
             </div>
+            <!-- 1 -->
+            <div class="col-12 col-md-12 d-flex flex-wrap align-items-center p-2">
+                <div class="col-12 col-md-12">
+                    <div class="d-flex justify-content-around">
+                        <div class="col-md-2 col-2 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <span class="fw-bold fs-5 text-center">المفضل الاولى</span>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input name="firstTitle" id="firstInput" placeholder="أدخل اسم المفضل"
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue" />
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input placeholder="%" disabled
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue firstFavoritePercentage" />
+
+                                <input name="firstVal" class="firstFavoritePercentage" type="hidden">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 1 -->
+
+            <!-- 2 -->
+            <div class="col-12 col-md-12 d-flex flex-wrap align-items-center p-2">
+                <div class="col-12 col-md-12">
+                    <div class="d-flex justify-content-around">
+                        <div class="col-md-2 col-2 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <span class="fw-bold fs-5 text-center">المفضل الثاني</span>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input name="secondTitle" id="secondInput" placeholder="أدخل اسم المفضل"
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue" />
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input placeholder="%" disabled
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue secondFavoritePercentage" />
+
+                                <input name="secondVal" class="secondFavoritePercentage" type="hidden">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 2 -->
+
+            <!-- 3 -->
+            <div class="col-12 col-md-12 d-flex flex-wrap align-items-center p-2">
+                <div class="col-12 col-md-12">
+                    <div class="d-flex justify-content-around">
+                        <div class="col-md-2 col-2 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <span class="fw-bold fs-5 text-center">المفضل الثالث</span>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input name="thirdTitle" id="thirdInput" placeholder="أدخل اسم المفضل"
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue" />
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input placeholder="%" disabled
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue thirdFavoritePercentage" />
+
+                                <input name="thirdVal" class="thirdFavoritePercentage" type="hidden">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 3 -->
+
+            <!-- 4 -->
+            <div class="col-12 col-md-12 d-flex flex-wrap align-items-center p-2">
+                <div class="col-12 col-md-12">
+                    <div class="d-flex justify-content-around">
+                        <div class="col-md-2 col-2 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <span class="fw-bold fs-5 text-center">المفضل الرابع</span>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input name="fourthTitle" id="fourthInput" placeholder="أدخل اسم المفضل"
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue" />
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input placeholder="%" disabled
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue fourthFavoritePercentage" />
+
+                                <input name="fourthVal" class="fourthFavoritePercentage" type="hidden">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 4 -->
+
+            <!-- 5 -->
+            <div class="col-12 col-md-12 d-flex flex-wrap align-items-center p-2">
+                <div class="col-12 col-md-12">
+                    <div class="d-flex justify-content-around">
+                        <div class="col-md-2 col-2 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <span class="fw-bold fs-5 text-center">المفضل الخامس</span>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input name="fifthTitle" id="fifthInput" placeholder="أدخل اسم المفضل"
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue" />
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input placeholder="%" disabled
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue fifthFavoritePercentage" />
+
+                                <input name="fifthVal" class="fifthFavoritePercentage" type="hidden">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 5 -->
+
+            <!-- 6 -->
+            <div class="col-12 col-md-12 d-flex flex-wrap align-items-center p-2">
+                <div class="col-12 col-md-12">
+                    <div class="d-flex justify-content-around">
+                        <div class="col-md-2 col-2 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <span class="fw-bold fs-5 text-center">المفضل الخامس</span>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input name="sixthTitle" id="sixthInput" placeholder="أدخل اسم المفضل"
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue" />
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-5 d-flex justify-content-center">
+                            <div class="try-box-title-header col-11 col-md-11">
+                                <input placeholder="%" disabled
+                                    class="custom-bg w-100 h-100 fw-bolder text-center rounded-3 border border-blue sixthFavoritePercentage" />
+
+                                <input name="sixthVal" class="sixthFavoritePercentage" type="hidden">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 6 -->
         </div>
     </div>
 </div>

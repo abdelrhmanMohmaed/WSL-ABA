@@ -41,8 +41,9 @@
         }
 
         .btn-new-target:hover {
-            background-color: #6d3f7b;
-            color: #fff !important;
+            background-color: #FFFF;
+            color: #834e9a !important;
+            border: #834e9a solid 1px;
         }
 
         /* Close button styles */

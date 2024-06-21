@@ -91,6 +91,24 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        
+        .letter-questions {
+            position: absolute;
+            top: 30px;
+            right: 5px;
+            background: #F2F2F2;
+            width: 180px;
+            border-radius: 8px;
+            display: none;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .letter-questions p {
+            margin-bottom: 0px !important;
+            cursor: pointer;
+            font-size: 14px;
+        }
     </style>
 </head>
 
@@ -252,11 +270,15 @@
                                                                 style="--num-boxes: {{ $num_boxes }};">
                                                                 @foreach ($value->Appale_Ques as $index => $question)
                                                                     @php
+                                                                        // تحقق مما إذا كان السؤال تم تلوينه بالفعل
                                                                         $currentColor = $span_colors[$index];
                                                                     @endphp
-                                                                    <span class="line"
+                                                                    <span class="line question-elements"
                                                                         style="width: {{ $box_width }}%; background-color: {{ $currentColor }};">
                                                                         <div class="line-0"></div>
+                                                                        <div class="letter-questions">
+                                                                            <p>{{ $question->name }}</p>
+                                                                        </div>
                                                                     </span>
                                                                 @endforeach
                                                             </div>
@@ -286,6 +308,9 @@
     <script src="{{ asset('vendor\realrashid\sweet-alert\resources\js\sweetalert.all.js') }}"></script>
 
     <script>
+        $(".question-elements").hover(function() {
+            $(this).children(".letter-questions").toggle();
+        })
         // Start left and right
         let left = document.querySelector(".left");
         let right = document.querySelector(".right");
@@ -372,7 +397,7 @@
             }
         }
     </script>
-    
+
     @include('sweetalert::alert')
     @include('sweetalert::validation-alert')
 </body>

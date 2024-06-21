@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="{{ asset('dist/front/assets/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('dist/front/assets/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('dist/front/assets/css/family-form.css') }}" />
-    {{-- <link rel="stylesheet" href="{{ asset('dist/front/assets/css/table-style.css') }}" /> --}}
 
     <style>
         /* @media print { */

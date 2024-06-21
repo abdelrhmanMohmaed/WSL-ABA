@@ -68,6 +68,7 @@ Route::middleware(['customer', 'customerVerification'])->group(function () {
                             Route::post('store/{kid}', 'storeAppeals')->name('store');
                             Route::post('destroy', 'destroy')->name('destroy');
                             Route::get('{kid}/vertical-draw/{sessionId?}', 'showVerticalDraw')->name('vertical-draw');
+                            Route::get('{kid}/report/{userSession}', 'report')->name('report');
 
                         });
                     # End Appeals Routes

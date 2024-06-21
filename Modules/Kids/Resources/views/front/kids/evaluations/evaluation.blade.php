@@ -46,7 +46,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6 mb-4">
-                    <a class="dashboard-card d-block" href="{{ route('kids.evaluate.appeals.create', $kid->id) }}">
+                    <a class="dashboard-card d-block" href="{{ route('kids.evaluate.appeals.vertical-draw', $kid->id) }}">
                         <div class="dashboard-card-details">
                             <div class="dashboard-img">
                                 <img src="{{ asset('dist/front/assets/images/evaluation.png') }}" alt=""

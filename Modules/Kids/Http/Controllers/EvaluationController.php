@@ -100,16 +100,16 @@ class EvaluationController extends Controller
             return view('kids::front.kids.evaluations.appeals',
                 compact('kid',  'sessions', 'userSessions', 'countSession'));
         } catch (\Exception $e) {
-
+            // dd($e->getMessage());
             Alert::warning('not found ', 'حدث خطا ما يجب التحقق');
             return redirect()->back();
         }
     }                   
     public function storeAppeals(Request $request, Kid $kid): \Illuminate\Http\RedirectResponse
     {
+        // dd($request->all());
         $apps = Appale::with('Appale_Nums', 'Appale_Nums.Appale_Ques')->get();
         $answer = $request->ans;
-// dd($request->all());
         try {
 
             $userSessions = Usersessions::with('Appsessions.Appale', 'Appsessions.Anssessions')
@@ -126,6 +126,10 @@ class EvaluationController extends Controller
                 ->latest()
                 ->first();
 
+                if ($userSessionsOld) {
+                    $userSessionsOld->evaluation_report = $request->hiddenEvaluationReport;
+                    $userSessionsOld->save();
+                }
             $userSessionsNew = Usersessions::with('Appsessions.Appale', 'Appsessions.Anssessions', 'Anssessions')
                 ->where('session_id', $request->id + 1)
                 ->where('doctor_id', auth()->guard('customer')->id())
@@ -179,6 +183,9 @@ class EvaluationController extends Controller
                         }
                     }
                 }
+                
+                $userSessions->evaluation_report = $request->hiddenEvaluationReport;
+                $userSessions->save(); 
             }
 
             if ($userSessionsNew) {
@@ -198,12 +205,17 @@ class EvaluationController extends Controller
                         }
                     }
                 }
+                // dd($userSessionsNew->evaluation_report,'2');
+
+                $userSessionsNew->evaluation_report = $request->hiddenEvaluationReport;
+                $userSessionsNew->save();
             }
 
             Alert::success('عملية ناجحة', 'تم الإدخال');
-            return back();
+            return redirect()->route('kids.evaluate.appeals.vertical-draw',$kid->id);
         } catch (\Exception $e) {
             DB::rollBack();
+            dd($e->getMessage());
 
             Alert::warning('not found ', 'حدث خطا ما يجب التحقق');
             return redirect()->back();
@@ -256,5 +268,13 @@ class EvaluationController extends Controller
 
         return view('kids::front.kids.evaluations.vertical_drawing', 
         compact('nums', 'letr', 'kid', 'apps', 'sessions', 'countSession'));
+    }
+
+    public function report(Request $request,Kid $kid,Usersessions $userSession)
+    {
+        $appSessions  = Appsessions::with('Appale')->where('session_id',$userSession->id)->get();
+
+        return view('kids::front.kids.evaluations.report', 
+        compact('appSessions', 'kid','userSession'));
     }
 }

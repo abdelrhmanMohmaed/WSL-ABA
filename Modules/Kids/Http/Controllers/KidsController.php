@@ -21,20 +21,7 @@ use PDF;
 
 class KidsController extends Controller
 {
-    use KidsTrait;
-
-    public function test(Kid $kid)
-    {
-//
-//        $kid =Kid::where('id',$kid)->first();
-//        dd($kid);
-
-//        $pdf = PDF::loadView('kids::front.test2',compact('kid'));
-//        return $pdf->stream('document.pdf');
-
-
-        return \view('kids::front.test2', compact('kid'));
-    }
+    use KidsTrait; 
 
     public function __construct()
     {
@@ -53,9 +40,7 @@ class KidsController extends Controller
 
             $kids = $this->filterKids($request);
         } else {
-            $kids = Kid::
-            // where('doctor_id',auth()->user()->id)->
-            get();
+            $kids = Kid::get();
         }
 
         return view('kids::front.kids.index',
@@ -329,7 +314,7 @@ class KidsController extends Controller
             DB::commit();
 
             Alert::success('عملية ناجحة', 'تم التعديل');
-            return redirect()->route('kids.index');
+            return redirect()->back();
         } catch (\Exception $e) {
             // dd($e);
             DB::rollBack();

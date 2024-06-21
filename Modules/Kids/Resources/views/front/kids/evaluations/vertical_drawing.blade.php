@@ -53,6 +53,24 @@
             padding: 5px;
             height: 40px;
         }
+
+        .letter-questions {
+            position: absolute;
+            top: 30px;
+            right: 5px;
+            background: #F2F2F2;
+            width: 180px;
+            border-radius: 8px;
+            display: none;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .letter-questions p {
+            margin-bottom: 0px !important;
+            cursor: pointer;
+            font-size: 14px;
+        }
     </style>
 </head>
 
@@ -64,24 +82,21 @@
     <nav aria-label="breadcrumb mt-5 mb-5">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('welcome') }}">الرئيسية </a></li>
-                <li class="breadcrumb-item"><a href="{{ route('kids.index') }}"><i
-                            class="fa-solid fa-chevron-left"></i>ملفات
-                        المرضي </a></li>
+                <li class="breadcrumb-item"><a href="{{ route('welcome') }}">الرئيسية</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('kids.index') }}">
+                        <i class="fa-solid fa-chevron-left"></i>ملفات المرضي
+                    </a>
+                </li>
                 <li class="breadcrumb-item" aria-current="page">
-                    <a href="{{ route('kids.show', $kid->id) }}"><i class="fa-solid fa-chevron-"></i>
+                    <a href="{{ route('kids.show', $kid->id) }}">
+                        <i class="fa-solid fa-chevron-left"></i>
                         {{ $kid->name }}
                     </a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page">
-                    <a href="{{ route('kids.evaluation', $kid->id) }}"><i class="fa-solid fa-chevron-left"></i>
+                    <a href="{{ route('kids.evaluation', $kid->id) }}">
+                        <i class="fa-solid fa-chevron-left"></i>
                         تقيم المريض
-                    </a>
-                </li>
-                <li class="breadcrumb-item" aria-current="page">
-                    <a href="{{ route('kids.evaluate.appeals.create', $kid->id) }}"><i
-                            class="fa-solid fa-chevron-left"></i>
-                        تقيم ABLLS
                     </a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
@@ -94,16 +109,42 @@
 
     <div class="wrapper">
         <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="form-title mt-4 mb-4 ">
+                        <img src="{{ asset('dist/front/assets/images/statistical-graphic.png') }}" />
+                        <h3>الرسم العمودى للتقيم</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-6 d-flex align-items-center justify-content-md-end justify-content-start ">
+                    <button class="add-session border-0 mt-md-4 mb-md-4 mb-3 mt-2">
+                        <a class="text-dark fw-bold d-inline-block py-3 px-4 text-center rounded-3 text-decoration-none"
+                            href="{{ route('kids.evaluate.appeals.create', $kid->id) }}?session={{ $countSession + 1 }}"
+                            target="_blank" style="background: #58b8c2">
+                            <img src="{{ asset('dist/front/assets/images/plus.png') }}" alt="" width="22"
+                                height="22">
+                            إضافة تقييم جديد
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="container">
 
             <div class="dates row" style="border-radius: 8px;overflow: hidden;">
                 @foreach ($sessions as $key => $val)
-                    <div class="date col-lg-2 col-md-3 col-6 text-center"
+                    <a href="{{ route('kids.evaluate.appeals.report', ['kid' => $kid->id, 'userSession' => $val->id]) }}"
+                        class="date col-lg-2 col-md-3 col-6 text-center text-dark text-decoration-none"
                         style="background-color: {{ $val->session->hex }};">
 
                         <h9>
                             <span> تقييم بتاريخ</span> {{ date('Y/m/d', strtotime($val->created_at)) }}
                         </h9>
-                    </div>
+                    </a>
                 @endforeach
             </div>
 
@@ -124,6 +165,7 @@
                     @endforeach
                 </ul>
             </div>
+
             <div class="row tab-content mt-5">
                 <div id="A" class="container tab-pane active tab-pane-ablis">
                     <br />
@@ -209,9 +251,12 @@
                                                                         // تحقق مما إذا كان السؤال تم تلوينه بالفعل
                                                                         $currentColor = $span_colors[$index];
                                                                     @endphp
-                                                                    <span class="line"
+                                                                    <span class="line question-elements"
                                                                         style="width: {{ $box_width }}%; background-color: {{ $currentColor }};">
                                                                         <div class="line-0"></div>
+                                                                        <div class="letter-questions">
+                                                                            <p>{{ $question->name }}</p>
+                                                                        </div>
                                                                     </span>
                                                                 @endforeach
                                                             </div>
@@ -230,37 +275,27 @@
 
         </div>
     </div>
+
     <!--footer-->
     @include('front.parts.footer')
-
-
     <!--footer-->
+
     <script src="{{ asset('dist/front/assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('dist/front/assets/js/jquery-3.6.3.js') }}"></script>
     <script src="{{ asset('dist/front/assets/js/app.js') }}"></script>
 
-    <script>
+    <script type="text/javascript">
         $(".question-element").hover(function() {
             $(this).children(".letter-question").toggle();
         })
-    </script>
-    <script>
+        $(".question-elements").hover(function() {
+            $(this).children(".letter-questions").toggle();
+        })
         $('.toggle-ques').on('click', function() {
             $(this).toggleClass("up");
             $(this).parent().parent().children('.ablis-answer').toggle();
         });
-    </script>
-    <script>
-        let numbersQues = document.querySelectorAll(".numbers-ques");
-        // console.log(numbersQues)
-        numbersQues.forEach((numberQues) => {
-            numberQues.addEventListener("onmouseover", function() {
-                // console.log(numberQues);
-            })
-        })
-    </script>
 
-    <script>
         let left = document.querySelector(".left");
         let right = document.querySelector(".right");
         let tabsList = document.querySelector(".ablis-tabs");
@@ -294,70 +329,13 @@
             manageIcons();
         })
 
-        tabsList.addEventListener("scroll", manageIcons)
-    </script>
+        tabsList.addEventListener("scroll", manageIcons);
 
-    <script>
-        let numbersques = document.querySelectorAll(".numbers-ques");
-
-        for (let i = 0; i < numbersques.length; i++) {
-
-            for (let j = 0; j < numbersques[i].length; j++) {
-
-                console.log(numbersques[i][j].childNodes);
-            }
-        }
-
-        $('.textarea').on('input', function() {
-            if ($(this).val().length > 0) {
-
-                $(this).siblings().css("opacity", "0");
-            } else {
-
-                $(this).siblings().css("opacity", "1");
-            }
-        });
-        // Get all elements with class "close"
-    </script>
-
-    <script type="text/javascript">
         $(document).on('click', ".sessions-date", function() {
 
             let id = $(this).data('id');
             let link = "{{ url()->current() }}" + "?app_Id=" + id
             window.location.href = link
-        });
-
-        $(".close").click(function() {
-            let id = $(this).data("id");
-
-            $.ajax({
-                url: "{{ route('kids.evaluate.appeals.destroy') }}",
-                type: 'post',
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    "session_id": id,
-                    "id": '{{ $kid->id }}',
-
-                },
-                success: function() {
-                    const closeButtons = document.querySelectorAll('.close');
-                    // Add click event listener to each close button
-                    closeButtons.forEach(closeButton => {
-                        closeButton.addEventListener('click', function() {
-                            // Get the parent element with class "date"
-                            const dateElement = this.closest('.date');
-
-                            // Remove the parent element if found
-                            if (dateElement) {
-                                dateElement.remove();
-                            }
-                        });
-                        window.location.href =
-                            "{{ route('kids.evaluate.appeals.create', $kid->id) }} }}"
-                    });
-                }
-            });
         });
     </script>
 </body>

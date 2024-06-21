@@ -308,7 +308,7 @@
                                 </div>
                             </div>
                             <!-- 7 -->
-                            <!-- 8 -->
+                            {{-- <!-- 8 -->
                             <div class="d-flex justify-content-around pt-3">
                                 <div class="col-md-3 col-3">
                                     <div class="try-box-title col-12 col-md-12">
@@ -358,7 +358,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- 10 -->
+                            <!-- 10 --> --}}
 
                             <!-- + and - -->
                             <div class="d-flex justify-content-around pt-3 lastOneDiv">
@@ -381,20 +381,20 @@
                             <div class="d-flex justify-content-around pt-3">
                                 <div class="col-md-3 col-3">
                                     <div class="try-box-title-header col-12 col-md-12">
-                                        <span class="fw-bold fs-5">نسبة الاستجابة</span>
+                                        <span class="fw-bold fs-5 text-center">نسبة الاستجابة</span>
                                     </div>
 
                                     <input type="hidden" name="percentage" class="percentage">
                                 </div>
                                 <div class="col-md-8 col-8">
                                     <div class="try-box-title-header col-12 col-md-12">
-                                        <span class="percentage fw-bold fs-5">%</span>
+                                        <span class="percentage fw-bold fs-5 text-center">%</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-4 mt-4">
                             <div class="col-md-12">
                                 <textarea class="custom-textarea" placeholder="ملاحظات الجلسة..." name="description" id="description"
                                     cols="30" rows="42">{{ old('description') }}</textarea>
@@ -438,7 +438,7 @@
         }
         // End choice positive or negative 
 
-        let counter = 10;
+        let counter = 7; // 10
 
         $("#addItem").on("click", function() {
             if (counter < 20) {
@@ -483,7 +483,7 @@
                         if (counter < 20) {
                             $('.addDiv').show();
                         }
-                        if (counter === 10) {
+                        if (counter === 7) { // 10
                             $(this).remove();
                         }
                     });
@@ -507,11 +507,9 @@
             });
         }
         document.addEventListener('DOMContentLoaded', function() {
-            // احصل على ارتفاع العمود المرجعي
             var referenceDiv = document.getElementById('reference-div');
             var referenceDivHeight = referenceDiv.offsetHeight;
 
-            // اضبط ارتفاع التكسيت اريا ليكون مطابقًا
             var textArea = document.getElementById('description');
             textArea.style.height = referenceDivHeight + 'px';
         });

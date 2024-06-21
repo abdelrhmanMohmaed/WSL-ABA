@@ -21,6 +21,7 @@ class UserSessions extends Migration
             $table->foreign('session_id')->references('id')->on('colors')->onDelete('cascade');
             $table->unsignedBigInteger('doctor_id');
             $table->foreign('doctor_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->text('evaluation_report')->nullable();
             $table->timestamps();
         });
     }
